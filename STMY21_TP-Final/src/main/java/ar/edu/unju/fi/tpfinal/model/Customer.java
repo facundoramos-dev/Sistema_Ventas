@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table (name = "CUSTOMERS")
 @Component("customersObj")
-public class Customers {
+public class Customer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,7 +75,7 @@ public class Customers {
 	
 	@ManyToOne
     @JoinColumn(name = "salesRepEmployeeNumber")
-    private Employees employees;
+    private Employee employees;
 	
 	@NotNull(message = "El campo creditLimit no puede estar null")
 	@Min(value=1, message = "El valor de la creditLimit debe ser decimal")
@@ -83,7 +83,7 @@ public class Customers {
 	private float creditLimit;
 
 	
-	public Customers() {
+	public Customer() {
 		// TODO Auto-generated constructor stub
 
 	}
