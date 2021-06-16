@@ -13,19 +13,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table (name = "ORDENS")
-@Component("ordenObj")
-public class Orden {
+@Table (name = "ORDERS")
+@Component("orderObj")
+public class Order {
 
 	@Id
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "Este campo no puede estar vacio")
 	@Column (name = "")
-	private int ordenNumber;
+	private int orderNumber;
 	
 	@NotNull(message = "Este campo fecha no puede estar vacio")
 	@Column (name = "ordenDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate ordenDate;
+	private LocalDate orderDate;
 	
 	@Column (name = "requiredDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -36,35 +36,35 @@ public class Orden {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate shippedDate;
 	
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "Este campo no puede estar vacio")
 	@Column (name = "status")
 	private String status;
 	
 	@Column (name = "comments")
 	private String comments;
 	
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "Este campo  no puede estar vacio")
 	@Column (name = "customerNumber")
 	private Customer customerNumber;
 	
-	public Orden() {
+	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getOrdenNumber() {
-		return ordenNumber;
+	public int getOrderNumber() {
+		return orderNumber;
 	}
 
-	public void setOrdenNumber(int ordenNumber) {
-		this.ordenNumber = ordenNumber;
+	public void setOrderNumber(int orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 
-	public LocalDate getOrdenDate() {
-		return ordenDate;
+	public LocalDate getOrderDate() {
+		return orderDate;
 	}
 
-	public void setOrdenDate(LocalDate ordenDate) {
-		this.ordenDate = ordenDate;
+	public void setOrderDate(LocalDate orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	public LocalDate getRequiredDate() {
@@ -109,8 +109,8 @@ public class Orden {
 
 	@Override
 	public String toString() {
-		return "Orden [ordenNumber=" + ordenNumber + ", ordenDate=" + ordenDate + ", requiredDate=" + requiredDate
+		return "Order [orderNumber=" + orderNumber + ", orderDate=" + orderDate + ", requiredDate=" + requiredDate
 				+ ", shippedDate=" + shippedDate + ", status=" + status + ", comments=" + comments + "]";
 	}
-	
+
 }
