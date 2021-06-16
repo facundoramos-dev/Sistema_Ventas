@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -14,39 +15,44 @@ import org.springframework.stereotype.Component;
 public class Product {
 
 	@Id
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "El campo productCode no puede estar vacio")
+	@Size(max = 15, message = "Como maximo debe tener 15 caracteres")
 	@Column (name = "productCode")
 	private	String productCode;
 	
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "El campo productName no puede estar vacio")
+	@Size(max = 70, message = "Como maximo debe tener 70 caracteres")
 	@Column (name = "productName")
 	private String productName;
 	
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "El campo productLine no puede estar vacio")
+	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
 	@Column (name = "productLine")
 	private ProductLine productLine;
 	
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "El campo productScale no puede estar vacio")
+	@Size(max = 10, message = "Como maximo debe tener 10 caracteres")
 	@Column (name = "productScale")
 	private String productScale;
 
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "El campo productVendor no puede estar vacio")
+	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
 	@Column (name = "productVendor")
 	private String productVendor;
 
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "El campo productDescription no puede estar vacio")
 	@Column (name = "productDescription")
 	private String productDescription;
 
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "El campo quantityInStock no puede estar vacio")
 	@Column (name = "quantityInStock")
 	private short quantityInStock;
 
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "El campo buyPrice no puede estar vacio")
 	@Column (name = "buyPrice")
 	private double buyPrice;
 
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "El campo MSRP no puede estar vacio")
 	@Column (name = "MSRP")
 	private double MSRP;
 	

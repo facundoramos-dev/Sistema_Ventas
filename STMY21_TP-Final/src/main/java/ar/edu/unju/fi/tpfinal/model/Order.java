@@ -1,13 +1,13 @@
 package ar.edu.unju.fi.tpfinal.model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -18,32 +18,33 @@ import org.springframework.stereotype.Component;
 public class Order {
 
 	@Id
-	@NotNull(message = "Este campo no puede estar vacio")
+	@NotNull(message = "El campo orderNumber no puede estar null")
 	@Column (name = "")
 	private int orderNumber;
 	
-	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@NotNull(message = "El campo ordenDate no puede estar vacio")
 	@Column (name = "ordenDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate orderDate;
 	
+	@NotNull(message = "El campo requiredDate no puede estar vacio")
 	@Column (name = "requiredDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate requiredDate;
 	
-	@NotNull(message = "Este campo fecha no puede estar vacio")
 	@Column (name = "shippedDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate shippedDate;
 	
-	@NotNull(message = "Este campo no puede estar vacio")
+	@NotNull(message = "El campo status no puede estar vacio")
+	@Size(max = 15, message = "Como maximo debe tener 15 caracteres")
 	@Column (name = "status")
 	private String status;
 	
 	@Column (name = "comments")
 	private String comments;
 	
-	@NotNull(message = "Este campo  no puede estar vacio")
+	@NotNull(message = "El campo customerNumber no puede estar vacio")
 	@Column (name = "customerNumber")
 	private Customer customerNumber;
 	

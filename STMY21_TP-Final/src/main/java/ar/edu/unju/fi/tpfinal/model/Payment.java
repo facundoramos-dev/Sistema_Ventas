@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -17,21 +18,22 @@ import org.springframework.stereotype.Component;
 public class Payment {
 
 	@Id
-	@NotNull(message = "Este campo no puede estar vacio")
+	@NotNull(message = "El campo customerNumber no puede estar vacio")
 	@Column (name = "customerNumber")
 	private Customer customerNumber;
 	
-	@NotNull(message = "Este campo no puede estar vacio")
+	@NotNull(message = "El campo checkNumber no puede estar vacio")
+	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
 	@Column (name = "checkNumber")
 	private String checkNumber;
 	
-	@NotNull(message = "Este campo fecha no puede estar vacio")
-	@Column (name = "checkNumber")
+	@NotNull(message = "El campo paymentDate no puede estar vacio")
+	@Column (name = "paymentDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate paymentDate;
 	
-	@NotNull(message = "Este campo no puede estar vacio")
-	@Column (name = "checkNumber")
+	@NotNull(message = "El campo amount no puede estar vacio")
+	@Column (name = "amount")
 	private double amount;
 
 	public Customer getCustomerNumber() {
