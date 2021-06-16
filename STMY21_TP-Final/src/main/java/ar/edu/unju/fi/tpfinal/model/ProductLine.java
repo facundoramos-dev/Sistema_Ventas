@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -16,10 +17,12 @@ import org.springframework.stereotype.Component;
 public class ProductLine {
 	
 	@Id
-	@NotNull(message = "Este campo no puede estar vacio")
+	@NotNull(message = "El campo productLine no puede estar vacio")
+	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
 	@Column (name = "productLine")
 	private	String productLine;
 	
+	@Size(max = 4000, message = "Como maximo debe tener 4000 caracteres")
 	@Column (name = "textDescription")
 	private String textDescription;
 	
