@@ -51,10 +51,10 @@ public class Employees {
 	@Column (name = "email")
 	private String email;
 	
-	/*@OneToOne
+	@OneToOne
     @JoinColumn(name = "officeCode")
-    private Office office;
-	*/
+    private Offices office;
+
 	
 	@OneToMany(mappedBy = "reportsTo")
     private List<Employees> employeess = new ArrayList<Employees>();
