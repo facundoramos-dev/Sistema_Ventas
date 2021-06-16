@@ -8,7 +8,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class Offices {
+public class Office {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,7 +55,7 @@ public class Offices {
 	private String territory;
 
 	
-	public Offices() {
+	public Office() {
 		// TODO Auto-generated constructor stub
 	}
 

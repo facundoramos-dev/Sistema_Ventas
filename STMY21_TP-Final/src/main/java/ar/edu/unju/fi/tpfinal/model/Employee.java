@@ -25,7 +25,7 @@ import ar.edu.unju.fi.tpfinal.validators.Dominio;
 @Entity
 @Table (name = "EMPLOYEES")
 @Component("employeesObj")
-public class Employees {
+public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,15 +53,15 @@ public class Employees {
 	
 	@OneToOne
     @JoinColumn(name = "officeCode")
-    private Offices office;
+    private Office office;
 
 	
 	@OneToMany(mappedBy = "reportsTo")
-    private List<Employees> employeess = new ArrayList<Employees>();
+    private List<Employee> employeess = new ArrayList<Employee>();
 	
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "reportsTo")
-    private Employees employees;
+    private Employee employees;
 	
 	@NotNull(message = "Este campo jobTitle no puede estar null")
 	@Size(min = 3, message = "El jobTitle no debe ser vacío, como mínimo debe tener 3 caracteres")
@@ -69,10 +69,10 @@ public class Employees {
 	private String jobTitle;
 	
 	 @OneToMany(mappedBy = "employees")
-    private List<Customers> customers;
+    private List<Customer> customers;
 
 	
-	 public Employees() {
+	 public Employee() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -117,19 +117,19 @@ public class Employees {
 		this.email = email;
 	}
 
-	public List<Employees> getEmployeess() {
+	public List<Employee> getEmployeess() {
 		return employeess;
 	}
 
-	public void setEmployeess(List<Employees> employeess) {
+	public void setEmployeess(List<Employee> employeess) {
 		this.employeess = employeess;
 	}
 
-	public Employees getEmployees() {
+	public Employee getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(Employees employees) {
+	public void setEmployees(Employee employees) {
 		this.employees = employees;
 	}
 
@@ -141,11 +141,11 @@ public class Employees {
 		this.jobTitle = jobTitle;
 	}
 
-	public List<Customers> getCustomers() {
+	public List<Customer> getCustomers() {
 		return customers;
 	}
 
-	public void setCustomers(List<Customers> customers) {
+	public void setCustomers(List<Customer> customers) {
 		this.customers = customers;
 	}
 
