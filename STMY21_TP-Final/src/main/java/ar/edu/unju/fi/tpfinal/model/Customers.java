@@ -73,9 +73,9 @@ public class Customers {
 	@Column (name = "country")
 	private	String country;
 	
-	/*@ManyToOne
+	@ManyToOne
     @JoinColumn(name = "salesRepEmployeeNumber")
-    private Employees employees;*/
+    private Employees employees;
 	
 	@NotNull(message = "El campo creditLimit no puede estar null")
 	@Min(value=1, message = "El valor de la creditLimit debe ser decimal")
