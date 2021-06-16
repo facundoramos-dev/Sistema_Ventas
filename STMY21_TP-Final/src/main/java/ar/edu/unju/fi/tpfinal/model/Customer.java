@@ -66,14 +66,13 @@ public class Customer {
 	private	String postalCode;
 	
 	@NotNull(message = "El campo state no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
+	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")	
 	@Column (name = "country")
 	private	String country;
 	
 	@ManyToOne
-    @JoinColumn(name = "salesRepEmployeeNumber")
-    private Employe employe;
-	
+  @JoinColumn(name = "salesRepEmployeeNumber")
+  private Employe employe;
 	@Min(value=1, message = "El valor de la creditLimit debe ser decimal")
 	@Column (name = "creditLimit")
 	private double creditLimit;
