@@ -3,86 +3,114 @@ package ar.edu.unju.fi.tpfinal.model;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table (name = "ORDENS")
+@Component("ordenObj")
 public class Orden {
 
-	private int numOrden;
+	@Id
+	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@Column (name = "")
+	private int ordenNumber;
+	
+	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@Column (name = "ordenDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate fechOrden;
+	private LocalDate ordenDate;
+	
+	@Column (name = "requiredDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate fechRequerida;
+	private LocalDate requiredDate;
+	
+	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@Column (name = "shippedDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate fechEnviada;
-	private char[] estado;
-	private String comentario;
-	private Customer numCliente;
+	private LocalDate shippedDate;
+	
+	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@Column (name = "status")
+	private String status;
+	
+	@Column (name = "comments")
+	private String comments;
+	
+	@NotNull(message = "Este campo fecha no puede estar vacio")
+	@Column (name = "customerNumber")
+	private Customer customerNumber;
 	
 	public Orden() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getNumOrden() {
-		return numOrden;
+	public int getOrdenNumber() {
+		return ordenNumber;
 	}
 
-	public void setNumOrden(int numOrden) {
-		this.numOrden = numOrden;
+	public void setOrdenNumber(int ordenNumber) {
+		this.ordenNumber = ordenNumber;
 	}
 
-	public LocalDate getFechOrden() {
-		return fechOrden;
+	public LocalDate getOrdenDate() {
+		return ordenDate;
 	}
 
-	public void setFechOrden(LocalDate fechOrden) {
-		this.fechOrden = fechOrden;
+	public void setOrdenDate(LocalDate ordenDate) {
+		this.ordenDate = ordenDate;
 	}
 
-	public LocalDate getFechRequerida() {
-		return fechRequerida;
+	public LocalDate getRequiredDate() {
+		return requiredDate;
 	}
 
-	public void setFechRequerida(LocalDate fechRequerida) {
-		this.fechRequerida = fechRequerida;
+	public void setRequiredDate(LocalDate requiredDate) {
+		this.requiredDate = requiredDate;
 	}
 
-	public LocalDate getFechEnviada() {
-		return fechEnviada;
+	public LocalDate getShippedDate() {
+		return shippedDate;
 	}
 
-	public void setFechEnviada(LocalDate fechEnviada) {
-		this.fechEnviada = fechEnviada;
+	public void setShippedDate(LocalDate shippedDate) {
+		this.shippedDate = shippedDate;
 	}
 
-	public char[] getEstado() {
-		return estado;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setEstado(char[] estado) {
-		this.estado = estado;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
-	public String getComentario() {
-		return comentario;
+	public String getComments() {
+		return comments;
 	}
 
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 
-	public Customer getNumCliente() {
-		return numCliente;
+	public Customer getCustomerNumber() {
+		return customerNumber;
 	}
 
-	public void setNumCliente(Customer numCliente) {
-		this.numCliente = numCliente;
+	public void setCustomerNumber(Customer customerNumber) {
+		this.customerNumber = customerNumber;
 	}
 
 	@Override
 	public String toString() {
-		return "Orden [numOrden=" + numOrden + ", fechOrden=" + fechOrden + ", fechRequerida=" + fechRequerida
-				+ ", fechEnviada=" + fechEnviada + ", estado=" + Arrays.toString(estado) + ", comentario=" + comentario
-				+ "]";
+		return "Orden [ordenNumber=" + ordenNumber + ", ordenDate=" + ordenDate + ", requiredDate=" + requiredDate
+				+ ", shippedDate=" + shippedDate + ", status=" + status + ", comments=" + comments + "]";
 	}
 	
 }
