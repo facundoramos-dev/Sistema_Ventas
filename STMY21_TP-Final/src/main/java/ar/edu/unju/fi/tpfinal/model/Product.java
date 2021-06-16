@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public class Product {
 
-	private	char[] codigo;
-	private char[] nombre;
-	private ProductLine producto;
-	private char[] escala;
-	private char[] vendedor;
-	private char[] descripcion;
-	private short cantidad;
+	private	char[] codProducto;
+	private char[] nomProducto;
+	private ProductLine linProducto;
+	private char[] escProducto;
+	private char[] vendProducto;
+	private char[] descProducto;
+	private short cantStock;
 	private double precioCompra;
 	private double msrp;
 	
@@ -18,60 +18,60 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 
-	public char[] getCodigo() {
-		return codigo;
+	public char[] getCodProducto() {
+		return codProducto;
 	}
 
-	public void setCodigo(char[] codigo) {
-		this.codigo = codigo;
+	public void setCodProducto(char[] codProducto) {
+		this.codProducto = codProducto;
 	}
 
-	public char[] getNombre() {
-		return nombre;
+	public char[] getNomProducto() {
+		return nomProducto;
 	}
 
-	public void setNombre(char[] nombre) {
-		this.nombre = nombre;
+	public void setNomProducto(char[] nomProducto) {
+		this.nomProducto = nomProducto;
 	}
 
-	public ProductLine getProducto() {
-		return producto;
+	public ProductLine getLinProducto() {
+		return linProducto;
 	}
 
-	public void setProducto(ProductLine producto) {
-		this.producto = producto;
+	public void setLinProducto(ProductLine linProducto) {
+		this.linProducto = linProducto;
 	}
 
-	public char[] getEscala() {
-		return escala;
+	public char[] getEscProducto() {
+		return escProducto;
 	}
 
-	public void setEscala(char[] escala) {
-		this.escala = escala;
+	public void setEscProducto(char[] escProducto) {
+		this.escProducto = escProducto;
 	}
 
-	public char[] getVendedor() {
-		return vendedor;
+	public char[] getVendProducto() {
+		return vendProducto;
 	}
 
-	public void setVendedor(char[] vendedor) {
-		this.vendedor = vendedor;
+	public void setVendProducto(char[] vendProducto) {
+		this.vendProducto = vendProducto;
 	}
 
-	public char[] getDescripcion() {
-		return descripcion;
+	public char[] getDescProducto() {
+		return descProducto;
 	}
 
-	public void setDescripcion(char[] descripcion) {
-		this.descripcion = descripcion;
+	public void setDescProducto(char[] descProducto) {
+		this.descProducto = descProducto;
 	}
 
-	public short getCantidad() {
-		return cantidad;
+	public short getCantStock() {
+		return cantStock;
 	}
 
-	public void setCantidad(short cantidad) {
-		this.cantidad = cantidad;
+	public void setCantStock(short cantStock) {
+		this.cantStock = cantStock;
 	}
 
 	public double getPrecioCompra() {
@@ -92,10 +92,10 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [codigo=" + Arrays.toString(codigo) + ", nombre=" + Arrays.toString(nombre) + ", producto="
-				+ producto + ", escala=" + Arrays.toString(escala) + ", vendedor=" + Arrays.toString(vendedor)
-				+ ", descripcion=" + Arrays.toString(descripcion) + ", cantidad=" + cantidad + ", precioCompra="
-				+ precioCompra + ", msrp=" + msrp + "]";
+		return "Product [codProducto=" + Arrays.toString(codProducto) + ", nomProducto=" + Arrays.toString(nomProducto)
+				+ ", linProducto=" + linProducto + ", escProducto=" + Arrays.toString(escProducto) + ", vendProducto="
+				+ Arrays.toString(vendProducto) + ", descProducto=" + Arrays.toString(descProducto) + ", cantStock="
+				+ cantStock + ", precioCompra=" + precioCompra + ", msrp=" + msrp + "]";
 	}
-	
+
 }
