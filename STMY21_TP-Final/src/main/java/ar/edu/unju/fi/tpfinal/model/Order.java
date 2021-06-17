@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -44,6 +45,7 @@ public class Order {
 	@Column (name = "comments")
 	private String comments;
 	
+	@Autowired
 	@NotNull(message = "El campo customerNumber no puede estar vacio")
 	@Column (name = "customerNumber")
 	private Customer customerNumber;

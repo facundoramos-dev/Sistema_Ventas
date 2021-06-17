@@ -1,12 +1,19 @@
 package ar.edu.unju.fi.tpfinal.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -25,9 +32,10 @@ public class Product {
 	@Column (name = "productName")
 	private String productName;
 	
-	@NotNull(message = "El campo productLine no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
-	@Column (name = "productLine")
+	@Valid
+	@Autowired
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn (name = "productLine")
 	private ProductLine productLine;
 	
 	@NotNull(message = "El campo productScale no puede estar vacio")
@@ -55,6 +63,12 @@ public class Product {
 	@NotNull(message = "El campo MSRP no puede estar vacio")
 	@Column (name = "MSRP")
 	private double MSRP;
+	
+	@Valid
+	@Autowired
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="orderLineNumber")
+	OrderDetail orderDetail;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
