@@ -72,7 +72,7 @@ public class Customer {
 	
 	@ManyToOne
   @JoinColumn(name = "salesRepEmployeeNumber")
-  private Employe employe;
+  private Employee employee;
 	@Min(value=1, message = "El valor de la creditLimit debe ser decimal")
 	@Column (name = "creditLimit")
 	private double creditLimit;
@@ -169,12 +169,12 @@ public class Customer {
 		this.country = country;
 	}
 
-	public Employe getEmploye() {
-		return employe;
+	public Employee getEmploye() {
+		return employee;
 	}
 
-	public void setEmploye(Employe employe) {
-		this.employe = employe;
+	public void setEmploye(Employee employee) {
+		this.employee = employee;
 	}
 
 	public double getCreditLimit() {
@@ -190,7 +190,7 @@ public class Customer {
 		return "Customer [customerNumber=" + customerNumber + ", customerName=" + customerName + ", contactLastName="
 				+ contactLastName + ", contactFirstName=" + contactFirstName + ", phone=" + phone + ", addressLine1="
 				+ addressLine1 + ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state
-				+ ", postalCode=" + postalCode + ", country=" + country + ", employe=" + employe + ", creditLimit="
+				+ ", postalCode=" + postalCode + ", country=" + country + ", employee=" + employee + ", creditLimit="
 				+ creditLimit + "]";
 	}
 

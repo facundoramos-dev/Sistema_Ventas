@@ -21,7 +21,7 @@ public class Order {
 	@Id
 	@NotNull(message = "El campo orderNumber no puede estar null")
 	@Column (name = "")
-	private int orderNumber;
+	private Long orderNumber;
 	
 	@NotNull(message = "El campo ordenDate no puede estar vacio")
 	@Column (name = "ordenDate")
@@ -54,13 +54,19 @@ public class Order {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getOrderNumber() {
+	
+
+	public Long getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(int orderNumber) {
+
+
+	public void setOrderNumber(Long orderNumber) {
 		this.orderNumber = orderNumber;
 	}
+
+
 
 	public LocalDate getOrderDate() {
 		return orderDate;
