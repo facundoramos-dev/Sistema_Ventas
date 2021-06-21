@@ -5,4 +5,5 @@ import ar.edu.unju.fi.tpfinal.model.ProductLine;
 
 public interface IProductLineRepository extends CrudRepository<ProductLine, String>{
 
+	public ProductLine findByProductLine (String productLine);
 }

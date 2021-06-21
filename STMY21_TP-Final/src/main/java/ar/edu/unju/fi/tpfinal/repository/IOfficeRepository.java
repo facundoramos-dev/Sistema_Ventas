@@ -5,4 +5,6 @@ import ar.edu.unju.fi.tpfinal.model.Office;
 
 public interface IOfficeRepository extends CrudRepository<Office, Long> {
 
+	public Office findByOfficeCode(Long officeCode);
+	
 }
