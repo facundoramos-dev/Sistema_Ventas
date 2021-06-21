@@ -1,10 +1,12 @@
 package ar.edu.unju.fi.tpfinal.service.imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.tpfinal.model.Office;
 import ar.edu.unju.fi.tpfinal.model.Payment;
 import ar.edu.unju.fi.tpfinal.repository.IPaymentRepository;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
@@ -15,10 +17,13 @@ public class PaymentServiceImp implements IPaymentService {
 	@Autowired
 	IPaymentRepository paymentRepository;
 
+	@Autowired
+	Payment payment;
+	
 	@Override
 	public Payment getPayment() {
 		// TODO Auto-generated method stub
-		return null;
+		return payment;
 	}
 
 	@Override
@@ -30,7 +35,7 @@ public class PaymentServiceImp implements IPaymentService {
 	@Override
 	public void agregarPayment(Payment payment) {
 		// TODO Auto-generated method stub
-		
+		paymentRepository.save(payment);
 	}
 
 	@Override
@@ -40,8 +45,16 @@ public class PaymentServiceImp implements IPaymentService {
 	}
 
 	@Override
-	public void eliminarPayment() {
+	public void eliminarPayment(Long checkNumber) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Optional<Payment> getPaymentPorNumero(Long checkNumber) {
+		// TODO Auto-generated method stub
+		/* List<Payment> payments = paymentRepository.findByPaymentCheckNumber(checkNumber);
+		return payments; */
+		return null;
 	}
 }

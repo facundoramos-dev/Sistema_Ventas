@@ -15,5 +15,8 @@ public interface IProductLineService {
 	
 	public void agregarProductLineEncontrado(ProductLine productLine);
 	
-	public void eliminarProductLine(); 
+	/*public void eliminarProductLine();
+	
+	public Optional<ProductLine> getProductLinePorCodigo();
+	*/
 }

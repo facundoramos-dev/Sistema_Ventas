@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tpfinal.service.imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,13 @@ public class CustomerServiceImp implements ICustomerService{
 	public void eliminarCustomer(Long customerNumber) {
 		customerRepository.deleteById(customerNumber);
 		
+	}
+
+	@Override
+	public Optional<Customer> getCustomerPorCustomerNum(Long customerNumber) {
+		// Modificar cliente
+		Optional<Customer> customers = customerRepository.findById(customerNumber);
+		return customers;
 	}
 	
 	
