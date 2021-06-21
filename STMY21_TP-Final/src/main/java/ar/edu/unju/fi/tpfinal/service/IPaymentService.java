@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tpfinal.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import ar.edu.unju.fi.tpfinal.model.Payment;
 
@@ -16,5 +17,7 @@ public interface IPaymentService{
 	
 	public void agregarPaymentEncontrado(Payment payment);
 	
-	public void eliminarPayment(); 
+	public void eliminarPayment(Long checkNumber);
+	
+	public Optional<Payment> getPaymentPorNumero(Long checkNumber);
 }
