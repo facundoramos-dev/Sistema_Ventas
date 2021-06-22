@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,22 +18,22 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.tpfinal.model.Customer;
 import ar.edu.unju.fi.tpfinal.service.ICustomerService;
 
+@Controller
 public class CustomerController {
+	
 	@Autowired
 	@Qualifier("customerService")
 	private ICustomerService customerService;
 	
-	
 	@GetMapping("/customer/nuevo")
 	public String getCustomerPage(Model model) {
 		model.addAttribute("customer",customerService.getCustomer());
+		System.out.print("ASDSE");
 		return ("nuevo-customer");
 	}	
 	
-	
 	@PostMapping("/customer/guardar")
 	public ModelAndView agregarCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult resulValidacion) {
-		//ModelAndView modelView = new ModelAndView("customers");
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-customer");
@@ -43,7 +44,6 @@ public class CustomerController {
 			customerService.agregarCustomer(customer);
 			return modelView;
 		}
-		
 	}
 	
 	@GetMapping("/customer/listado")
@@ -67,4 +67,5 @@ public class CustomerController {
 		customerService.eliminarCustomer(customerNumber);
 		return modelView;
 	}
+	
 }

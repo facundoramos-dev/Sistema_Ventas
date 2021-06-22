@@ -20,10 +20,10 @@ import ar.edu.unju.fi.tpfinal.service.IOfficeService;
 
 @Controller
 public class OfficeController {
+	
 	@Autowired
 	@Qualifier("officeService")
 	private IOfficeService officeService;
-	
 	
 	@GetMapping("/office/nuevo")
 	public String getOfficePage(Model model) {
@@ -31,10 +31,8 @@ public class OfficeController {
 		return ("nuevo-office");
 	}	
 	
-	
 	@PostMapping("/office/guardar")
 	public ModelAndView agregarOffice(@Valid @ModelAttribute("office") Office office, BindingResult resulValidacion) {
-		//ModelAndView modelView = new ModelAndView("office");
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-office");
@@ -45,7 +43,6 @@ public class OfficeController {
 			officeService.agregarOffice(office);
 			return modelView;
 		}
-		
 	}
 	
 	@GetMapping("/office/listado")

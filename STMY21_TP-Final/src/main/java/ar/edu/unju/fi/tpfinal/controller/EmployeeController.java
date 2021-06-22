@@ -1,4 +1,5 @@
 package ar.edu.unju.fi.tpfinal.controller;
+
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -19,10 +20,10 @@ import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 
 @Controller
 public class EmployeeController {
+	
 	@Autowired
 	@Qualifier("employeeService")
 	private IEmployeeService employeeService;
-	
 	
 	@GetMapping("/employee/nuevo")
 	public String getEmployeePage(Model model) {
@@ -30,10 +31,8 @@ public class EmployeeController {
 		return ("nuevo-employee");
 	}	
 	
-	
 	@PostMapping("/employee/guardar")
 	public ModelAndView agregarEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult resulValidacion) {
-		//ModelAndView modelView = new ModelAndView("customers");
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-employee");
@@ -44,7 +43,6 @@ public class EmployeeController {
 			employeeService.agregarEmployee(employee);
 			return modelView;
 		}
-		
 	}
 	
 	@GetMapping("/employee/listado")

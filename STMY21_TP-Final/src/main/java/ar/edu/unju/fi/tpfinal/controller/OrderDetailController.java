@@ -1,6 +1,5 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +22,14 @@ public class OrderDetailController {
 	@Qualifier("orderDetailService")
 	private IOrderDetailService orderDetailService;
 	
-	
 	@GetMapping("/orderDetail/nuevo")
 	public String getOrderDetailPage(Model model) {
 		model.addAttribute("order",orderDetailService.getOrderDetail());
 		return ("nuevo-orderDetail");
 	}	
 	
-	
 	@PostMapping("/orderDetail/guardar")
 	public ModelAndView agregarOrderDetail(@Valid @ModelAttribute("orderDetail") OrderDetail orderDetail, BindingResult resulValidacion) {
-		//ModelAndView modelView = new ModelAndView("orderDetail");
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-orderDetail");
@@ -44,7 +40,6 @@ public class OrderDetailController {
 			orderDetailService.agregarOrderDetail(orderDetail);
 			return modelView;
 		}
-		
 	}
 	
 	@GetMapping("/ororderDetailder/listado")

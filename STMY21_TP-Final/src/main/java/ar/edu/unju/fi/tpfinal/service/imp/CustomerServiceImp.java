@@ -27,12 +27,10 @@ public class CustomerServiceImp implements ICustomerService{
 	@Override
 	public void agregarCustomer(Customer customer) {
 		customerRepository.save(customer);
-		
 	}
 
 	@Override
 	public List<Customer> getCustomers() {
-		
 		List<Customer> customers =(List<Customer>) customerRepository.findAll();
 		return customers;
 	}
@@ -40,7 +38,6 @@ public class CustomerServiceImp implements ICustomerService{
 	@Override
 	public void eliminarCustomer(Long customerNumber) {
 		customerRepository.deleteById(customerNumber);
-		
 	}
 
 	@Override
@@ -49,6 +46,5 @@ public class CustomerServiceImp implements ICustomerService{
 		Optional<Customer> customers = customerRepository.findById(customerNumber);
 		return customers;
 	}
-	
 	
 }

@@ -25,17 +25,14 @@ public class OrderController {
 	@Qualifier("orderService")
 	private IOrderService orderService;
 	
-	
 	@GetMapping("/order/nuevo")
 	public String getOrderPage(Model model) {
 		model.addAttribute("order",orderService.getOrder());
 		return ("nuevo-order");
 	}	
 	
-	
 	@PostMapping("/order/guardar")
 	public ModelAndView agregarOrder(@Valid @ModelAttribute("order") Order order, BindingResult resulValidacion) {
-		//ModelAndView modelView = new ModelAndView("office");
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-order");
@@ -46,7 +43,6 @@ public class OrderController {
 			orderService.agregarOrder(order);
 			return modelView;
 		}
-		
 	}
 	
 	@GetMapping("/order/listado")
