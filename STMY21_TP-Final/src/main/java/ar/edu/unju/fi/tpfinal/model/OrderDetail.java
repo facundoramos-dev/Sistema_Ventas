@@ -2,20 +2,19 @@ package ar.edu.unju.fi.tpfinal.model;
 
 import java.io.Serializable;
 
-// Detalles de pedido
-
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;   
+import javax.validation.constraints.NotNull;
+
 import org.springframework.stereotype.Component;
 
 @Entity
 @Table (name = "ORDERDETAILS")
 @Component("orderDetailObj")
-public class OrderDetail implements Serializable {
- 
+public class OrderDetail implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	
 	@EmbeddedId
@@ -26,23 +25,16 @@ public class OrderDetail implements Serializable {
 	private int quantityOrdered;
 	
 	@NotNull(message = "El campo priceEach no puede estar vacio")
-	@Column (name = "priceEach")
+	@Column (name = "priceEach", columnDefinition = "DECIMAL(10,2)")
 	private double priceEach;
 	
 	@NotNull(message = "El campo orderLineNumber no puede estar vacio")
 	@Column (name = "orderLineNumber")
 	private short orderLineNumber;
 	
-	
-	
-	//Constructor
-	
 	public OrderDetail() {
 		// TODO Auto-generated constructor stub
 	}
-
-	//Getters y Setters
-
 
 	public OrderDetailId getId() {
 		return id;
@@ -50,10 +42,6 @@ public class OrderDetail implements Serializable {
 
 	public void setId(OrderDetailId id) {
 		this.id = id;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public int getQuantityOrdered() {
@@ -80,8 +68,9 @@ public class OrderDetail implements Serializable {
 		this.orderLineNumber = orderLineNumber;
 	}
 
-
-
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	@Override
 	public String toString() {
@@ -89,6 +78,4 @@ public class OrderDetail implements Serializable {
 				+ ", orderLineNumber=" + orderLineNumber + "]";
 	}
 
-
-	
 }

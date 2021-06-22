@@ -1,8 +1,5 @@
 package ar.edu.unju.fi.tpfinal.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,8 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -24,64 +19,58 @@ import ar.edu.unju.fi.tpfinal.validators.Dominio;
 
 @Entity
 @Table (name = "EMPLOYEES")
-@Component("employeesObj")
+@Component("employeeObj")
 public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long employeeNumber;
+	private long employeeNumber;
 	
-	@NotNull(message = "Este campo lastName no puede estar null")
-	@Size(min = 3, message = "El lastName no debe ser vacío, como mínimo debe tener 3 caracteres")
-	@Column (name = "lastName")
+	@NotNull(message = "El campo lastName no puede estar vacio")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "lastName")
 	private String lastName;
 	
-	@NotNull(message = "Este campo firstName no puede estar null")
-	@Size(min = 3, message = "El firstName no debe ser vacío, como mínimo debe tener 3 caracteres")
-	@Column (name = "firstName")
+	@NotNull(message = "El campo firstName no puede estar vacio")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "firstName")
 	private String firstName;
 	
-	@NotNull(message = "Este campo extension no puede estar null")
-	@Size(min = 3, message = "El extension no debe ser vacío, como mínimo debe tener 3 caracteres")
-	@Column (name = "extension")
+	@NotNull(message = "El campo extension no puede estar vacio")
+	@Size(max = 10, message = "El maximo es de 10 caracteres")
+	@Column(name = "extension")
 	private String extension;
 	
 	@Email(message = "El email no se corresponde con un formato correcto")
 	@Dominio
-	@Column (name = "email")
+	@NotNull(message = "El campo email no puede estar vacio")
+	@Size(max = 100, message = "El maximo es de 100 caracteres")
+	@Column(name = "email")
 	private String email;
 	
-	@OneToOne
+	@Size(max = 10, message = "El maximo es de 50 caracteres")
+	@ManyToOne
     @JoinColumn(name = "officeCode")
     private Office office;
-
-	
-	@OneToMany(mappedBy = "reportsTo")
-    private List<Employee> employeess = new ArrayList<Employee>();
 	
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "reportsTo")
-    private Employee employees;
+    private Employee employee;
 	
-	@NotNull(message = "Este campo jobTitle no puede estar null")
-	@Size(min = 3, message = "El jobTitle no debe ser vacío, como mínimo debe tener 3 caracteres")
-	@Column (name = "jobTitle")
+	@NotNull(message = "El campo jobTitle no puede estar vacio")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "jobTitle")
 	private String jobTitle;
-	
-	 @OneToMany(mappedBy = "employees")
-    private List<Customer> customers;
 
-	
-	 public Employee() {
+	public Employee() {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	public Long getEmployeeNumber() {
+	public long getEmployeeNumber() {
 		return employeeNumber;
 	}
 
-	public void setEmployeeNumber(Long employeeNumber) {
+	public void setEmployeeNumber(long employeeNumber) {
 		this.employeeNumber = employeeNumber;
 	}
 
@@ -117,20 +106,20 @@ public class Employee {
 		this.email = email;
 	}
 
-	public List<Employee> getEmployeess() {
-		return employeess;
+	public Office getOffice() {
+		return office;
 	}
 
-	public void setEmployeess(List<Employee> employeess) {
-		this.employeess = employeess;
+	public void setOffice(Office office) {
+		this.office = office;
 	}
 
-	public Employee getEmployees() {
-		return employees;
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setEmployees(Employee employees) {
-		this.employees = employees;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	public String getJobTitle() {
@@ -141,23 +130,13 @@ public class Employee {
 		this.jobTitle = jobTitle;
 	}
 
-	public List<Customer> getCustomers() {
-		return customers;
-	}
-
-	public void setCustomers(List<Customer> customers) {
-		this.customers = customers;
-	}
-
 	@Override
 	public String toString() {
-		return "Employees [employeeNumber=" + employeeNumber + ", lastName=" + lastName + ", firstName=" + firstName
-				+ ", extension=" + extension + ", email=" + email + ", employeess=" + employeess + ", employees="
-				+ employees + ", jobTitle=" + jobTitle + ", customers=" + customers + "]";
+		return "Employee [employeeNumber=" + employeeNumber + ", lastName=" + lastName + ", firstName=" + firstName
+				+ ", extension=" + extension + ", email=" + email + ", office=" + office + ", employee=" + employee
+				+ ", jobTitle=" + jobTitle + "]";
 	}
-	 
-	 
-	
+
 }
 
 

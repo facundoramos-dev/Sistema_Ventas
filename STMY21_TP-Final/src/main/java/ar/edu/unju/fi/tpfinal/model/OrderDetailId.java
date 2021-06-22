@@ -3,27 +3,25 @@ package ar.edu.unju.fi.tpfinal.model;
 import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Embeddable
 public class OrderDetailId implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "productCode")
 	private Product productCode;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "orderNumber")
 	private Order orderNumber;
-
-	// Constructores
 	
 	public OrderDetailId() {
-		
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	public OrderDetailId(Product productCode, Order orderNumber) {
 		super();
 		this.productCode = productCode;
@@ -49,7 +47,5 @@ public class OrderDetailId implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
 	
 }
