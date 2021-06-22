@@ -21,71 +21,72 @@ public class Customer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long customerNumber;
+	private long customerNumber;
 
 	@NotNull(message = "Este campo customerName no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
-	@Column (name = "customerName")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "customerName")
 	private String customerName;
 	
 	@NotNull(message = "Este campo contactLastName no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
-	@Column (name = "contactLastName")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "contactLastName")
 	private String contactLastName;
 	
 	@NotNull(message = "Este campo contactFirstName no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
-	@Column (name = "contactFirstName")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "contactFirstName")
 	private String contactFirstName;
 	
 	@NotNull(message = "El campo phone no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
-	@Column (name = "phone")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "phone")
 	private	String phone; 
 	
 	@NotNull(message = "El campo addressLine1 no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
-	@Column (name = "addressLine1")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "addressLine1")
 	private String addressLine1;
 	
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
-	@Column (name = "addressLine2")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "addressLine2")
 	private String addressLine2;
 	
 	@NotNull(message = "El campo city no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
-	@Column (name = "city")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "city")
 	private String city;
 	
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
-	@Column (name = "state")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "state")
 	private	String state;
 	
-	@Size(max = 15, message = "Como maximo debe tener 15 caracteres")
-	@Column (name = "postalCode")
+	@Size(max = 15, message = "El maximo es de 15 caracteres")
+	@Column(name = "postalCode")
 	private	String postalCode;
 	
 	@NotNull(message = "El campo state no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")	
-	@Column (name = "country")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")	
+	@Column(name = "country")
 	private	String country;
 	
 	@ManyToOne
-  @JoinColumn(name = "salesRepEmployeeNumber")
-  private Employee employee;
+	@JoinColumn(name = "salesRepEmployeeNumber", nullable = false)
+	private Employee employee;
+	
 	@Min(value=1, message = "El valor de la creditLimit debe ser decimal")
-	@Column (name = "creditLimit")
+	@Column(name = "creditLimit", columnDefinition = "DECIMAL(10,2)")
 	private double creditLimit;
-
+	
 	public Customer() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Long getCustomerNumber() {
+
+	public long getCustomerNumber() {
 		return customerNumber;
 	}
 
-	public void setCustomerNumber(Long customerNumber) {
+	public void setCustomerNumber(long customerNumber) {
 		this.customerNumber = customerNumber;
 	}
 
@@ -169,11 +170,11 @@ public class Customer {
 		this.country = country;
 	}
 
-	public Employee getEmploye() {
+	public Employee getEmployee() {
 		return employee;
 	}
 
-	public void setEmploye(Employee employee) {
+	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
 
@@ -194,5 +195,4 @@ public class Customer {
 				+ creditLimit + "]";
 	}
 
-}	
-	
+}

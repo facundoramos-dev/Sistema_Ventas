@@ -4,42 +4,33 @@ import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Entity
 @Table (name = "PRODUCTLINES")
 @Component("productLineObj")
 public class ProductLine {
-	
+
 	@Id
 	@NotNull(message = "El campo productLine no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
 	@Column (name = "productLine")
 	private	String productLine;
 	
-	@Size(max = 4000, message = "Como maximo debe tener 4000 caracteres")
+	@Size(max = 4000, message = "El maximo es de 4000 caracteres")
 	@Column (name = "textDescription")
 	private String textDescription;
 	
-	@Column (name = "htmlDescription")
+	@Column (name = "htmlDescription",columnDefinition = "MEDIUMTEXT")
 	private String htmlDescription;
 	
-	@Column (name = "image")
+	@Column (name = "image",columnDefinition = "MEDIUMBLOB")
 	private byte[] image;
-	
-	@Autowired
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="productCode")
-	private Product product;
 	
 	public ProductLine() {
 		// TODO Auto-generated constructor stub
@@ -82,5 +73,5 @@ public class ProductLine {
 		return "ProductLine [productLine=" + productLine + ", textDescription=" + textDescription + ", htmlDescription="
 				+ htmlDescription + ", image=" + Arrays.toString(image) + "]";
 	}
-
+	
 }

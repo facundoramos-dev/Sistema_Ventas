@@ -24,13 +24,11 @@ public class PaymentController {
 	@Qualifier("paymentService")
 	private IPaymentService paymentService;
 	
-	
 	@GetMapping("/payment/nuevo")
 	public String getPaymentPage(Model model) {
 		model.addAttribute("payment",paymentService.getPayment());
 		return ("nuevo-payment");
 	}	
-	
 	
 	@PostMapping("/payment/guardar")
 	public ModelAndView agregarPayment(@Valid @ModelAttribute("payment") Payment payment, BindingResult resulValidacion) {
@@ -45,7 +43,6 @@ public class PaymentController {
 			paymentService.agregarPayment(payment);
 			return modelView;
 		}
-		
 	}
 	
 	@GetMapping("/payment/listado")

@@ -4,12 +4,16 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -19,9 +23,8 @@ import org.springframework.stereotype.Component;
 public class Order {
 
 	@Id
-	@NotNull(message = "El campo orderNumber no puede estar null")
-	@Column (name = "")
-	private Long orderNumber;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long orderNumber;
 	
 	@NotNull(message = "El campo ordenDate no puede estar vacio")
 	@Column (name = "ordenDate")
@@ -38,35 +41,28 @@ public class Order {
 	private LocalDate shippedDate;
 	
 	@NotNull(message = "El campo status no puede estar vacio")
-	@Size(max = 15, message = "Como maximo debe tener 15 caracteres")
+	@Size(max = 15, message = "El maximo es de 15 caracteres")
 	@Column (name = "status")
 	private String status;
 	
-	@Column (name = "comments")
+	@Column (name = "comments", columnDefinition = "TEXT")
 	private String comments;
 	
-	@Autowired
-	@NotNull(message = "El campo customerNumber no puede estar vacio")
-	@Column (name = "customerNumber")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="customerNumber", nullable = false)
 	private Customer customerNumber;
 	
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
-	public Long getOrderNumber() {
+	public long getOrderNumber() {
 		return orderNumber;
 	}
 
-
-
-	public void setOrderNumber(Long orderNumber) {
+	public void setOrderNumber(long orderNumber) {
 		this.orderNumber = orderNumber;
 	}
-
-
 
 	public LocalDate getOrderDate() {
 		return orderDate;
@@ -119,7 +115,8 @@ public class Order {
 	@Override
 	public String toString() {
 		return "Order [orderNumber=" + orderNumber + ", orderDate=" + orderDate + ", requiredDate=" + requiredDate
-				+ ", shippedDate=" + shippedDate + ", status=" + status + ", comments=" + comments + "]";
+				+ ", shippedDate=" + shippedDate + ", status=" + status + ", comments=" + comments + ", customerNumber="
+				+ customerNumber + "]";
 	}
 
 }

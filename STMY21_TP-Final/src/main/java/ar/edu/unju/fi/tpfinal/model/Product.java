@@ -1,19 +1,18 @@
 package ar.edu.unju.fi.tpfinal.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -22,34 +21,32 @@ import org.springframework.stereotype.Component;
 public class Product {
 
 	@Id
-	@NotNull(message = "El campo productCode no puede estar vacio")
-	@Size(max = 15, message = "Como maximo debe tener 15 caracteres")
-	@Column (name = "productCode")
-	private	String productCode;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private	long productCode;
 	
 	@NotNull(message = "El campo productName no puede estar vacio")
-	@Size(max = 70, message = "Como maximo debe tener 70 caracteres")
+	@Size(max = 70, message = "El maximo es de 70 caracteres")
 	@Column (name = "productName")
 	private String productName;
 	
 	@Valid
-	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn (name = "productLine")
+	@JoinColumn (name = "productLine", columnDefinition = "VARCHAR(50)", nullable = false)
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
 	private ProductLine productLine;
 	
 	@NotNull(message = "El campo productScale no puede estar vacio")
-	@Size(max = 10, message = "Como maximo debe tener 10 caracteres")
+	@Size(max = 10, message = "El maximo es de 10 caracteres")
 	@Column (name = "productScale")
 	private String productScale;
 
 	@NotNull(message = "El campo productVendor no puede estar vacio")
-	@Size(max = 50, message = "Como maximo debe tener 50 caracteres")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
 	@Column (name = "productVendor")
 	private String productVendor;
 
 	@NotNull(message = "El campo productDescription no puede estar vacio")
-	@Column (name = "productDescription")
+	@Column (name = "productDescription", columnDefinition = "TEXT")
 	private String productDescription;
 
 	@NotNull(message = "El campo quantityInStock no puede estar vacio")
@@ -57,28 +54,22 @@ public class Product {
 	private short quantityInStock;
 
 	@NotNull(message = "El campo buyPrice no puede estar vacio")
-	@Column (name = "buyPrice")
+	@Column (name = "buyPrice", columnDefinition = "DECIMAL(10,2)")
 	private double buyPrice;
 
 	@NotNull(message = "El campo MSRP no puede estar vacio")
-	@Column (name = "MSRP")
+	@Column (name = "MSRP", columnDefinition = "DECIMAL(10,2)")
 	private double MSRP;
-	
-	@Valid
-	@Autowired
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="orderLineNumber")
-	OrderDetail orderDetail;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getProductCode() {
+	public long getProductCode() {
 		return productCode;
 	}
 
-	public void setProductCode(String productCode) {
+	public void setProductCode(long productCode) {
 		this.productCode = productCode;
 	}
 
@@ -153,5 +144,5 @@ public class Product {
 				+ productDescription + ", quantityInStock=" + quantityInStock + ", buyPrice=" + buyPrice + ", MSRP="
 				+ MSRP + "]";
 	}
-	
+
 }
