@@ -1,7 +1,5 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +17,16 @@ import ar.edu.unju.fi.tpfinal.service.IProductLineService;
 
 @Controller
 public class ProductLineController {
+	
 	@Autowired
 	@Qualifier("productLineService")
 	private IProductLineService productLineService;
-	
 	
 	@GetMapping("/productLine/nuevo")
 	public String getProductLinePage(Model model) {
 		model.addAttribute("productLine",productLineService.getProductLine());
 		return ("nuevo-productLine");
 	}	
-	
 	
 	@PostMapping("/productLine/guardar")
 	public ModelAndView agregarProductLine(@Valid @ModelAttribute("productLine") ProductLine productLine, BindingResult resulValidacion) {
@@ -44,7 +41,6 @@ public class ProductLineController {
 			productLineService.agregarProductLine(productLine);
 			return modelView;
 		}
-		
 	}
 	
 	@GetMapping("/productLine/listado")

@@ -20,6 +20,7 @@ import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
 @Controller
 public class PaymentController {
+	
 	@Autowired
 	@Qualifier("paymentService")
 	private IPaymentService paymentService;
@@ -32,7 +33,6 @@ public class PaymentController {
 	
 	@PostMapping("/payment/guardar")
 	public ModelAndView agregarPayment(@Valid @ModelAttribute("payment") Payment payment, BindingResult resulValidacion) {
-		//ModelAndView modelView = new ModelAndView("payment");
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-payment");

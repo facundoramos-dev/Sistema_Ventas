@@ -1,6 +1,5 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +17,10 @@ import ar.edu.unju.fi.tpfinal.service.IProductService;
 
 @Controller
 public class ProductController {
+	
 	@Autowired
 	@Qualifier("productService")
 	private IProductService productService;
-	
 	
 	@GetMapping("/product/nuevo")
 	public String getProductPage(Model model) {
@@ -29,10 +28,8 @@ public class ProductController {
 		return ("nuevo-product");
 	}	
 	
-	
 	@PostMapping("/product/guardar")
 	public ModelAndView agregarProduct(@Valid @ModelAttribute("product") Product product, BindingResult resulValidacion) {
-		//ModelAndView modelView = new ModelAndView("payment");
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-product");
@@ -43,7 +40,6 @@ public class ProductController {
 			productService.agregarProduct(product);
 			return modelView;
 		}
-		
 	}
 	
 	@GetMapping("/product/listado")

@@ -45,13 +45,11 @@ public class OfficeServiceImp implements IOfficeService {
 		officeRepository.save(office);
 	}
 
-	
 	@Override
 	public void agregarOfficeEncontrado(Office office) {
 		// TODO Auto-generated method stub
 		List<Office> officeEncontrado = new ArrayList<Office>(); 
 		officeEncontrado.add(office);
-		
 	}
 
 	@Override
@@ -59,6 +57,5 @@ public class OfficeServiceImp implements IOfficeService {
 		// TODO Auto-generated method stub
 		officeRepository.deleteById(officeCode);
 	}
-	
 	
 }
