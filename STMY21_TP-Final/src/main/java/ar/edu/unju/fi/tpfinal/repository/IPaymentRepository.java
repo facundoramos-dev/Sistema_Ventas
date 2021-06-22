@@ -6,9 +6,5 @@ import ar.edu.unju.fi.tpfinal.model.Payment;
 import ar.edu.unju.fi.tpfinal.model.PaymentId;
 
 public interface IPaymentRepository extends CrudRepository<Payment, PaymentId>{
-
-	public Payment findByCustomerCustomerNumber(String customerName);
-	
-	public Payment findByPaymentCheckNumber(Long checkNumber);
 	
 }
