@@ -2,3 +2,68 @@
     margin:0;
     padding:0;
 }
+
+body{
+	background-image: url(/images/corazon.jpg);
+}
+
+#menu{
+	color: black ;
+}
+
+footer {
+	font-size:18px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-shadow: slategray 1px 1px 3px;
+    font-style: italic;
+    font-family: MS Serif, New York, serif;
+}
+
+.rojo{
+	color: red;
+}
+
+.t1{
+	font-size: 25px;
+	font-family: MS Serif, New York, serif;
+}
+
+#estrellas{
+    color: rgb(100, 228, 237);
+    font-size: 1rem;
+}
+
+#sombra{
+	text-shadow: rgb(204, 255, 0) 3px 3px 3px;
+	color: black;
+}
+
+.t2{
+	font-weight: 400;
+}
+
+.mmax{
+	min-height: 450px;
+}
+
+.bg-rosa{
+	 background-color: #CC00CC;
+}
+
+.btn-outline-osc{
+	color: #000000 !important;
+	background-color: #F0CAF0 !important;
+}
+
+.btn-outline-osc:hover{
+	font-style: italic;
+	background-color: #EE71EE !important;
+	color: #000000 !important;
+	border-color: #000000 !important;
+}
+
+.bor-ng{
+	border-color: #000000 !important;
+}

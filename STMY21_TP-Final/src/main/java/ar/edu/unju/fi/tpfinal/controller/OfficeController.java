@@ -35,10 +35,12 @@ public class OfficeController {
 	public ModelAndView agregarOffice(@Valid @ModelAttribute("office") Office office, BindingResult resulValidacion) {
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
+			System.out.println("CON Errores");
 			modelView = new ModelAndView("nuevo-office");
 			modelView.addObject("office",office);
 			return modelView;
 		}else {//no se encuentran errores
+			System.out.println("Sin Errores");
 			modelView = new ModelAndView("redirect:/office/listado"); //lista de office
 			officeService.agregarOffice(office);
 			return modelView;

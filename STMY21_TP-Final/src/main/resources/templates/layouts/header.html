@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<header th:fragment="header">
+			<div class="jumbotron jumbotron-fluid mb-0 text-center" style="background-image: url(/images/fondopastel.jpg); background-size: 100% 100%;">
+			  <div class="container text-white">
+			    <h1 class="display-2 center" id="sombra"><em>Bienvenidos</em></h1>
+			    <p class="lead" id="sombra">
+			    	Este mensaje solo se mostrara en el Inicio y luego unicamente se mostrara el menu de navegacion.
+			    </p>
+			    <p class="lead" id="sombra">
+			    	Si quisiera que este mensaje se muestre en todas las pestañas reemplazaria el nav por el header en cada html
+			    </p>
+			  </div>
+			</div>
+			<nav th:replace="/layouts/nav :: nav"></nav>
+		</header>
+	</body>
+</html>
