@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="nav">
+			<img class="navbar-brand" src="/images/logo.png" width="60px" />
+			<a class="navbar-brand">TRABAJO FINAL</a>
+		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    	<span class="navbar-toggler-icon"></span>
+		  	</button>
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item active">
+			        <a class="nav-link" href="/home">Inicio<span class="sr-only">(current)</span></a>
+			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Productos
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			        	<a id="menu" class="dropdown-item" href="/product/listado">Listar Todos</a>
+			        	<div class="dropdown-divider"></div>
+			        	<a id="menu" class="dropdown-item" href="/productLine/listado">Lineas</a>
+			        </div>
+			      </li>
+			      <li class="nav-item">
+					<a class="nav-link" href="#">Mis Pedidos</a>
+			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Empleados
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a id="menu" class="dropdown-item" href="/employee/listado">Listar</a>
+			        </div>
+			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Oficina
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a id="menu" class="dropdown-item" href="/office/listado">Listar</a>
+			        </div>
+			      </li>
+			    </ul>
+			    <form class="form-inline my-2 my-lg-0">
+			      <input class="form-control bor-ng mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+			      <button class="btn btn-outline-success btn-outline-osc bor-ng my-2 my-sm-0" type="submit" disabled>Buscar</button>
+			    </form>
+			  </div>
+			</nav>
+	
+	</body>
+</html>

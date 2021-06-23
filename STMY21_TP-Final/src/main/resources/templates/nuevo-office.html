@@ -1,10 +1,92 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Nueva Oficina</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+		<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}">
+	</head>
+	<body>
+	
+		<header th:replace="/layouts/nav :: nav"></header>
+		
+		<div class="container mb-3">
+			<h1>Registro De Un Nueva Oficina</h1>
+			<form th:action="@{/office/guardar}" th:object="${office}" method="post" class="pt-4 pl-5 pr-5" >
+				<input type="hidden" th:field="*{officeCode}" />
+				<div class="form-group row">
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Ciudad:</span>
+						</div>
+						<input type="text" id="city" th:field="*{city}"/>
+					</div>
+					<div class="alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Telefono:</span>
+						</div>
+						<input type="text" id="phone" th:field="*{phone}"/>
+					</div>
+					<div class="alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Direccion 1:</span>
+						</div>
+						<input type="text" id="addressLine1" th:field="*{addressLine1}"/>
+					</div>
+					<div class="alert-danger" th:if="${#fields.hasErrors('addressLine1')}" th:errors="*{addressLine1}"></div>
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Direccion 2:</span>
+						</div>
+						<input type="text" id="addressLine2" th:field="*{addressLine2}"/>
+					</div>
+					<div class="alert-danger" th:if="${#fields.hasErrors('addressLine2')}" th:errors="*{addressLine2}"></div>
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Estado:</span>
+						</div>
+						<input type="text" id="state" th:field="*{state}"/>
+					</div>
+					<div class="alert-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></div>
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Pais:</span>
+						</div>
+						<input type="text" id="country" th:field="*{country}"/>
+					</div>
+					<div class="alert-danger" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Codigo Postal:</span>
+						</div>
+						<input type="text" id="postalCode" th:field="*{postalCode}"/>
+					</div>
+					<div class="alert-danger" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}"></div>
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Territorio:</span>
+						</div>
+						<input type="text" id="territory" th:field="*{territory}"/>
+					</div>
+					<div class="alert-danger" th:if="${#fields.hasErrors('territory')}" th:errors="*{territory}"></div>
+				</div>
+				
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary mr-3" >Guardar</button>
+					<button type="reset" class="btn btn-primary">Borrar</button>
+				</div>
+			</form>
+		
+		
+		</div>
+		
+		<footer th:replace="/layouts/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.1-lts/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}"></script>
+	</body>
 </html>
