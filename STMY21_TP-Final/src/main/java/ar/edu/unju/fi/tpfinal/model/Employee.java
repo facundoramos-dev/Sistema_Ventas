@@ -13,6 +13,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ar.edu.unju.fi.tpfinal.validators.Dominio;
@@ -48,6 +49,7 @@ public class Employee {
 	@Column(name = "email")
 	private String email;
 	
+	@Autowired
 	@Size(max = 10, message = "El maximo es de 50 caracteres")
 	@ManyToOne
     @JoinColumn(name = "officeCode")

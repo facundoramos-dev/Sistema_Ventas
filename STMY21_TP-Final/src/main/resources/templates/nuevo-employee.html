@@ -12,7 +12,80 @@
 		<header th:replace="/layouts/nav :: nav"></header>
 		
 		<div class="container mb-3">
-		
+			<h1>Registro De Un Nuevo Empleado</h1>
+			<form th:action="@{/employee/guardar}" th:object="${employee}" method="post" class="pt-4 pl-5 pr-5" >
+				<input type="hidden" th:field="*{employeeNumber}" />
+				<input type="hidden" th:field="*{office.officeCode}" />
+				<div class="form-group row">
+					
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Numero del Empleado:</span>
+							<input type="number" id="employeeNumber" th:field="*{employeeNumber}" placeholder="Ingrese Apellido" class="form-control"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('employeeNumber')}" th:errors="*{employeeNumber}"></div>
+					</div>
+					
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Apellido del Empleado:</span>
+							<input type="number" id="lastName" th:field="*{lastName}" placeholder="Ingrese Apellido" class="form-control"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+					</div>
+						
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Primer Nombre del Empleado:</span>
+							<input type="text" id="firstName" th:field="*{firstName}" placeholder="Ingrese Nombre..." class="form-control"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+					</div>
+					
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Email del Empleado:</span>
+							<input type="email" id="email" th:field="*{email}" placeholder="Ingrese email..." class="form-control"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+					</div>
+					
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Código de Oficina:</span>
+							<input type="text" id="officeCode" th:field="*{office.officeCode}" class="form-control" />
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('office.officeCode')}" th:errors="*{office.officeCode}"></div>
+					</div>
+					
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Reportar a:</span>
+							<select id="employee" th:field="*{employee.employeeNumber}">
+								<option th:each= "emplo: ${employees}"
+								th:value= "${emplo.employeeNumber}" 
+								th:text="${emplo.firstName}"
+								th:selected="false" />
+							</select>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('employee')}" th:errors="*{employee}"></div>
+					</div>
+					
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Título Profesional del Empleado:</span>
+							<input type="text" id="jobTitle" th:field="*{jobTitle}" class="form-control" />
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}"></div>
+					</div>
+					
+				</div>
+					
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary mr-3" >Guardar</button>
+					<button type="reset" class="btn btn-primary">Borrar</button>
+				</div>
+			</form>
 		
 		
 		</div>
