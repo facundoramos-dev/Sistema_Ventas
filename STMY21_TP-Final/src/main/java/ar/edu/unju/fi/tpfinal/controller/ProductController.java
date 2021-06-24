@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.model.Product;
+import ar.edu.unju.fi.tpfinal.service.IProductLineService;
 import ar.edu.unju.fi.tpfinal.service.IProductService;
 
 @Controller
@@ -22,9 +23,13 @@ public class ProductController {
 	@Qualifier("productService")
 	private IProductService productService;
 	
+	@Autowired
+	private IProductLineService productLineService;
+	
 	@GetMapping("/product/nuevo")
 	public String getProductPage(Model model) {
-		model.addAttribute("payment",productService.getProduct());
+		model.addAttribute("product",productService.getProduct());
+		model.addAttribute("productList", productLineService.getProductLine());
 		return ("nuevo-product");
 	}	
 	

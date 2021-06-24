@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -30,6 +31,7 @@ public class Product {
 	private String productName;
 	
 	@Valid
+	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn (name = "productLine", columnDefinition = "VARCHAR(50)", nullable = false)
 	@Size(max = 50, message = "El maximo es de 50 caracteres")
@@ -56,7 +58,8 @@ public class Product {
 	@NotNull(message = "El campo buyPrice no puede estar vacio")
 	@Column (name = "buyPrice", columnDefinition = "DECIMAL(10,2)")
 	private double buyPrice;
-
+	
+	//	Manufacturer's Suggested Retail Price = Precio de venta sugerido por el fabricante 
 	@NotNull(message = "El campo MSRP no puede estar vacio")
 	@Column (name = "MSRP", columnDefinition = "DECIMAL(10,2)")
 	private double MSRP;

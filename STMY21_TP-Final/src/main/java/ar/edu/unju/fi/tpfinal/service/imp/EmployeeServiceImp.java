@@ -43,8 +43,8 @@ public class EmployeeServiceImp implements IEmployeeService {
 	@Override
 	public List<Employee> getEmployees() {
 		// TODO Auto-generated method stub
-		List<Employee> employee =(List<Employee>) employeeRepository.findAll();
-		return employee;
+		List<Employee> employees =(List<Employee>) employeeRepository.findAll();
+		return employees;
 	}
 
 	@Override

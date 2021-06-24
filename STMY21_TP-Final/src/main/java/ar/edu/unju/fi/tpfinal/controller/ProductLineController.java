@@ -46,7 +46,7 @@ public class ProductLineController {
 	@GetMapping("/productLine/listado")
 	public ModelAndView getProductLinePage() {
 		ModelAndView modelView = new ModelAndView("productLines");
-		modelView.addObject("productLines", productLineService.getProductLine());
+		modelView.addObject("productLines", productLineService.getProductLines());
 		return modelView;
 	}
 	

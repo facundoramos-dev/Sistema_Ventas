@@ -9,7 +9,7 @@ public interface IProductService {
 	public Product getProduct();
 	
 	//Obtener todas las oficinas
-	public List<Product> getProducts(String productCode);
+	public List<Product> getProducts();
 	
 	public void agregarProduct(Product product);
 	

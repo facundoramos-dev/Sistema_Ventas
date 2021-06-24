@@ -14,10 +14,10 @@ import ar.edu.unju.fi.tpfinal.service.IProductLineService;
 public class ProductLineService implements IProductLineService {
 
 	@Autowired
-	IProductLineRepository productLineRepository;
+	private IProductLineRepository productLineRepository;
 
 	@Autowired
-	ProductLine productLineObj;
+	private ProductLine productLineObj;
 	
 	@Override
 	public ProductLine getProductLine() {
@@ -25,7 +25,7 @@ public class ProductLineService implements IProductLineService {
 	}
 
 	@Override
-	public List<ProductLine> getProductLines(String productLine) {
+	public List<ProductLine> getProductLines() {
 		List<ProductLine> productLines =(List<ProductLine>) productLineRepository.findAll();
 		return productLines;
 	}
