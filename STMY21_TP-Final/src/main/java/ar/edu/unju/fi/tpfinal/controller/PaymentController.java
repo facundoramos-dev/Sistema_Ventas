@@ -1,7 +1,5 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,15 +53,17 @@ public class PaymentController {
 	@GetMapping("/payment/editar/{id}")
 	public ModelAndView getPaymentEditPage(@PathVariable(value="id")Long checkNumber) {
 		ModelAndView modelView = new ModelAndView("nuevo-payment");
-		Optional<Payment> payment =  paymentService.getPaymentPorNumero(checkNumber);
+		Payment payment =  paymentService.getPaymentPorNumero(checkNumber);
 		modelView.addObject("payment",payment);
 		return modelView;
 	}
 	
 	@GetMapping("/payment/eliminar/{id}")
-	public ModelAndView getPaymentDeletePage(@PathVariable(value="id")Long checkNumber) {
+	public ModelAndView getPaymentDeletePage(@PathVariable(value="id")Payment id) {
 		ModelAndView modelView = new ModelAndView("redirect:/payment/listado");
-		paymentService.eliminarPayment(checkNumber);
+		paymentService.eliminarPayment(id);
+		/// Esto lo modifique, hay que revisar
+		
 		return modelView;
 	}
 }

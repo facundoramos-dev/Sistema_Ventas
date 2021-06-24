@@ -9,16 +9,20 @@ public interface IOrderService {
 	
 	public Order getOrder();
 	
-	//public Order getOrderPorNumber(Long orderNumber);
+	public void agregarOrder(Order order);
+
+	public Optional<Order> getOrderPorNumber(Long orderNumber);
 	
 	//Obtener todas las oficinas
 	public List<Order> getOrders();
 	
-	public void agregarOrder(Order order);
+	public void eliminarOrder(Long orderNumber);
+	
+	public List<Order> obtenerOrderEncontrado();
 	
 	public void agregarOrderEncontrado(Order order);
 	
-	public void eliminarOrder(Long orderNumber);
+	public void quitarOrderLista(Long orderNumber);
 
-	public Optional<Order> getOrderPorNumber(Long orderNumber);
+	
 }

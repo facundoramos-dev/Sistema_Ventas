@@ -17,32 +17,40 @@ public class ProductLineService implements IProductLineService {
 	IProductLineRepository productLineRepository;
 
 	@Autowired
-	ProductLine productLine;
+	ProductLine productLineObj;
 	
 	@Override
 	public ProductLine getProductLine() {
-		// TODO Auto-generated method stub
-		return productLine;
+		return productLineObj;
 	}
 
 	@Override
 	public List<ProductLine> getProductLines(String productLine) {
-		// TODO Auto-generated method stub
 		List<ProductLine> productLines =(List<ProductLine>) productLineRepository.findAll();
 		return productLines;
 	}
 
 	@Override
 	public void agregarProductLine(ProductLine productLine) {
-		// TODO Auto-generated method stub
 		productLineRepository.save(productLine);
 	}
 
 	@Override
 	public void agregarProductLineEncontrado(ProductLine productLine) {
-		// TODO Auto-generated method stub
 		List<ProductLine> ProductLineEncontrado = new ArrayList<ProductLine>(); 
 		ProductLineEncontrado.add(productLine);
+	}
+
+	@Override
+	public void eliminarProductLine(String productLine) {
+		productLineRepository.deleteById(productLine);
+		
+	}
+
+	@Override
+	public ProductLine getProductLinePorCodigo(String productLine) {
+		this.productLineObj = productLineRepository.findByProductLine(productLine);
+		return this.productLineObj;
 	}
 
 }

@@ -15,8 +15,8 @@ public interface IProductLineService {
 	
 	public void agregarProductLineEncontrado(ProductLine productLine);
 	
-	/*public void eliminarProductLine();
+	public void eliminarProductLine(String productLine);
 	
-	public Optional<ProductLine> getProductLinePorCodigo();
-	*/
+	public ProductLine getProductLinePorCodigo(String productLine);
+	
 }

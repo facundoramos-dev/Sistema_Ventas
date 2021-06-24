@@ -9,13 +9,19 @@ public interface IEmployeeService {
 
 	public Employee getEmployee();
 	
-	//Obtener todas las Empleados 
+	//Obtener todos las Empleados 
 	public void agregarEmployee(Employee employee);
 	
 	public Optional<Employee> getEmployeePorNumber(Long employeeNumber);
 	
 	public List<Employee> getEmployees();
 	
-	public void eliminarCliente(Long employeeNumber);
+	public void eliminarEmployee(Long employeeNumber);
+	
+	public List<Employee> obtenerEmployeeEncontrado();
+	
+	public void agregarEmployeeEncontrado(Employee employee);
+	
+	public void quitarEmployeeLista(Long employeeNumber);
 	
 }

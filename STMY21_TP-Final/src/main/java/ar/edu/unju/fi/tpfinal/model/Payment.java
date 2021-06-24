@@ -21,7 +21,7 @@ public class Payment implements Serializable{
 	
 	@EmbeddedId
 	private PaymentId id;
-
+	
 	@NotNull(message = "El campo paymentDate no puede estar vacio")
 	@Column(name = "paymentDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -30,6 +30,8 @@ public class Payment implements Serializable{
 	@NotNull(message = "El campo amount no puede estar vacio")
 	@Column(name = "amount", columnDefinition = "DECIMAL(10,2)")
 	private double amount;
+	
+	
 	
 	public Payment() {
 		// TODO Auto-generated constructor stub

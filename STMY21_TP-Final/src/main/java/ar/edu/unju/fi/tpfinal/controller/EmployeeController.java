@@ -63,7 +63,7 @@ public class EmployeeController {
 	@GetMapping("/employee/eliminar/{id}")
 	public ModelAndView getEmployeeDeletePage(@PathVariable(value="id")Long employeeNumber) {
 		ModelAndView modelView = new ModelAndView("redirect:/employee/listado");
-		employeeService.eliminarCliente(employeeNumber);
+		employeeService.eliminarEmployee(employeeNumber);
 		return modelView;
 	}
 }

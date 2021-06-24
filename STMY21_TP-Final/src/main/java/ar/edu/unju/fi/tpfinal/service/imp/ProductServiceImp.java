@@ -34,15 +34,26 @@ public class ProductServiceImp implements IProductService {
 
 	@Override
 	public void agregarProduct(Product product) {
-		// TODO Auto-generated method stub
 		productRepository.save(product);
 	}
 
 	@Override
 	public void agregarProductEncontrado(Product product) {
-		// TODO Auto-generated method stub
 		List<Product> ProductEncontrado = new ArrayList<Product>(); 
 		ProductEncontrado.add(product);
+	}
+
+	@Override
+	public void eliminarProduct(String productCode) {
+		productRepository.deleteById(productCode);
+		
+	}
+
+	@Override
+	public Product getProductPorCodigo(String productCode) {
+		
+		product = productRepository.findByProductCode(productCode);
+		return null;
 	}
 	
 }

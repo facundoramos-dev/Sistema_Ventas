@@ -14,48 +14,58 @@ import ar.edu.unju.fi.tpfinal.service.IOfficeService;
 @Service("officeService")
 public class OfficeServiceImp implements IOfficeService {
 
+	List<Office> officeEncontrado = new ArrayList<Office>(); 
+	
 	@Autowired
-	IOfficeRepository officeRepository;
+	private IOfficeRepository officeRepository;
 	@Autowired
-	Office office;
+	private Office office;
 
 	@Override
 	public Office getOffice() {
-		// TODO Auto-generated method stub
 		return office;
 	}
 
 	@Override
 	public Optional<Office> getOfficePorCodigo(Long officeCode) {
-		// TODO Auto-generated method stub
 		Optional<Office> offices = officeRepository.findById(officeCode);
 		return offices;
 	}
 
 	@Override
 	public List<Office> getOffices() {
-		// TODO Auto-generated method stub
 		List<Office> offices =(List<Office>) officeRepository.findAll();
 		return offices;
 	}
 
 	@Override
 	public void agregarOffice(Office office) {
-		// TODO Auto-generated method stub
 		officeRepository.save(office);
 	}
 
 	@Override
 	public void agregarOfficeEncontrado(Office office) {
-		// TODO Auto-generated method stub
 		List<Office> officeEncontrado = new ArrayList<Office>(); 
 		officeEncontrado.add(office);
 	}
 
 	@Override
 	public void eliminarOffice(Long officeCode) {
-		// TODO Auto-generated method stub
 		officeRepository.deleteById(officeCode);
+	}
+
+	@Override
+	public List<Office> obtenerOfficeEncontrado() {
+		return officeEncontrado;
+	}
+
+	@Override
+	public void quitarOfficeLista(Long officeCode) {
+		for (int i=0; i < officeEncontrado.size(); i++) {
+			if(officeEncontrado.get(i).getOfficeCode() == officeCode) {
+				officeEncontrado.remove(i);
+			}
+		}
 	}
 	
 }

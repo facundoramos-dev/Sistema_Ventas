@@ -9,17 +9,20 @@ public interface IOfficeService {
 
 	public Office getOffice();
 	
-	//public Office getOfficePorCodigo(Long officeCode);
-	
 	//Obtener todas las oficinas
 	public List<Office> getOffices();
 	
 	public void agregarOffice(Office office);
 	
-	public void agregarOfficeEncontrado(Office office);
-	
 	public void eliminarOffice(Long officeCode);
 	
 	public Optional<Office> getOfficePorCodigo(Long officeCode);
+	
+	public List<Office> obtenerOfficeEncontrado();
+	
+	public void agregarOfficeEncontrado(Office office);
+	
+	public void quitarOfficeLista(Long officeCode);
+	
 	
 }

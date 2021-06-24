@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.tpfinal.service.imp;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,8 @@ import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 
 @Service("employeeService")
 public class EmployeeServiceImp implements IEmployeeService {
+	
+	List<Employee> employeeEncontrado = new ArrayList<Employee>(); 
 	
 	@Autowired
 	IEmployeeRepository employeeRepository;
@@ -32,23 +35,40 @@ public class EmployeeServiceImp implements IEmployeeService {
 
 	@Override
 	public Optional<Employee> getEmployeePorNumber(Long employeeNumber) {
-		// TODO Auto-generated method stub
 		// Modificar employees
-		Optional<Employee> employees = employeeRepository.findById(employeeNumber);
-		return employees;
+		Optional<Employee> employee = employeeRepository.findById(employeeNumber);
+		return employee;
 	}
 
 	@Override
 	public List<Employee> getEmployees() {
 		// TODO Auto-generated method stub
-		List<Employee> employees =(List<Employee>) employeeRepository.findAll();
-		return employees;
+		List<Employee> employee =(List<Employee>) employeeRepository.findAll();
+		return employee;
 	}
 
 	@Override
-	public void eliminarCliente(Long employeeNumber) {
-		// TODO Auto-generated method stub
-		employeeRepository.deleteById(employeeNumber);
+	public void eliminarEmployee(Long employeeNumber) {
+		employeeRepository.deleteById(employeeNumber);	
+	}
+
+	@Override
+	public List<Employee> obtenerEmployeeEncontrado() {
+		return employeeEncontrado;
+	}
+
+	@Override
+	public void agregarEmployeeEncontrado(Employee employee) {
+		employeeEncontrado.add(employee);
+	}
+
+	@Override
+	public void quitarEmployeeLista(Long employeeNumber) {
+		for (int i=0; i < employeeEncontrado.size(); i++) {
+			if(employeeEncontrado.get(i).getEmployeeNumber() == employeeNumber) {
+				employeeEncontrado.remove(i);
+			}
+		}
 	}
 
 }
