@@ -19,7 +19,7 @@ public class CustomerServiceImp implements ICustomerService{
 	private static final Log LOGGER = LogFactory.getLog(CustomerServiceImp.class);
 	
 	List<Customer> customerEncontrado = new ArrayList<Customer>();
-	
+	private List<Customer> customers;
 	@Autowired
 	private ICustomerRepository customerRepository;
 	
@@ -28,26 +28,28 @@ public class CustomerServiceImp implements ICustomerService{
 
 	@Override
 	public Customer getCustomer() {
-		LOGGER.info("METHOD: getCustomer - devuelve un objeto Customer");
+		LOGGER.info("METHOD: getCustomer - devuelve un objeto Customer Autoinyectado");
 		return this.customer;
 	}
 
 	@Override
 	public void agregarCustomer(Customer customer) {
-		LOGGER.info("METHOD: agregarCustomer - Un nuevo Customer es agregado");
+		
+		customers.add(customer);
+		LOGGER.info("METHOD: agregarCliente - se agregó un objeto Cliente en la lista -> "+customers.get(customers.size()-1));
+	
 		customerRepository.save(customer);
 	}
 
 	@Override
 	public List<Customer> getCustomers() {
-		LOGGER.info("METHOD: getCustomers - devuelve un listado de Customer ");
+		LOGGER.info("METHOD: getCustomers - devuelve la lista de clientes");
 		List<Customer> customers =(List<Customer>) customerRepository.findAll();
 		return customers;
 	}
 
 	@Override
 	public void eliminarCustomer(Long customerNumber) {
-		LOGGER.info("METHOD: eliminarCustomer - elimina un Customer");
 		customerRepository.deleteById(customerNumber);
 	}
 

@@ -2,6 +2,7 @@ package ar.edu.unju.fi.tpfinal.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,9 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -36,19 +39,24 @@ public class Order {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate requiredDate;
 	
+	@NotNull(message = "El campo shippedDate no puede estar vacio")
 	@Column (name = "shippedDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate shippedDate;
 	
 	@NotNull(message = "El campo status no puede estar vacio")
-	@Size(max = 15, message = "El maximo es de 15 caracteres")
+	@Size(min = 1, max = 15, message = "Este campo no debe ser vacío y el maximo es de 15 caracteres")
 	@Column (name = "status")
 	private String status;
 	
+	@NotNull(message = "El campo comments no puede estar vacio")
 	@Column (name = "comments", columnDefinition = "TEXT")
 	private String comments;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	
+	//@Valid
+	@Autowired
+	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="customerNumber", nullable = false)
 	private Customer customerNumber;
 	

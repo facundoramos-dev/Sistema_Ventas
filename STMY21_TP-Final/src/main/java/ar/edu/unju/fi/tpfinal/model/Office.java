@@ -21,40 +21,40 @@ public class Office{
 	private long officeCode;
 	
 	@NotNull(message = "El campo city no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max= 50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column (name = "city")
 	private String city;
 	
 	@NotNull(message = "El campo phone no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column (name = "phone")
 	private	String phone; 
 	
 	@NotNull(message = "El campo addressLine1 no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column (name = "addressLine1")
 	private String addressLine1;
 	
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column (name = "addressLine2")
 	private String addressLine2;
 	
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column (name = "state")
 	private	String state;
 	
 	@NotNull(message = "El campo country no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column (name = "country")
 	private	String country; 
 	
 	@NotNull(message = "El campo postalCode no puede estar vacio")
-	@Size(max = 15, message = "El maximo es de 15 caracteres")
+	@Size(min = 1, max=15, message = "Este campo no debe ser vacío y el maximo es de 15 caracteres")
 	@Column (name = "postalCode")
 	private	String postalCode; 
 	
 	@NotNull(message = "El campo territory no puede estar vacio")
-	@Size(max = 10, message = "El maximo es de 10 caracteres")
+	@Size(min = 1, max=10, message = "Este campo no debe ser vacío y el maximo es de 10 caracteres")
 	@Column (name = "territory")
 	private String territory;
 

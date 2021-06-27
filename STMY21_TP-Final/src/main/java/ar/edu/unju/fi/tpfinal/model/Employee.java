@@ -50,7 +50,6 @@ public class Employee {
 	private String email;
 	
 	@Autowired
-	@Size(max = 10, message = "El maximo es de 50 caracteres")
 	@ManyToOne
     @JoinColumn(name = "officeCode")
     private Office office;

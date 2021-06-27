@@ -2,6 +2,7 @@ package ar.edu.unju.fi.tpfinal.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -12,17 +13,17 @@ public class PaymentId implements Serializable  {
 	private static final long serialVersionUID = 1L;
 	
 	@OneToOne
-	@JoinColumn(name="customer_Number")
+	@JoinColumn(name="customerNumber")
 	private Customer customerNumber;
 	
-	@JoinColumn(name = "check_Number")
-	private Long checkNumber;
+	@Column(name = "checkNumber")
+	private long checkNumber;
 
 	public PaymentId() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PaymentId(Customer customerNumber, Long checkNumber) {
+	public PaymentId(Customer customerNumber, long checkNumber) {
 		super();
 		this.customerNumber = customerNumber;
 		this.checkNumber = checkNumber;
@@ -36,18 +37,16 @@ public class PaymentId implements Serializable  {
 		this.customerNumber = customerNumber;
 	}
 
-	public Long getCheckNumber() {
+	public long getCheckNumber() {
 		return checkNumber;
 	}
 
-	public void setCheckNumber(Long checkNumber) {
+	public void setCheckNumber(long checkNumber) {
 		this.checkNumber = checkNumber;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	
+	}	
 	
 }

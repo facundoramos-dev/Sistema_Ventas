@@ -16,6 +16,7 @@
 			<form th:action="@{/employee/guardar}" th:object="${employee}" method="post" class="pt-4 pl-5 pr-5" >
 				<input type="hidden" th:field="*{employeeNumber}" />
 				<input type="hidden" th:field="*{office.officeCode}" />
+				
 				<div class="form-group row">
 					
 					<div class="input-group col-sm-4 mb-2">
@@ -29,7 +30,7 @@
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Apellido del Empleado:</span>
-							<input type="number" id="lastName" th:field="*{lastName}" placeholder="Ingrese Apellido" class="form-control"/>
+							<input type="text" id="lastName" th:field="*{lastName}" placeholder="Ingrese Apellido" class="form-control"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
 					</div>
@@ -58,7 +59,7 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('office.officeCode')}" th:errors="*{office.officeCode}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<!-- <div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Reportar a:</span>
 							<select id="employee" th:field="*{employee.employeeNumber}">
@@ -69,7 +70,7 @@
 							</select>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('employee')}" th:errors="*{employee}"></div>
-					</div>
+					</div>-->
 					
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
