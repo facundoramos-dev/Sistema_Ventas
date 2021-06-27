@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.model.Payment;
+import ar.edu.unju.fi.tpfinal.model.PaymentId;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
 @Controller
@@ -51,12 +52,12 @@ public class PaymentController {
 	}
 	
 	@GetMapping("/payment/editar/{id}")
-	public ModelAndView getPaymentEditPage(@PathVariable(value="id")Long checkNumber) {
+	public ModelAndView getPaymentEditPage(@PathVariable(value="id")PaymentId id) {
 		ModelAndView modelView = new ModelAndView("nuevo-payment");
-		Payment payment =  paymentService.getPaymentPorNumero(checkNumber);
+		Payment payment =  paymentService.getPaymentPorNumero(id);
 		modelView.addObject("payment",payment);
 		return modelView;
-	}
+	} // Modifique esto , hay que revisar x2
 	
 	@GetMapping("/payment/eliminar/{id}")
 	public ModelAndView getPaymentDeletePage(@PathVariable(value="id")Payment id) {

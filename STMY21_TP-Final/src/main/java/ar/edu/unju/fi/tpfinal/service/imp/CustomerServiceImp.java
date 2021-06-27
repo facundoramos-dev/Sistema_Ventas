@@ -28,23 +28,26 @@ public class CustomerServiceImp implements ICustomerService{
 
 	@Override
 	public Customer getCustomer() {
-		LOGGER.info("METHOD: getCustomer - devuelve un objeto Customer Autoinyectado");
+		LOGGER.info("METHOD: getCustomer - devuelve un objeto Customer");
 		return this.customer;
 	}
 
 	@Override
 	public void agregarCustomer(Customer customer) {
+		LOGGER.info("METHOD: agregarCustomer - Un nuevo Customer es agregado");
 		customerRepository.save(customer);
 	}
 
 	@Override
 	public List<Customer> getCustomers() {
+		LOGGER.info("METHOD: getCustomers - devuelve un listado de Customer ");
 		List<Customer> customers =(List<Customer>) customerRepository.findAll();
 		return customers;
 	}
 
 	@Override
 	public void eliminarCustomer(Long customerNumber) {
+		LOGGER.info("METHOD: eliminarCustomer - elimina un Customer");
 		customerRepository.deleteById(customerNumber);
 	}
 

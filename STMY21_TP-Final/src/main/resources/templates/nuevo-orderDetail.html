@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Nueva Detalle de Orden</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+		<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}">
+	</head>
+	<body>
+	
+		<header th:replace="/layouts/nav :: nav"></header>
+		
+		<div class="container mb-3">
+		
+			<h1>Nuevo Detalle de orden</h1>
+				<form th:action="@{/orderDetail/guardar}" th:object="${order}" method="post" class="pt-4 pl-5 pr-5" >
+					
+					<input type="hidden" th:field="*{id}" />
+					<input type="hidden" th:field="*{id.productCode}" />
+					<input type="hidden" th:field="*{id.orderNumber}" />
+					
 
-</body>
+					<div class="form-group row">
+						<div class="input-group col-sm-4 mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text" for="productLine">Cantidad Pedida:</span>
+							</div>
+							<input type="number" id="productLine" th:field="*{quantityOrdered}"/>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="input-group col-sm-4 mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text" for="productLine">Precio Individual:</span>
+							</div>
+							<input type="number" id="productLine" th:field="*{priceEach}"/>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="input-group col-sm-4 mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text" for="productLine">Número de Pedido:</span>
+							</div>
+							<input type="number" id="productLine" th:field="*{orderLineNumber}"/>
+						</div>
+					</div>					
+					
+				
+					
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary mr-3" >Guardar</button>
+						<button type="reset" class="btn btn-primary">Borrar</button>
+					</div>
+					
+				</form>
+		
+		</div>
+		
+		<footer th:replace="/layouts/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.1-lts/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}"></script>
+	</body>
 </html>
