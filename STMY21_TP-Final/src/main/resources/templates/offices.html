@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Listado de Oficinas</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+	<body style="background-color: #EEEEEE">
+		<nav th:replace="/layouts/nav :: nav"></nav>
+		<div align="center">
+			<br/>
+			<h1><u>Lista de Oficinas</u></h1>
+			<br/>
+			<div class="table-responsive p-1">
+				<table id="tblOffices" class="table-info table-bordered table-hover">
+					<thead class="text-center">
+						<tr>
+							<th colspan="9">Datos</th>
+							<th rowspan="2">Acciones</th>
+						</tr>
+						<tr>
+							<th scope="col">Codigo de oficina</th>
+							<th scope="col">Ciudad</th>
+							<th scope="col">Telefono</th>
+							<th scope="col">Dirección Línea 1</th>
+							<th scope="col">Dirección Línea 2</th>
+							<th scope="col">Estado</th>
+							<th scope="col">Pais</th>
+							<th scope="col">Codigo Postal</th>
+							<th scope="col">Territorio</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="offi : ${offices}"  class="text-center">
+							<td th:text="${offi.officeCode}"></td>
+							<td th:text="${offi.city}"></td>
+							<td th:text="${offi.phone}"></td>
+							<td th:text="${offi.addressLine1}"></td>
+							<td th:text="${offi.addressLine2}"></td>
+							<td th:text="${offi.state}"></td>
+							<td th:text="${offi.country}"></td>
+							<td th:text="${offi.postalCode}"></td>
+							<td th:text="${offi.territory}"></td>
+							
+							<td>
+								<a th:href="@{/office/editar/}+${offi.officeCode}" class="btn btn-warning">Editar</a>
+								<a th:href="@{/office/eliminar/}+${offi.officeCode}" class="btn btn-danger">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		<footer th:replace="/layouts/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.1-lts/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}"></script>
+	</body>
 </html>

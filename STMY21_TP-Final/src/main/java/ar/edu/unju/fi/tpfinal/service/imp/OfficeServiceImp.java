@@ -16,6 +16,7 @@ import ar.edu.unju.fi.tpfinal.service.IOfficeService;
 @Service("officeService")
 public class OfficeServiceImp implements IOfficeService {
 
+	
 	private static final Log LOGGER = LogFactory.getLog(OfficeServiceImp.class);
 	
 	List<Office> officeEncontrado = new ArrayList<Office>(); 
@@ -27,33 +28,24 @@ public class OfficeServiceImp implements IOfficeService {
 
 	@Override
 	public Office getOffice() {
-		LOGGER.info("METHOD: getOffice - devuelve un objeto Office");
-		
-		return office;
+		LOGGER.info("METHOD: getOffice - devuelve un objeto Office Autoinyectado");
+		return this.office;
 	}
 
 	@Override
 	public Optional<Office> getOfficePorCodigo(Long officeCode) {
-		LOGGER.info("METHOD: getOfficePorCodigo - busca y devuelve un objeto Office por su codigo de oficina");
-		
 		Optional<Office> office = officeRepository.findById(officeCode);
 		return office;
 	}
 
 	@Override
 	public List<Office> getOffices() {
-		LOGGER.info("METHOD: getOffices - devuelve un listado de Office");
-		
 		List<Office> offices =(List<Office>) officeRepository.findAll();
 		return offices;
 	}
 
 	@Override
 	public void agregarOffice(Office office) {
-		LOGGER.info("METHOD: agregarOffice - Objeto Office agregado");
-		
-		LOGGER.info("METHOD: ageOffice - devuelve un objeto Office");
-		
 		officeRepository.save(office);
 	}
 
@@ -65,8 +57,6 @@ public class OfficeServiceImp implements IOfficeService {
 
 	@Override
 	public void eliminarOffice(Long officeCode) {
-		LOGGER.info("METHOD: eliminarOffice - objeto Office eliminado");
-		
 		officeRepository.deleteById(officeCode);
 	}
 

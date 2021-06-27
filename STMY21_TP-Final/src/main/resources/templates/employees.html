@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Listado de Empleados</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+	<body style="background-color: #EEEEEE">
+		<nav th:replace="/layouts/nav :: nav"></nav>
+		<div align="center">
+			<br/>
+			<h1><u>Lista de Empleados</u></h1>
+			<br/>
+			<div class="table-responsive p-1">
+				<table id="tblEmployees" class="table-info table-bordered table-hover">
+					<thead class="text-center">
+						<tr>
+							<th colspan="8">Datos</th>
+							<th rowspan="2">Acciones</th>
+						</tr>
+						<tr>
+							<th scope="col">Numero de Empleado</th>
+							<th scope="col">Apellido de Empleado</th>
+							<th scope="col">Primer Nombre del Empleado</th>
+							<th scope="col">Extension</th>
+							<th scope="col">Email del Empleado</th>
+							<th scope="col">Codigo de Oficina</th>
+							<th scope="col">Empleado</th>
+							<th scope="col">Título Profesional del Empleado</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="emplo : ${employees}"  class="text-center">
+							<td th:text="${emplo.employeeNumber}"></td>
+							<td th:text="${emplo.lastName}"></td>
+							<td th:text="${emplo.firstName}"></td>
+							<td th:text="${emplo.extension}"></td>
+							<td th:text="${emplo.email}"></td>
+							<td th:text="${emplo.office.officeCode}"></td>
+							<td th:text="${emplo.employee.firstName}"></td>
+							<td th:text="${emplo.jobTitle}"></td>
+							<td>
+								<a th:href="@{/employee/editar/}+${emplo.employeeNumber}" class="btn btn-warning">Editar</a>
+								<a th:href="@{/employee/eliminar/}+${emplo.employeeNumber}" class="btn btn-danger">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		<footer th:replace="/layouts/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.1-lts/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}"></script>
+	</body>
 </html>

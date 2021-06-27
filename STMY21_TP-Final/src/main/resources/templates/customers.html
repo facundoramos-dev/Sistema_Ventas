@@ -1,10 +1,71 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Listado de Clientes</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+	<body style="background-color: #EEEEEE">
+		<nav th:replace="/layouts/nav :: nav"></nav>
+		<div align="center">
+			<br/>
+			<h1><u>Lista de Clientes</u></h1>
+			<br/>
+			<div class="table-responsive p-1">
+				<table id="tblCustomers" class="table-info table-bordered table-hover">
+					<thead class="text-center">
+						<tr>
+							<th colspan="13">Datos</th>
+							<th rowspan="2">Acciones</th>
+						</tr>
+						<tr>
+							<th scope="col">Numero de Cliente</th>
+							<th scope="col">Nombre del cliente</th>
+							<th scope="col">Apellido de Contacto</th>
+							<th scope="col">Nombre de Contacto</th>
+							<th scope="col">Telefono</th>
+							<th scope="col">Dirección Línea 1</th>
+							<th scope="col">Dirección Línea 2</th>
+							<th scope="col">Ciudad</th>
+							<th scope="col">Estado</th>
+							<th scope="col">Codigo Postal</th>
+							<th scope="col">País</th>
+							<th scope="col">Número de empleado del representante de ventas</th>
+							<th scope="col">Límite de Crédito</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cust : ${customers}"  class="text-center">
+							<td th:text="${cust.customerNumber}"></td>
+							<td th:text="${cust.customerName}"></td>
+							<td th:text="${cust.contactLastName}"></td>
+							<td th:text="${cust.contactFirstName}"></td>
+							<td th:text="${cust.phone}"></td>
+							<td th:text="${cust.addressLine1}"></td>
+							<td th:text="${cust.addressLine2}"></td>
+							<td th:text="${cust.city}"></td>
+							<td th:text="${cust.state}"></td>
+							<td th:text="${cust.postalCode}"></td>
+							<td th:text="${cust.country}"></td>
+							<td th:text="${cust.employee.employeeNumber}"></td>
+							<td th:text="${cust.creditLimit}"></td>
+							<td>
+								<a th:href="@{/customer/editar/}+${cust.customerNumber}" class="btn btn-warning">Editar</a>
+								<a th:href="@{/customer/eliminar/}+${cust.customerNumber}" class="btn btn-danger">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		<footer th:replace="/layouts/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.1-lts/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}"></script>
+	</body>
 </html>

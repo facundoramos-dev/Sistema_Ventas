@@ -21,7 +21,7 @@ public class Payment implements Serializable{
 	
 	@EmbeddedId
 	private PaymentId id;
-		
+	
 	@NotNull(message = "El campo paymentDate no puede estar vacio")
 	@Column(name = "paymentDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -36,19 +36,6 @@ public class Payment implements Serializable{
 	public Payment() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-
-	public Payment(PaymentId id, 
-			@NotNull(message = "El campo paymentDate no puede estar vacio") LocalDate paymentDate,
-			@NotNull(message = "El campo amount no puede estar vacio") double amount) {
-		super();
-		this.id = id;
-		this.paymentDate = paymentDate;
-		this.amount = amount;
-	}
-
-
 
 	public PaymentId getId() {
 		return id;
@@ -78,13 +65,9 @@ public class Payment implements Serializable{
 		return serialVersionUID;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Payment [id=" + id +  ", paymentDate=" + paymentDate + ", amount="
-				+ amount + "]";
+		return "Payment [id=" + id + ", paymentDate=" + paymentDate + ", amount=" + amount + "]";
 	}
-
-	
 	
 }

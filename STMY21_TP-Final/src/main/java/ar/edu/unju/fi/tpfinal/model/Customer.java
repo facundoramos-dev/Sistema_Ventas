@@ -24,49 +24,49 @@ public class Customer {
 	private long customerNumber;
 
 	@NotNull(message = "Este campo customerName no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max = 50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column(name = "customerName")
 	private String customerName;
 	
 	@NotNull(message = "Este campo contactLastName no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max = 50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column(name = "contactLastName")
 	private String contactLastName;
 	
 	@NotNull(message = "Este campo contactFirstName no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column(name = "contactFirstName")
 	private String contactFirstName;
 	
 	@NotNull(message = "El campo phone no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column(name = "phone")
 	private	String phone; 
 	
 	@NotNull(message = "El campo addressLine1 no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column(name = "addressLine1")
 	private String addressLine1;
 	
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column(name = "addressLine2")
 	private String addressLine2;
 	
 	@NotNull(message = "El campo city no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column(name = "city")
 	private String city;
 	
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
 	@Column(name = "state")
 	private	String state;
 	
-	@Size(max = 15, message = "El maximo es de 15 caracteres")
+	@Size(min = 1, max=15, message = "Este campo no debe ser vacío y el maximo es de 15 caracteres")
 	@Column(name = "postalCode")
 	private	String postalCode;
 	
 	@NotNull(message = "El campo state no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")	
+	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")	
 	@Column(name = "country")
 	private	String country;
 	
@@ -74,7 +74,7 @@ public class Customer {
 	@JoinColumn(name = "salesRepEmployeeNumber", nullable = false)
 	private Employee employee;
 	
-	@Min(value=1, message = "El valor de la creditLimit debe ser decimal")
+	@Min(value=1, message = "Este campo no debe ser vacío y el valor de la creditLimit debe ser decimal")
 	@Column(name = "creditLimit", columnDefinition = "DECIMAL(10,2)")
 	private double creditLimit;
 	
