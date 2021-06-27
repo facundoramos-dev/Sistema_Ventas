@@ -27,7 +27,7 @@ public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long orderNumber;
+	private Long orderNumber;
 	
 	@NotNull(message = "El campo ordenDate no puede estar vacio")
 	@Column (name = "ordenDate")
@@ -64,11 +64,11 @@ public class Order {
 		// TODO Auto-generated constructor stub
 	}
 
-	public long getOrderNumber() {
+	public Long getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(long orderNumber) {
+	public void setOrderNumber(Long orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 

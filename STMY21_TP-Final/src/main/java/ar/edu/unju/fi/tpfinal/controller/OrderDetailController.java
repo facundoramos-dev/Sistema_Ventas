@@ -24,7 +24,7 @@ public class OrderDetailController {
 	
 	@GetMapping("/orderDetail/nuevo")
 	public String getOrderDetailPage(Model model) {
-		model.addAttribute("order",orderDetailService.getOrderDetail());
+		model.addAttribute("orderDetail",orderDetailService.getOrderDetail());
 		return ("nuevo-orderDetail");
 	}	
 	

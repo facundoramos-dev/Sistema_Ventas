@@ -16,14 +16,14 @@ public class PaymentId implements Serializable  {
 	@JoinColumn(name="customerNumber")
 	private Customer customerNumber;
 	
-	@Column(name = "checkNumber")
-	private long checkNumber;
+	@JoinColumn(name = "checkNumber")
+	private Long checkNumber;
 
 	public PaymentId() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PaymentId(Customer customerNumber, long checkNumber) {
+	public PaymentId(Customer customerNumber, Long checkNumber) {
 		super();
 		this.customerNumber = customerNumber;
 		this.checkNumber = checkNumber;
@@ -37,11 +37,11 @@ public class PaymentId implements Serializable  {
 		this.customerNumber = customerNumber;
 	}
 
-	public long getCheckNumber() {
+	public Long getCheckNumber() {
 		return checkNumber;
 	}
 
-	public void setCheckNumber(long checkNumber) {
+	public void setCheckNumber(Long checkNumber) {
 		this.checkNumber = checkNumber;
 	}
 

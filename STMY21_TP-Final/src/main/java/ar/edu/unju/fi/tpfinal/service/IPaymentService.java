@@ -1,8 +1,10 @@
 package ar.edu.unju.fi.tpfinal.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import ar.edu.unju.fi.tpfinal.model.Payment;
+import ar.edu.unju.fi.tpfinal.model.PaymentId;
 
 
 public interface IPaymentService{
@@ -14,9 +16,9 @@ public interface IPaymentService{
 	//Obtener todas las oficinas
 	public List<Payment> getPayments();
 	
-	public Payment getPaymentPorNumero(Long checkNumber);
+	public Optional<Payment> encontrarPaymentPorNumero(PaymentId id);
 	
-	public void eliminarPayment(Payment id);
+	public void eliminarPayment(PaymentId id);
 	
 	public List<Payment> obtenerPaymentEncontrado();
 	

@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.model.OrderDetail;
+import ar.edu.unju.fi.tpfinal.model.OrderDetailId;
 import ar.edu.unju.fi.tpfinal.repository.IOrderDetailRepository;
 import ar.edu.unju.fi.tpfinal.service.IOrderDetailService;
+import java.util.Optional;
 
 @Service("orderDetailService")
 public class OrderDetailServiceImp implements IOrderDetailService {
@@ -44,5 +46,19 @@ public class OrderDetailServiceImp implements IOrderDetailService {
 		List<OrderDetail> orderDetailEncontrado = new ArrayList<OrderDetail>(); 
 		orderDetailEncontrado.add(orderDetail);
 	}
+
+	@Override
+	public void eliminarOrderDetail(OrderDetailId id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public java.util.Optional<OrderDetail> getOrderDetailPorId(OrderDetailId id) {
+		java.util.Optional<OrderDetail> order = orderDetailRepository.findById(id);
+		return order;
+	}
+
+
 	
 }

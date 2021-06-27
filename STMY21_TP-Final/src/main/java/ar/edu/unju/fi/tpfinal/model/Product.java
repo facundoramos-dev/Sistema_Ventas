@@ -23,7 +23,7 @@ public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private	long productCode;
+	private	Long productCode;
 	
 	@NotNull(message = "El campo productName no puede estar vacio")
 	@Size(max = 70, message = "El maximo es de 70 caracteres")
@@ -68,11 +68,11 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 
-	public long getProductCode() {
+	public Long getProductCode() {
 		return productCode;
 	}
 
-	public void setProductCode(long productCode) {
+	public void setProductCode(Long productCode) {
 		this.productCode = productCode;
 	}
 

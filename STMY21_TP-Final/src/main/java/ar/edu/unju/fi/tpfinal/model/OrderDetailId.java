@@ -3,18 +3,18 @@ package ar.edu.unju.fi.tpfinal.model;
 import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
+import javax.persistence.ManyToOne;
+ 
 @Embeddable
 public class OrderDetailId implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "productCode")
 	private Product productCode;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "orderNumber")
 	private Order orderNumber;
 	

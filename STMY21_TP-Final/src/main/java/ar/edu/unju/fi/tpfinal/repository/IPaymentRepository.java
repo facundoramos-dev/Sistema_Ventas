@@ -2,11 +2,13 @@ package ar.edu.unju.fi.tpfinal.repository;
 
 
 
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
 import ar.edu.unju.fi.tpfinal.model.Payment;
 import ar.edu.unju.fi.tpfinal.model.PaymentId;
 
 public interface IPaymentRepository extends CrudRepository<Payment , PaymentId>{
 	
-	//public Payment findByPaymentIdCheckNumber(Long checkNumber);
+	public Optional<Payment> findById(PaymentId Id);
 }

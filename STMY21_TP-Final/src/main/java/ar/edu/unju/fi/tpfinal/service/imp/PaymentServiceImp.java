@@ -2,11 +2,13 @@ package ar.edu.unju.fi.tpfinal.service.imp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.model.Payment;
+import ar.edu.unju.fi.tpfinal.model.PaymentId;
 import ar.edu.unju.fi.tpfinal.repository.IPaymentRepository;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
@@ -44,16 +46,12 @@ public class PaymentServiceImp implements IPaymentService {
 	}
 
 	@Override
-	public void eliminarPayment(Payment id) {
+	public void eliminarPayment(PaymentId id) {
 		
 		paymentRepository.deleteById(payment.getId());
 	}
 
-	@Override
-	public Payment getPaymentPorNumero(Long checkNumber) {
-		//payment = paymentRepository.findByPaymentIdCheckNumber(checkNumber);
-		return payment; 
-	}
+	
 
 	@Override
 	public List<Payment> obtenerPaymentEncontrado() {
@@ -67,5 +65,11 @@ public class PaymentServiceImp implements IPaymentService {
 				paymentEncontrado.remove(i);
 			}
 		}
+	}
+
+	@Override
+	public Optional<Payment> encontrarPaymentPorNumero(PaymentId id) {
+		Optional<Payment> pago = paymentRepository.findById(id);
+		return pago;
 	}
 }

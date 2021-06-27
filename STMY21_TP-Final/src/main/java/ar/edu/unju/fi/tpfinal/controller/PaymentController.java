@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.model.Payment;
+import ar.edu.unju.fi.tpfinal.model.PaymentId;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
 @Controller
@@ -51,17 +54,19 @@ public class PaymentController {
 	}
 	
 	@GetMapping("/payment/editar/{id}")
-	public ModelAndView getPaymentEditPage(@PathVariable(value="id")Long checkNumber) {
+	public ModelAndView getPaymentEditPage(@PathVariable(value="id")PaymentId id) {
 		ModelAndView modelView = new ModelAndView("nuevo-payment");
-		Payment payment =  paymentService.getPaymentPorNumero(checkNumber);
+
+		Optional<Payment> payment =  paymentService.encontrarPaymentPorNumero(id);
 		modelView.addObject("payment",payment);
 		return modelView;
 	}
 	
 	@GetMapping("/payment/eliminar/{id}")
-	public ModelAndView getPaymentDeletePage(@PathVariable(value="id")Payment id) {
+	public ModelAndView getPaymentDeletePage(@PathVariable(value="id")PaymentId id) {
 		ModelAndView modelView = new ModelAndView("redirect:/payment/listado");
-		paymentService.eliminarPayment(id);
+		
+		paymentService.eliminarPayment(id) ;
 		/// Esto lo modifique, hay que revisar
 		
 		return modelView;
