@@ -24,5 +24,5 @@ public interface IOfficeService {
 	
 	public void quitarOfficeLista(Long officeCode);
 	
-	
+	public Office getOfficeCodigo(Long officeCode);
 }

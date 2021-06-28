@@ -8,6 +8,8 @@ import ar.edu.unju.fi.tpfinal.model.Office;
 
 public interface IOfficeRepository extends CrudRepository<Office, Long> {
 
-	public Optional<Office> findByOfficeCode(Long officeCode);
+	public Office findByOfficeCode(Long officeCode);
+	
+	public Optional<Office> findById(Long officeCode);
 	
 }

@@ -12,7 +12,7 @@ public interface IEmployeeService {
 	//Obtener todos las Empleados 
 	public void agregarEmployee(Employee employee);
 	
-	public Optional<Employee> getEmployeePorNumber(Long employeeNumber);
+	public Optional<Employee> getEmployeePorEmployeeNumber(Long employeeNumber);
 	
 	public List<Employee> getEmployees();
 	
@@ -24,4 +24,6 @@ public interface IEmployeeService {
 	
 	public void quitarEmployeeLista(Long employeeNumber);
 	
+	public Employee getEmployeePorNumber(Long employeeNumber);
+
 }

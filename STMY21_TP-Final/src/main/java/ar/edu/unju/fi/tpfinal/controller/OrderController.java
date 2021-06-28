@@ -55,7 +55,7 @@ public class OrderController {
 	@GetMapping("/order/editar/{id}")
 	public ModelAndView getOrderEditPage(@PathVariable(value="id")Long orderNumber) {
 		ModelAndView modelView = new ModelAndView("nuevo-order");
-		Optional<Order> order =  orderService.getOrderPorNumber(orderNumber);
+		Optional<Order> order =  orderService.getOrderPorOrderNumber(orderNumber);
 		modelView.addObject("order",order);
 		return modelView;
 	}

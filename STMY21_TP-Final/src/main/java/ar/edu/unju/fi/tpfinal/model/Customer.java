@@ -12,6 +12,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -20,8 +21,9 @@ import org.springframework.stereotype.Component;
 public class Customer {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long customerNumber;
+	@NotNull(message="El campo customerNumber no debe estar vacio")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long customerNumber;
 
 	@NotNull(message = "Este campo customerName no puede estar vacio")
 	@Size(min = 1, max = 50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
@@ -70,6 +72,7 @@ public class Customer {
 	@Column(name = "country")
 	private	String country;
 	
+	@Autowired
 	@ManyToOne
 	@JoinColumn(name = "salesRepEmployeeNumber", nullable = false)
 	private Employee employee;
@@ -82,11 +85,11 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public long getCustomerNumber() {
+	public Long getCustomerNumber() {
 		return customerNumber;
 	}
 
-	public void setCustomerNumber(long customerNumber) {
+	public void setCustomerNumber(Long customerNumber) {
 		this.customerNumber = customerNumber;
 	}
 

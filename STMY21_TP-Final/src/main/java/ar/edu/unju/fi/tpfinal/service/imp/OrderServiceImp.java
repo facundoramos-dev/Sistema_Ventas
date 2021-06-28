@@ -50,7 +50,7 @@ public class OrderServiceImp implements IOrderService {
 	}
 
 	@Override
-	public Optional<Order> getOrderPorNumber(Long orderNumber) {
+	public Optional<Order> getOrderPorOrderNumber(Long orderNumber) {
 		Optional<Order> orders = orderRepository.findById(orderNumber);
 		return orders;
 	}
@@ -69,5 +69,11 @@ public class OrderServiceImp implements IOrderService {
 		}
 		
 	}
+
+	@Override
+	public Order getOrderPorNumber(Long orderNumber) {
+		// Obtener Order
+		Order order= orderRepository.findByOrderNumber(orderNumber);
+		return order;	}
 	
 }

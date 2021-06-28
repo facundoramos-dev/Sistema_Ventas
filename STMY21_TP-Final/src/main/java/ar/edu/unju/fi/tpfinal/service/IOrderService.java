@@ -11,7 +11,7 @@ public interface IOrderService {
 	
 	public void agregarOrder(Order order);
 
-	public Optional<Order> getOrderPorNumber(Long orderNumber);
+	public Optional<Order> getOrderPorOrderNumber(Long orderNumber);
 	
 	//Obtener todas las oficinas
 	public List<Order> getOrders();
@@ -24,5 +24,6 @@ public interface IOrderService {
 	
 	public void quitarOrderLista(Long orderNumber);
 
-	
+	public Order getOrderPorNumber(Long orderNumber);
+
 }
