@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import ar.edu.unju.fi.tpfinal.model.Product;
 
 
-public interface IProductRepository extends CrudRepository<Product, String>{
+public interface IProductRepository extends CrudRepository<Product, Long>{
 
-	public Product findByProductCode(String productCode);
+	public Product findByProductCode(Long productCode);
 }

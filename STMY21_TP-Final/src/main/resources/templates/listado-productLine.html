@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Listado de Lineas de Producto</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+		<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}">
+	</head>
+	<body>
+	
+		<header th:replace="/layouts/nav :: nav"></header>
+		
+	<div class="container mb-3">
+			<h1>Listado De Lineas de Producto</h1>
+	
+				<table class="table table-info table-bordered table-hover">
+					  <thead class="text-center">
+					    <tr >
+					      <th scope="col">Codigo</th>
+					      <th scope="col">Nombre</th>
+					      <th scope="col">Precio</th>
+					      <th scope="col">Acciones</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr th:each="prod : ${productLine}" >	
+					      <td th:text="${prod.productLine}"></td>
+					      <td th:text="${prod.textDescription}"></td>
+					      <td th:text="${prod.htmlDescription}"></td>
+					      <td>
+								<a th:href="@{/productLine/editar/}+${prod.productLine}" class="btn btn-warning">Editar</a>
+								<a th:href="@{/productLine/eliminar/}+${prod.productLine}" class="btn btn-danger">Eliminar</a>
+						  </td>
+					    </tr>
+					  </tbody>
+					</table>
+	
+	</div>
+		
+		<footer th:replace="/layouts/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.1-lts/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}"></script>
+	</body>
+</html>

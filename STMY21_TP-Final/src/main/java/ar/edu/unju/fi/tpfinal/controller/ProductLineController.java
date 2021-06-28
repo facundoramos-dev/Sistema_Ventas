@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,23 +46,25 @@ public class ProductLineController {
 	
 	@GetMapping("/productLine/listado")
 	public ModelAndView getProductLinePage() {
-		ModelAndView modelView = new ModelAndView("productLines");
-		modelView.addObject("productLines", productLineService.getProductLines());
+		ModelAndView modelView = new ModelAndView("listado-productLine");
+		modelView.addObject("productLine", productLineService.getProductLines());
 		return modelView;
 	}
 	
-	/*@GetMapping("/payment/editar/{id}")
-	public ModelAndView getPaymentEditPage(@PathVariable(value="id")Long ) {
-		ModelAndView modelView = new ModelAndView("nuevo-payment");
-		Optional<Payment> payment =  productLineService.getProductLineServicePorNumero();
-		modelView.addObject("payment",payment);
+	
+	@GetMapping("/productLine/editar/{id}")
+	public ModelAndView getProductLineEditPage(@PathVariable(value="id")String productLine ) {
+		ModelAndView modelView = new ModelAndView("nuevo");
+	/*	ModelAndView modelView = new ModelAndView("nuevo-productLine"); */
+		ProductLine productLineE =  productLineService.getProductLinePorCodigo(productLine);
+		modelView.addObject("productLine",productLineE);
 		return modelView;
 	}
 	
-	@GetMapping("/payment/eliminar/{id}")
-	public ModelAndView getPaymentDeletePage(@PathVariable(value="id")Long ) {
-		ModelAndView modelView = new ModelAndView("redirect:/productLineService/listado");
-		productLineService.eliminarPayment(checkNumber);
+	@GetMapping("/productLine/eliminar/{id}")
+	public ModelAndView getProductLinetDeletePage(@PathVariable(value="id")String productLine ) {
+		ModelAndView modelView = new ModelAndView("redirect:/productLine/listado");
+		productLineService.eliminarProductLine(productLine);
 		return modelView;
-	}*/
+	}
 }

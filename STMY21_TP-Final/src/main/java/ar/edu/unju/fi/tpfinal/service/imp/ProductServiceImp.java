@@ -44,13 +44,13 @@ public class ProductServiceImp implements IProductService {
 	}
 
 	@Override
-	public void eliminarProduct(String productCode) {
+	public void eliminarProduct(Long productCode) {
 		productRepository.deleteById(productCode);
 		
 	}
 
 	@Override
-	public Product getProductPorCodigo(String productCode) {
+	public Product getProductPorCodigo(Long productCode) {
 		
 		product = productRepository.findByProductCode(productCode);
 		return null;

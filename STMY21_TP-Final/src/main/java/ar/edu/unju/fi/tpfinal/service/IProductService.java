@@ -15,8 +15,8 @@ public interface IProductService {
 	
 	public void agregarProductEncontrado(Product product);
 	
-	public void eliminarProduct(String productCode);
+	public void eliminarProduct(Long productCode);
 	
-	public Product getProductPorCodigo(String productCode);
+	public Product getProductPorCodigo(Long productCode);
 	
 }

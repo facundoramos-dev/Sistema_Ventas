@@ -18,24 +18,52 @@
 
 					<input type="hidden" th:field="*{id}" />
 					<input type="hidden" th:field="*{id.customerNumber}" />
-					<input type="hidden" th:field="*{id.checkNumber}" />
 
+									
+			<!--		<div class="form-group row">
+						<label for="customerNumber" class="col-auto col-form-label">Id de Cliente:</label>
+						<select id="customerNumber" th:field="*{payment.id}">
+							<option value=""> -- </option>
+							<option 
+							th:each= "payment: ${payment.customerNumber}"
+							th:value= "${payment.customerNumber}" 
+							th:text="${payment.customerNumber}"
+							th:selected="false" /> 
+						</select>
+					</div>-->
+					
+					
+					
+					<div class="form-group row">
+						<div class="input-group col-sm-4 mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text" for="checkNumber">Numero de cheque :</span>
+								<input type="number" id="checkNumber" th:field="*{id.checkNumber}"/>
+							</div>
+						 	<div class="alert-danger" th:if="${#fields.hasErrors('id.checkNumber')}" th:errors="*{id.checkNumber}"></div> 
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="input-group col-sm-4 mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text" for="amount">Monto:</span>
+								<input type="number" id="amount" th:field="*{amount}"/>
+							</div>
+							<div class="alert-danger" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></div>
+						</div>
+					</div>
 					<div class="form-group row">
 						<div class="input-group col-sm-4 mb-2">
 							<div class="input-group-prepend">
 								<span class="input-group-text" for="paymentDate">Fecha de pago:</span>
+								<input type="date" id="paymentDate" th:field="*{paymentDate}"/>
 							</div>
-							<input type="date" id="paymentDate" th:field="*{paymentDate}"/>
+							<div class="alert-danger" th:if="${#fields.hasErrors('paymentDate')}" th:errors="*{paymentDate}"></div>
 						</div>
 					</div>
-						<div class="form-group row">
-						<div class="input-group col-sm-4 mb-2">
-							<div class="input-group-prepend">
-								<span class="input-group-text" for="amount">Monto:</span>
-							</div>
-							<input type="number" id="amount" th:field="*{amount}"/>
-						</div>
-					</div>
+					
+					
 
 
 

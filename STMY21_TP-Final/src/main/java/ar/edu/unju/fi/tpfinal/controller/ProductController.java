@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,23 +50,23 @@ public class ProductController {
 	
 	@GetMapping("/product/listado")
 	public ModelAndView getProductPage() {
-		ModelAndView modelView = new ModelAndView("products");
-		modelView.addObject("products", productService.getProduct());
+		ModelAndView modelView = new ModelAndView("listado-product");
+		modelView.addObject("listado-product", productService.getProduct());
 		return modelView;
 	}
 	
-	/*@GetMapping("/product/editar/{id}")
-	public ModelAndView getProductEditPage(@PathVariable(value="id")Long ) {
+	@GetMapping("/product/editar/{id}")
+	public ModelAndView getProductEditPage(@PathVariable(value="id")Long productCode ) {
 		ModelAndView modelView = new ModelAndView("nuevo-product");
-		Optional<Product> product =  productService.getProductPor
+		Product product =  productService.getProductPorCodigo(productCode);
 		modelView.addObject("product",product);
 		return modelView;
 	}
 	
 	@GetMapping("/product/eliminar/{id}")
-	public ModelAndView getProductDeletePage(@PathVariable(value="id")Long ) {
+	public ModelAndView getProductDeletePage(@PathVariable(value="id")Long productCode ) {
 		ModelAndView modelView = new ModelAndView("redirect:/product/listado");
-		productService.eliminar
+		productService.eliminarProduct(productCode);
 		return modelView;
-	}*/
+	}
 }

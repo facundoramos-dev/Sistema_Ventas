@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.tpfinal.model;
 
+
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,9 +36,8 @@ public class Product {
 	@Valid
 	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn (name = "productLine", columnDefinition = "VARCHAR(50)", nullable = false)
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
-	private ProductLine productLine;
+	@JoinColumn (name = "productLine")
+	private ProductLine productLine ;
 	
 	@NotNull(message = "El campo productScale no puede estar vacio")
 	@Size(max = 10, message = "El maximo es de 10 caracteres")
@@ -53,16 +55,16 @@ public class Product {
 
 	@NotNull(message = "El campo quantityInStock no puede estar vacio")
 	@Column (name = "quantityInStock")
-	private short quantityInStock;
+	private Short quantityInStock;
 
 	@NotNull(message = "El campo buyPrice no puede estar vacio")
 	@Column (name = "buyPrice", columnDefinition = "DECIMAL(10,2)")
-	private double buyPrice;
+	private Double buyPrice;
 	
 	//	Manufacturer's Suggested Retail Price = Precio de venta sugerido por el fabricante 
 	@NotNull(message = "El campo MSRP no puede estar vacio")
 	@Column (name = "MSRP", columnDefinition = "DECIMAL(10,2)")
-	private double MSRP;
+	private Double MSRP;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
@@ -116,27 +118,27 @@ public class Product {
 		this.productDescription = productDescription;
 	}
 
-	public short getQuantityInStock() {
+	public Short getQuantityInStock() {
 		return quantityInStock;
 	}
 
-	public void setQuantityInStock(short quantityInStock) {
+	public void setQuantityInStock(Short quantityInStock) {
 		this.quantityInStock = quantityInStock;
 	}
 
-	public double getBuyPrice() {
+	public Double getBuyPrice() {
 		return buyPrice;
 	}
 
-	public void setBuyPrice(double buyPrice) {
+	public void setBuyPrice(Double buyPrice) {
 		this.buyPrice = buyPrice;
 	}
 
-	public double getMSRP() {
+	public Double getMSRP() {
 		return MSRP;
 	}
 
-	public void setMSRP(double mSRP) {
+	public void setMSRP(Double mSRP) {
 		MSRP = mSRP;
 	}
 
