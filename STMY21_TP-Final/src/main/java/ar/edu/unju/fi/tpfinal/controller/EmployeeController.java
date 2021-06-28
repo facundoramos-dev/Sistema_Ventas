@@ -55,7 +55,7 @@ public class EmployeeController {
 	@GetMapping("/employee/editar/{id}")
 	public ModelAndView getEmployeeEditPage(@PathVariable(value="id")Long employeeNumber) {
 		ModelAndView modelView = new ModelAndView("nuevo-customer");
-		Optional<Employee> employee =  employeeService.getEmployeePorNumber(employeeNumber);
+		Optional<Employee> employee =  employeeService.getEmployeePorEmployeeNumber(employeeNumber);
 		modelView.addObject("employee",employee);
 		return modelView;
 	}

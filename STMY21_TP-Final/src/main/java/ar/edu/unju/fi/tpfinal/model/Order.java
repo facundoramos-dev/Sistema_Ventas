@@ -6,8 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,7 +24,8 @@ import org.springframework.stereotype.Component;
 public class Order {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull(message="El campo orderNumber no debe estar vacio")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long orderNumber;
 	
 	@NotNull(message = "El campo ordenDate no puede estar vacio")
@@ -54,7 +53,7 @@ public class Order {
 	private String comments;
 	
 	
-	//@Valid
+	@Valid
 	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="customerNumber", nullable = false)

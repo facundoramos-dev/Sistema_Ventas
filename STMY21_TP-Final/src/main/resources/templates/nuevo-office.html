@@ -14,12 +14,17 @@
 		<div class="container mb-3">
 			<h1>Registro De Un Nueva Oficina</h1>
 			<form th:action="@{/office/guardar}" th:object="${office}" method="post" class="pt-4 pl-5 pr-5" >
-				
 				<div class="form-group row">
-					
-					<div class="input-group col-sm-4 mb-2">
+					<!--  <div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Código de Oficina:</span>
+							<input type="number" id="officeCode" th:field="*{officeCode}" />
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('officeCode')}" th:errors="*{officeCode}"></div>
+					</div> -->
+					<div class="form-group row">
+						<label for="officeCode" class="col-auto col-form-label text-center">Codigo de Oficina:</label>
+						<div class="col-auto">
 							<input type="number" id="officeCode" th:field="*{officeCode}" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('officeCode')}" th:errors="*{officeCode}"></div>

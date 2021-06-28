@@ -3,12 +3,11 @@ package ar.edu.unju.fi.tpfinal.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,8 +23,9 @@ import ar.edu.unju.fi.tpfinal.validators.Dominio;
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long employeeNumber;
+	@NotNull(message="El campo employeeNumber no debe estar vacio")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long employeeNumber;
 	
 	@NotNull(message = "El campo lastName no puede estar vacio")
 	@Size(max = 50, message = "El maximo es de 50 caracteres")
@@ -49,11 +49,13 @@ public class Employee {
 	@Column(name = "email")
 	private String email;
 	
+	@Valid
 	@Autowired
 	@ManyToOne
     @JoinColumn(name = "officeCode")
     private Office office;
 	
+	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "reportsTo")
     private Employee employee;
@@ -67,11 +69,11 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-	public long getEmployeeNumber() {
+	public Long getEmployeeNumber() {
 		return employeeNumber;
 	}
 
-	public void setEmployeeNumber(long employeeNumber) {
+	public void setEmployeeNumber(Long employeeNumber) {
 		this.employeeNumber = employeeNumber;
 	}
 
@@ -139,6 +141,3 @@ public class Employee {
 	}
 
 }
-
-
-

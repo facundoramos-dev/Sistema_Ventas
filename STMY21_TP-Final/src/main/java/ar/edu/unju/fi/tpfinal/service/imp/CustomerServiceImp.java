@@ -78,5 +78,12 @@ public class CustomerServiceImp implements ICustomerService{
 			}
 		}
 	}
+
+	@Override
+	public Customer getCustomerPorNumber(Long customerNumber) {
+		// Obtener Customer
+		Customer customer= customerRepository.findByCustomerNumber(customerNumber);
+		return customer;
+	}
 	
 }

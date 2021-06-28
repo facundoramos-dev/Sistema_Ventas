@@ -73,5 +73,11 @@ public class OfficeServiceImp implements IOfficeService {
 			}
 		}
 	}
-	
+
+	@Override
+	public Office getOfficeCodigo(Long officeCode) {
+		// Obtener Office
+		Office office= officeRepository.findByOfficeCode(officeCode);
+		return office;
+	}			
 }

@@ -14,8 +14,8 @@
 		<div class="container mb-3">
 			<h1>Registro De Un Nuevo Pedido</h1>
 			<form th:action="@{/order/guardar}" th:object="${order}" method="post" class="pt-4 pl-5 pr-5" >
-			<!--	<input type="hidden" th:field="*{orderNumber}" />
-				<input type="hidden" th:field="*{customer.customerNumber}" /> 
+				<input type="hidden" th:field="*{orderNumber}" />
+				<input type="hidden" th:field="*{customer.customerNumber}" />
 				
 				<div class="form-group row">
 					
@@ -67,22 +67,15 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Dirección Línea 2:</span>
-							<input type="text" id="addressLine2" th:field="*{addressLine2}" class="form-control"/>
-						</div>
-						<div class="alert-danger" th:if="${#fields.hasErrors('addressLine2')}" th:errors="*{addressLine2}"></div>
-					</div> -->
 					
-					<!--<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">número de cliente representa:</span>
 							<input type="text" id="customerNumber" th:field="*{customer.customerNumber}" class="form-control" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('customer.customerNumber')}" th:errors="*{employee.employeeNumber}"></div>
-				</div> -->
-	
+					</div> 
+				</div> 
 				
 				 <div class="text-center">
 					<button type="submit" class="btn btn-primary mr-3" >Guardar</button>

@@ -23,4 +23,8 @@ public interface ICustomerService {
 	public void agregarCustomerEncontrado(Customer customer);
 	
 	public void quitarCustomerLista(Long id);
+	
+	public Customer getCustomerPorNumber(Long customerNumber);
+
+	
 }

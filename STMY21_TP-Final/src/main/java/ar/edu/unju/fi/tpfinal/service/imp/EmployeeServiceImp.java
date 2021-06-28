@@ -34,7 +34,7 @@ public class EmployeeServiceImp implements IEmployeeService {
 	}
 
 	@Override
-	public Optional<Employee> getEmployeePorNumber(Long employeeNumber) {
+	public Optional<Employee> getEmployeePorEmployeeNumber(Long employeeNumber) {
 		// Modificar employees
 		Optional<Employee> employee = employeeRepository.findById(employeeNumber);
 		return employee;
@@ -69,6 +69,13 @@ public class EmployeeServiceImp implements IEmployeeService {
 				employeeEncontrado.remove(i);
 			}
 		}
+	}
+
+	@Override
+	public Employee getEmployeePorNumber(Long employeeNumber) {
+		// Obtener Office
+		Employee employee= employeeRepository.findByEmployeeNumber(employeeNumber);
+		return employee;
 	}
 
 }
