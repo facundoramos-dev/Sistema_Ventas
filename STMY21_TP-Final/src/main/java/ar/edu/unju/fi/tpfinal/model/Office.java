@@ -1,12 +1,17 @@
 package ar.edu.unju.fi.tpfinal.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -57,6 +62,11 @@ public class Office{
 	@Column (name = "territory")
 	private String territory;
 
+	@Autowired
+	@OneToMany( mappedBy = "office" )
+	private List<Employee> employees = new ArrayList<Employee>();
+	
+	
 	public Office() {
 		// TODO Auto-generated constructor stub
 	}
@@ -132,12 +142,20 @@ public class Office{
 	public void setTerritory(String territory) {
 		this.territory = territory;
 	}
+	
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
 
 	@Override
 	public String toString() {
 		return "Office [officeCode=" + officeCode + ", city=" + city + ", phone=" + phone + ", addressLine1="
 				+ addressLine1 + ", addressLine2=" + addressLine2 + ", state=" + state + ", country=" + country
-				+ ", postalCode=" + postalCode + ", territory=" + territory + "]";
+				+ ", postalCode=" + postalCode + ", territory=" + territory + ", employees=" + employees + "]";
 	}
 
 }

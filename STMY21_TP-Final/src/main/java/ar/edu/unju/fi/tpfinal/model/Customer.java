@@ -2,8 +2,7 @@ package ar.edu.unju.fi.tpfinal.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -72,14 +71,21 @@ public class Customer {
 	@Column(name = "country")
 	private	String country;
 	
-	@Autowired
-	@ManyToOne
-	@JoinColumn(name = "salesRepEmployeeNumber", nullable = false)
-	private Employee employee;
-	
 	@Min(value=1, message = "Este campo no debe ser vacío y el valor de la creditLimit debe ser decimal")
 	@Column(name = "creditLimit", columnDefinition = "DECIMAL(10,2)")
 	private double creditLimit;
+	
+	@Autowired
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "salesRepEmployeeNumber")
+	private Employee employee;
+	
+	
+	
+	
+	
+	
+	// Constructores , Getters y Setters
 	
 	public Customer() {
 		// TODO Auto-generated constructor stub

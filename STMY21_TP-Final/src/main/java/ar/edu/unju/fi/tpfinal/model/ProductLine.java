@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -41,13 +40,9 @@ public class ProductLine {
 	private byte[] image;
 	
 	@Autowired 
-	@OneToMany(mappedBy = "productLine")
+	@OneToMany(mappedBy = "productLine" ,fetch=FetchType.LAZY , cascade = CascadeType.ALL)
 	private List<Product> products = new ArrayList<Product>();
 	
-	@Autowired
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "product_id")
-	private Product product;
 	
 	
 	public ProductLine() {
@@ -94,19 +89,11 @@ public class ProductLine {
 		this.products = products;
 	}
 
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
 
 	@Override
 	public String toString() {
 		return "ProductLine [productLine=" + productLine + ", textDescription=" + textDescription + ", htmlDescription="
-				+ htmlDescription + ", image=" + Arrays.toString(image) + ", products=" + products + ", product="
-				+ product + "]";
+				+ htmlDescription + ", image=" + Arrays.toString(image) + ", products=" + products +  "]";
 	}
 
 	

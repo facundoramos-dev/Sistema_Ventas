@@ -36,7 +36,7 @@ public class Product {
 	@Valid
 	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn (name = "productLine")
+	@JoinColumn (name = "PRODUCTLINE_ID")
 	private ProductLine productLine ;
 	
 	@NotNull(message = "El campo productScale no puede estar vacio")

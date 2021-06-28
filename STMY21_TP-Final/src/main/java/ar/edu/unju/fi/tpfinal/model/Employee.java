@@ -1,11 +1,15 @@
 package ar.edu.unju.fi.tpfinal.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
@@ -49,9 +53,14 @@ public class Employee {
 	@Column(name = "email")
 	private String email;
 	
+	@NotNull(message = "El campo jobTitle no puede estar vacio")
+	@Size(max = 50, message = "El maximo es de 50 caracteres")
+	@Column(name = "jobTitle")
+	private String jobTitle;
+	
 	@Valid
 	@Autowired
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "officeCode")
     private Office office;
 	
@@ -59,12 +68,13 @@ public class Employee {
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "reportsTo")
     private Employee employee;
-	
-	@NotNull(message = "El campo jobTitle no puede estar vacio")
-	@Size(max = 50, message = "El maximo es de 50 caracteres")
-	@Column(name = "jobTitle")
-	private String jobTitle;
+		
+	@Autowired
+	@OneToMany( mappedBy = "employee" )
+	private List<Customer> customers = new ArrayList<Customer>();
 
+	
+	
 	public Employee() {
 		// TODO Auto-generated constructor stub
 	}
@@ -133,11 +143,22 @@ public class Employee {
 		this.jobTitle = jobTitle;
 	}
 
+	
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [employeeNumber=" + employeeNumber + ", lastName=" + lastName + ", firstName=" + firstName
-				+ ", extension=" + extension + ", email=" + email + ", office=" + office + ", employee=" + employee
-				+ ", jobTitle=" + jobTitle + "]";
+				+ ", extension=" + extension + ", email=" + email + ", jobTitle=" + jobTitle + ", office=" + office
+				+ ", employee=" + employee + ", customers=" + customers + "]";
 	}
+
+	
 
 }
