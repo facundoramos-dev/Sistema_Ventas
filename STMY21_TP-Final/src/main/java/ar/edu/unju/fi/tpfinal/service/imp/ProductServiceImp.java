@@ -53,7 +53,7 @@ public class ProductServiceImp implements IProductService {
 	public Product getProductPorCodigo(Long productCode) {
 		
 		product = productRepository.findByProductCode(productCode);
-		return null;
+		return product;
 	}
 	
 }

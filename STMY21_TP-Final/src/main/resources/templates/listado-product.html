@@ -30,25 +30,25 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					    <tr th:each="prod : ${product}" >	
-					        <td th:text="${prod.productCode}"></td>
-					      <td th:text="${prod.productName}"></td>
-					   <!--   <td th:text="${prod.productLine.productLine}"></td> -->
-					      <td th:text="${prod.productScale}"></td>
-					      <td th:text="${prod.productVendor}"></td>
-					      <td th:text="${prod.productDescription}"></td>
-					      <td th:text="${prod.quantityInStock}"></td>
-					      <td th:text="${prod.buyPrice}"></td>
-					      <td th:text="${prod.MSRP}"></td>
-					     
+					    <tr th:each="prod : ${products}" >	
+				 	     <td th:text="${prod.productCode}"></td>
+					     <td th:text="${prod.productName}"></td>
+					     <td th:if="${prod.productLine != NULL}" th:text="${prod.productLine.productLineName}"></td> 
+					     <td th:text="${prod.productScale}"></td>
+					     <td th:text="${prod.productVendor}"></td>
+					     <td th:text="${prod.productDescription}"></td>
+					     <td th:text="${prod.quantityInStock}"></td>
+					     <td th:text="${prod.buyPrice}"></td>
+					      <td th:text="${prod.msrp}"></td>
+					   
 					      
 					      <td>
-								<a th:href="@{/product/editar/}+${prod.product}" class="btn btn-warning">Editar</a>
-								<a th:href="@{/product/eliminar/}+${prod.product}" class="btn btn-danger">Eliminar</a>
+								<a th:href="@{/product/editar/}+${prod.productCode}" class="btn btn-warning">Editar</a>
+								<a th:href="@{/product/eliminar/}+${prod.productCode}" class="btn btn-danger">Eliminar</a> 
 						  </td>
-					    </tr>
+					    </tr>  
 					  </tbody>
-					</table>
+					</table> 
 		
 		
 	</div>

@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 import ar.edu.unju.fi.tpfinal.model.Product;
 import ar.edu.unju.fi.tpfinal.model.ProductLine;
@@ -32,12 +32,11 @@ public class ProductController {
 	
 	
 	@GetMapping("/product/nuevo")
-	public String getProductPage(Model model) {
+	public String getProductPage(Model model) {		
+		model.addAttribute("product",productService.getProduct());
 		
 		List<ProductLine> productLines = productLineService.getProductLines();
 		model.addAttribute("productLines", productLines);
-		model.addAttribute("product",productService.getProduct());
-		
 		
 		return ("nuevo-product");
 	}	
@@ -48,10 +47,14 @@ public class ProductController {
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-product");
 			modelView.addObject("product",product);
+			//productService.agregarProduct(producto);
+			System.out.println("ERROR");
 			return modelView;
 		}else {//no se encuentran errores
 			modelView = new ModelAndView("redirect:/product/listado"); //lista de employee
 			productService.agregarProduct(product);
+			modelView.addObject("products", productService.getProducts());
+			System.out.println("SIRVE");
 			return modelView;
 		}
 	}
@@ -59,7 +62,8 @@ public class ProductController {
 	@GetMapping("/product/listado")
 	public ModelAndView getProductPage() {
 		ModelAndView modelView = new ModelAndView("listado-product");
-		modelView.addObject("listado-product", productService.getProduct());
+		modelView.addObject("products", productService.getProducts());
+		
 		return modelView;
 	}
 	
@@ -67,6 +71,10 @@ public class ProductController {
 	public ModelAndView getProductEditPage(@PathVariable(value="id")Long productCode ) {
 		ModelAndView modelView = new ModelAndView("nuevo-product");
 		Product product =  productService.getProductPorCodigo(productCode);
+		
+		List<ProductLine> productLines = productLineService.getProductLines();
+		modelView.addObject("productLines", productLines);
+		
 		modelView.addObject("product",product);
 		return modelView;
 	}

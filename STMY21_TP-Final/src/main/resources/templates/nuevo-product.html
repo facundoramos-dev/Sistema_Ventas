@@ -27,19 +27,19 @@
 					</div>
 				</div>
 							
-	<!--  					
+					
 				<div class="form-group row">
 					<label for="productLine" class="col-auto col-form-label">Linea del producto:</label>
-					<select th:field="*{productLine}">
-						<option value=""> -- </option>
+					<select th:field="*{productLine.id}" id="productLine">
 						<option 
 						th:each= "produc: ${productLines}"
 						th:value= "${produc.id}" 
-						th:text="${produc.productLineName}" /> 
+						th:text="${produc.productLineName}"
+						th:selecter="false" /> 
 					</select>
 				</div>
 				
-		-->			
+		
 				<div class="form-group row">
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
@@ -64,7 +64,7 @@
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group">
 						  <span for="productDescription" class="input-group-text">Descripcion</span>
-						  <textarea id="productDescription" class="form-control" aria-label="Descripcion" ></textarea>
+						  <textarea id="productDescription" class="form-control" aria-label="Descripcion" th:field="*{productDescription}" ></textarea>
 						</div>
 					</div>
 				</div>
@@ -92,9 +92,9 @@
 				<div class="form-group row">	
 					<div class="input-group mb-3">
 					  <span class="input-group-text" for="msrp">Precio de venta sugerido por el fabricante </span>
-					  <input type="number" id="msrp" step="any" th:field="*{MSRP}"/>
+					  <input type="number" id="msrp" step="any" th:field="*{msrp}"/>
 					</div>
-					<div class="alert-danger" th:if="${#fields.hasErrors('MSRP')}" th:errors="*{MSRP}"></div>
+					<div class="alert-danger" th:if="${#fields.hasErrors('msrp')}" th:errors="*{msrp}"></div>
 				</div>
 				 
 				
