@@ -18,11 +18,18 @@
 				<input type="hidden" th:field="*{office.officeCode}" />
 				
 				<div class="form-group row">
-					
-					<div class="input-group col-sm-4 mb-2">
+					<!--	<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Numero del Empleado:</span>
 							<input type="number" id="employeeNumber" th:field="*{employeeNumber}" placeholder="Ingrese Apellido" class="form-control"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('employeeNumber')}" th:errors="*{employeeNumber}"></div>
+					</div>  -->
+					
+					<div class="form-group row">
+						<label for="employeeNumber" class="col-auto col-form-label text-center">Numero del Empleado:</label>
+						<div class="col-auto">
+							<input type="number" id="employeeNumber" th:field="*{employeeNumber}" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('employeeNumber')}" th:errors="*{employeeNumber}"></div>
 					</div>
@@ -54,7 +61,7 @@
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Código de Oficina:</span>
-							<input type="text" id="officeCode" th:field="*{office.officeCode}" class="form-control" />
+							<input type="number" id="officeCode" th:field="*{office.officeCode}" class="form-control" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('office.officeCode')}" th:errors="*{office.officeCode}"></div>
 					</div>

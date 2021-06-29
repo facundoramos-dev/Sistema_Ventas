@@ -49,7 +49,7 @@ public class CustomerController {
 	@GetMapping("/customer/listado")
 	public ModelAndView getCustomerPage() {
 		ModelAndView modelView = new ModelAndView("customers");
-		modelView.addObject("customers", customerService.getCustomer());
+		modelView.addObject("customers", customerService.getCustomers());
 		return modelView;
 	}
 	
