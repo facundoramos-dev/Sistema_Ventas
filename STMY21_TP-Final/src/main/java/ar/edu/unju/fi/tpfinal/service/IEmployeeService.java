@@ -25,5 +25,7 @@ public interface IEmployeeService {
 	public void quitarEmployeeLista(Long employeeNumber);
 	
 	public Employee getEmployeePorNumber(Long employeeNumber);
+	
+	public void eliminarRelaciones(Long employee);
 
 }

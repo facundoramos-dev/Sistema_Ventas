@@ -38,8 +38,10 @@
 							<td th:text="${emplo.firstName}"></td>
 							<td th:text="${emplo.extension}"></td>
 							<td th:text="${emplo.email}"></td>
-							<td th:text="${emplo.office.officeCode}"></td>
-							<td th:text="${emplo.employee.firstName}"></td>
+							<td th:if="${emplo.office != NULL}" th:text="${emplo.office.officeCode}"></td>
+							<td th:if="${emplo.office == NULL}" th:text="'-'"></td>
+							<td th:if="${emplo.employee1 != NULL}" th:text="${emplo.employee1.firstName}"></td>
+							<td th:if="${emplo.employee1 == NULL}" th:text="'-'"></td>
 							<td th:text="${emplo.jobTitle}"></td>
 							<td>
 								<a th:href="@{/employee/editar/}+${emplo.employeeNumber}" class="btn btn-warning">Editar</a>
