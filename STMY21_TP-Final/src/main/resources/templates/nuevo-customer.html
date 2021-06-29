@@ -13,20 +13,10 @@
 		
 		<div class="container mb-3">
 			<h1>Registro De Un Nuevo Cliente</h1>
-			<form th:action="@{/customer/guardar}" th:object="${customer}" method="post" class="pt-4 pl-5 pr-5" >
-				<input type="hidden" th:field="*{customerNumber}" />
-				<input type="hidden" th:field="*{employee.employeeNumber}" />
+			<form th:action="@{/customer/guardar}" th:object="${customer}" method="post" class="pt-4" >
 				
 				<div class="form-group row">
-					<div class="input-group col-sm-4 mb-2">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Número de Cliente: </span>
-							<input type="number" id="customerNumber" th:field="*{customerNumber}" class="form-control"/>
-						</div>
-						<div class="alert-danger" th:if="${#fields.hasErrors('customerNumber')}" th:errors="*{customerNumber}"></div>
-					</div>
-						
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Nombre del cliente:</span>
 							<input type="text" id="customerName" th:field="*{customerName}" placeholder="Ingrese Nombre..." class="form-control"/>
@@ -34,7 +24,7 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Apellido de Contacto:</span>
 							<input type="text" id="contactLastName" th:field="*{contactLastName}" placeholder="Ingrese Contacto Apellido..." class="form-control"/>
@@ -42,7 +32,7 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('contactLastName')}" th:errors="*{contactLastName}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Nombre de Contacto:</span>
 							<input type="text" id="contactFirstName" th:field="*{contactFirstName}" placeholder="Ingrese Contacto Nombre..." class="form-control"/>
@@ -50,7 +40,7 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('contactFirstName')}" th:errors="*{contactFirstName}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Teléfono de cliente:</span>
 							<input type="number" id="phone" th:field="*{phone}" placeholder="Ingrese su teléfono" class="form-control"/>	
@@ -58,60 +48,68 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
 					</div>
 				
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Dirección Línea 1:</span>
-							<input type="text" id="addressLine1" th:field="*{addressLine1}" class="form-control"/>
+							<input type="text" id="addressLine1" th:field="*{addressLine1}" placeholder="Ingrese su Dirección Línea 1..." class="form-control"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('addressLine1')}" th:errors="*{addressLine1}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Dirección Línea 2:</span>
-							<input type="text" id="addressLine2" th:field="*{addressLine2}" class="form-control"/>
+							<input type="text" id="addressLine2" th:field="*{addressLine2}" placeholder="Ingrese su Dirección Línea 2..." class="form-control"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('addressLine2')}" th:errors="*{addressLine2}"></div>
 					</div>
 				
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Ciudad del Cliente:</span>
-							<input type="text" id="city" th:field="*{city}" class="form-control"/>
+							<input type="text" id="city" th:field="*{city}" placeholder="Ingrese su Ciudad..." class="form-control"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
 					</div>
 					
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Estado del Cliente:</span>
-							<input type="text" id="state" th:field="*{state}" class="form-control" />
+							<input type="text" id="state" th:field="*{state}" placeholder="Ingrese su Estado..." class="form-control" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Codigo Postal del Cliente:</span>
-							<input type="text" id="postalCode" th:field="*{postalCode}" class="form-control" />
+							<input type="text" id="postalCode" th:field="*{postalCode}" placeholder="Ingrese su Codigo Postal... " class="form-control" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Pais del Cliente:</span>
-							<input type="text" id="country" th:field="*{country}" class="form-control" />
+							<input type="text" id="country" th:field="*{country}" placeholder="Ingrese su pais..." class="form-control" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Límite de Crédito del Cliente:</span>
+							<input type="number" id="creditLimit" th:field="*{creditLimit}" placeholder="Ingrese su Límite de Crédito..." class="form-control" />
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('creditLimit')}" th:errors="*{creditLimit}"></div>
+					</div>
+					
+					<div class="input-group col-md-8 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Número de empleado del representante de ventas:</span>
-							
-							<select id="employee" th:field="*{employee.employeeNumber}">
+							<select id="employee" th:field="*{employee.employeeNumber}" class="custom-select">
+								<option value="" seleted>Seleccicione...</option>
 								<option th:each= "emplo: ${employees}"
 								th:value= "${emplo.employeeNumber}" 
 								th:text="${emplo.employeeNumber}"
@@ -119,14 +117,6 @@
 							</select>
 						
 						</div>
-					</div>
-					
-					<div class="input-group col-sm-4 mb-2">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Límite de Crédito del Cliente:</span>
-							<input type="number" id="creditLimit" th:field="*{creditLimit}" class="form-control" />
-						</div>
-						<div class="alert-danger" th:if="${#fields.hasErrors('creditLimit')}" th:errors="*{creditLimit}"></div>
 					</div>
 					
 				</div>

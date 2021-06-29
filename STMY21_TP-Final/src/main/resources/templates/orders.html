@@ -39,7 +39,7 @@
 							<td th:text="${ord.status}"></td>
 							<td th:text="${ord.comments}"></td>
 							<td th:if="${ord.customer != NULL}" th:text="${ord.customer.customerNumber}"></td>
-							<td th:if="${ord.customer == NULL}" th:text="'-'"></td>
+							<td th:if="${ord.customer == NULL}" th:text="'Esta vacio no hay empleados ingresados'"></td>
 							<td>
 								<a th:href="@{/order/editar/}+${ord.orderNumber}" class="btn btn-warning">Editar</a>
 								<a th:href="@{/order/eliminar/}+${ord.orderNumber}" class="btn btn-danger">Eliminar</a>

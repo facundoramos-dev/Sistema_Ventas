@@ -9,11 +9,11 @@ public interface IOrderService {
 	
 	public Order getOrder();
 	
+	//Obtener todas las oficinas
 	public void agregarOrder(Order order);
 
 	public Optional<Order> getOrderPorOrderNumber(Long orderNumber);
 	
-	//Obtener todas las oficinas
 	public List<Order> getOrders();
 	
 	public void eliminarOrder(Long orderNumber);
