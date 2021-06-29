@@ -80,8 +80,18 @@ public class EmployeeServiceImp implements IEmployeeService {
 
 	@Override
 	public void eliminarRelaciones(Long employee) {
-		// TODO Auto-generated method stub
-		
+		List<Employee> empleadosList = getEmployees();
+		if(empleadosList.size()!=0) {
+			for(int i=0;i<empleadosList.size();i++) {
+				if(empleadosList.get(i).getEmployee1()!=null) {
+					if(empleadosList.get(i).getEmployee1().getEmployeeNumber()==employee) {
+						empleadosList.get(i).setEmployee1(null);
+						agregarEmployee(empleadosList.get(i));
+					}
+				}
+				
+			}
+		}
 	}
 
 }
