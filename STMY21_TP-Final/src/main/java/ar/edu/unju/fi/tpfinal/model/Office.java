@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,8 +22,8 @@ import org.springframework.stereotype.Component;
 public class Office{
 	
 	@Id
-	@NotNull(message="El campo officeCode no debe estar vacio")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@NotNull(message="El campo officeCode no debe estar vacio")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long officeCode;
 	
 	@NotNull(message = "El campo city no puede estar vacio")

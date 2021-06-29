@@ -2,6 +2,7 @@ package ar.edu.unju.fi.tpfinal.service.imp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,15 +43,17 @@ public class ProductLineService implements IProductLineService {
 	}
 
 	@Override
-	public void eliminarProductLine(String productLine) {
-		productLineRepository.deleteById(productLine);
+	public void eliminarProductLine(Long id) {
+		productLineRepository.deleteById(id);
 		
 	}
 
 	@Override
-	public ProductLine getProductLinePorCodigo(String productLine) {
-		this.productLineObj = productLineRepository.findByProductLine(productLine);
-		return this.productLineObj;
+	public Optional<ProductLine> getProductLinePorCodigo(Long id) {
+		Optional<ProductLine>productLineEncontrado = productLineRepository.findById(id);
+		return productLineEncontrado;
 	}
+
+	
 
 }

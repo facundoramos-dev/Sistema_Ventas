@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,18 +55,18 @@ public class ProductLineController {
 	
 	
 	@GetMapping("/productLine/editar/{id}")
-	public ModelAndView getProductLineEditPage(@PathVariable(value="id")String productLine ) {
+	public ModelAndView getProductLineEditPage(@PathVariable(value="id")Long id ) {
 		ModelAndView modelView = new ModelAndView("nuevo");
 	/*	ModelAndView modelView = new ModelAndView("nuevo-productLine"); */
-		ProductLine productLineE =  productLineService.getProductLinePorCodigo(productLine);
+		Optional<ProductLine> productLineE =  productLineService.getProductLinePorCodigo(id);
 		modelView.addObject("productLine",productLineE);
 		return modelView;
 	}
 	
 	@GetMapping("/productLine/eliminar/{id}")
-	public ModelAndView getProductLinetDeletePage(@PathVariable(value="id")String productLine ) {
+	public ModelAndView getProductLinetDeletePage(@PathVariable(value="id")Long id ) {
 		ModelAndView modelView = new ModelAndView("redirect:/productLine/listado");
-		productLineService.eliminarProductLine(productLine);
+		productLineService.eliminarProductLine(id);
 		return modelView;
 	}
 }

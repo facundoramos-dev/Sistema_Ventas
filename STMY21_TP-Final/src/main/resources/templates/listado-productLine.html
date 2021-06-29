@@ -19,18 +19,20 @@
 					    <tr >
 					      <th scope="col">Codigo</th>
 					      <th scope="col">Nombre</th>
-					      <th scope="col">Precio</th>
+					      <th scope="col">Descripcion</th>
+					      <th scope="col">Html</th>
 					      <th scope="col">Acciones</th>
 					    </tr>
 					  </thead>
 					  <tbody>
 					    <tr th:each="prod : ${productLine}" >	
-					      <td th:text="${prod.productLine}"></td>
+					      <td th:text="${prod.id}"></td>
+					      <td th:text="${prod.productLineName}"></td>
 					      <td th:text="${prod.textDescription}"></td>
 					      <td th:text="${prod.htmlDescription}"></td>
 					      <td>
-								<a th:href="@{/productLine/editar/}+${prod.productLine}" class="btn btn-warning">Editar</a>
-								<a th:href="@{/productLine/eliminar/}+${prod.productLine}" class="btn btn-danger">Eliminar</a>
+								<a th:href="@{/productLine/editar/}+${prod.id}" class="btn btn-warning">Editar</a>
+								<a th:href="@{/productLine/eliminar/}+${prod.id}" class="btn btn-danger">Eliminar</a>
 						  </td>
 					    </tr>
 					  </tbody>

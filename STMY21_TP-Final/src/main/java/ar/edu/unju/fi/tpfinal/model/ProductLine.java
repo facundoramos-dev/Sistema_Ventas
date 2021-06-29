@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,9 +26,12 @@ import org.springframework.stereotype.Component;
 public class ProductLine {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
 	@NotEmpty(message = "El campo productLine no puede estar vacio")
 	@Column (name = "productLine")
-	private	String productLine;
+	private	String productLineName;
 	
 	@Size(max = 4000, message = "El maximo es de 4000 caracteres")
 	@Column (name = "textDescription")
@@ -49,12 +54,21 @@ public class ProductLine {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getProductLine() {
-		return productLine;
+	
+	public Long getId() {
+		return id;
 	}
 
-	public void setProductLine(String productLine) {
-		this.productLine = productLine;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getProductLineName() {
+		return productLineName;
+	}
+
+	public void setProductLineName(String productLineName) {
+		this.productLineName = productLineName;
 	}
 
 	public String getTextDescription() {
@@ -92,9 +106,12 @@ public class ProductLine {
 
 	@Override
 	public String toString() {
-		return "ProductLine [productLine=" + productLine + ", textDescription=" + textDescription + ", htmlDescription="
-				+ htmlDescription + ", image=" + Arrays.toString(image) + ", products=" + products +  "]";
+		return "ProductLine [id=" + id + ", productLineName=" + productLineName + ", textDescription=" + textDescription
+				+ ", htmlDescription=" + htmlDescription + ", image=" + Arrays.toString(image) + ", products="
+				+ products + "]";
 	}
+
+
 
 	
 	

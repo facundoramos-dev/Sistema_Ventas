@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 import ar.edu.unju.fi.tpfinal.model.Product;
+import ar.edu.unju.fi.tpfinal.model.ProductLine;
 import ar.edu.unju.fi.tpfinal.service.IProductLineService;
 import ar.edu.unju.fi.tpfinal.service.IProductService;
 
@@ -27,10 +30,15 @@ public class ProductController {
 	@Autowired
 	private IProductLineService productLineService;
 	
+	
 	@GetMapping("/product/nuevo")
 	public String getProductPage(Model model) {
+		
+		List<ProductLine> productLines = productLineService.getProductLines();
+		model.addAttribute("productLines", productLines);
 		model.addAttribute("product",productService.getProduct());
-		model.addAttribute("productList", productLineService.getProductLine());
+		
+		
 		return ("nuevo-product");
 	}	
 	

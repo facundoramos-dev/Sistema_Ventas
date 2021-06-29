@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,8 +29,8 @@ import ar.edu.unju.fi.tpfinal.validators.Dominio;
 public class Employee {
 
 	@Id
-	@NotNull(message="El campo employeeNumber no debe estar vacio")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@NotNull(message="El campo employeeNumber no debe estar vacio")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long employeeNumber;
 	
 	@NotNull(message = "El campo lastName no puede estar vacio")

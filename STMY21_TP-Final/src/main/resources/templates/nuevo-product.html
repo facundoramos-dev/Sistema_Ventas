@@ -27,20 +27,19 @@
 					</div>
 				</div>
 							
-				<!--			
+	<!--  					
 				<div class="form-group row">
-					<label for="producto" class="col-auto col-form-label">Linea del producto:</label>
-					<select id="producto" th:field="*{productLine}">
+					<label for="productLine" class="col-auto col-form-label">Linea del producto:</label>
+					<select th:field="*{productLine}">
 						<option value=""> -- </option>
 						<option 
-						th:each= "produc: ${productLine}"
-						th:value= "${produc.productLine}" 
-						th:text="${produc.productLine}"
-						th:selected="false" /> 
+						th:each= "produc: ${productLines}"
+						th:value= "${produc.id}" 
+						th:text="${produc.productLineName}" /> 
 					</select>
 				</div>
-				-->
-					
+				
+		-->			
 				<div class="form-group row">
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
