@@ -11,14 +11,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 
 @Entity
 @Table (name = "PRODUCTLINES")
@@ -29,18 +28,17 @@ public class ProductLine {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty(message = "El campo productLine no puede estar vacio")
 	@Column (name = "productLine")
 	private	String productLineName;
 	
-	@Size(max = 4000, message = "El maximo es de 4000 caracteres")
+	@Size(min = 0,max = 4000, message = "El maximo es de 4000 caracteres")
 	@Column (name = "textDescription")
 	private String textDescription;
 	
-	@Size(min = 2,max = 40, message = "El minimo de caracteres para htmlDescription es de 2 caracteres")
 	@Column (name = "htmlDescription",columnDefinition = "MEDIUMTEXT")
 	private String htmlDescription;
 	
+	@Lob
 	@Column (name = "image",columnDefinition = "MEDIUMBLOB")
 	private byte[] image;
 	
@@ -48,12 +46,9 @@ public class ProductLine {
 	@OneToMany(mappedBy = "productLine" ,fetch=FetchType.LAZY , cascade = CascadeType.ALL)
 	private List<Product> products = new ArrayList<Product>();
 	
-	
-	
 	public ProductLine() {
 		// TODO Auto-generated constructor stub
 	}
-
 	
 	public Long getId() {
 		return id;
@@ -103,7 +98,6 @@ public class ProductLine {
 		this.products = products;
 	}
 
-
 	@Override
 	public String toString() {
 		return "ProductLine [id=" + id + ", productLineName=" + productLineName + ", textDescription=" + textDescription
@@ -111,10 +105,4 @@ public class ProductLine {
 				+ products + "]";
 	}
 
-
-
-	
-	
-	
-	
 }

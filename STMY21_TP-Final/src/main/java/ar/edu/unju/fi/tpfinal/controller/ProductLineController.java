@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.model.ProductLine;
@@ -32,15 +36,19 @@ public class ProductLineController {
 	}	
 	
 	@PostMapping("/productLine/guardar")
-	public ModelAndView agregarProductLine(@Valid @ModelAttribute("productLine") ProductLine productLine, BindingResult resulValidacion) {
-		//ModelAndView modelView = new ModelAndView("payment");
+	public ModelAndView agregarProductLine(@Valid @ModelAttribute("productLine") ProductLine productLine, BindingResult resulValidacion, @RequestParam("file") MultipartFile file) throws IOException {
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-productLine");
 			modelView.addObject("productLine",productLine);
 			return modelView;
 		}else {//no se encuentran errores
-			modelView = new ModelAndView("redirect:/productLine/listado"); //lista de employee
+			modelView = new ModelAndView("redirect:/productLine/listado"); //lista de ProductLines
+			byte[] content = file.getBytes();
+			String base64 = Base64.getEncoder().encodeToString(content);
+			if(!base64.equals("")) {
+				productLine.setImage(content);
+			}
 			productLineService.agregarProductLine(productLine);
 			return modelView;
 		}
@@ -53,11 +61,9 @@ public class ProductLineController {
 		return modelView;
 	}
 	
-	
 	@GetMapping("/productLine/editar/{id}")
 	public ModelAndView getProductLineEditPage(@PathVariable(value="id")Long id ) {
-		ModelAndView modelView = new ModelAndView("nuevo");
-	/*	ModelAndView modelView = new ModelAndView("nuevo-productLine"); */
+		ModelAndView modelView = new ModelAndView("nuevo-productLine");
 		Optional<ProductLine> productLineE =  productLineService.getProductLinePorCodigo(id);
 		modelView.addObject("productLine",productLineE);
 		return modelView;
