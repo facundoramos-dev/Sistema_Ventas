@@ -1,8 +1,5 @@
 package ar.edu.unju.fi.tpfinal.model;
 
-
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -28,43 +25,41 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private	Long productCode;
 	
-	@NotNull(message = "El campo productName no puede estar vacio")
+	@NotEmpty(message = "El campo productName no puede estar vacio")
 	@Size(max = 70, message = "El maximo es de 70 caracteres")
 	@Column (name = "productName")
 	private String productName;
 	
-	@Valid
+	//@Valid
 	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn (name = "PRODUCTLINE_ID")
+	@JoinColumn (name = "productLine_id")
 	private ProductLine productLine ;
 	
-	@NotNull(message = "El campo productScale no puede estar vacio")
 	@Size(max = 10, message = "El maximo es de 10 caracteres")
 	@Column (name = "productScale")
 	private String productScale;
 
-	@NotNull(message = "El campo productVendor no puede estar vacio")
 	@Size(max = 50, message = "El maximo es de 50 caracteres")
 	@Column (name = "productVendor")
 	private String productVendor;
 
-	@NotNull(message = "El campo productDescription no puede estar vacio")
+	@NotEmpty(message = "El campo productDescription no puede estar vacio")
 	@Column (name = "productDescription", columnDefinition = "TEXT")
 	private String productDescription;
-
+	
 	@NotNull(message = "El campo quantityInStock no puede estar vacio")
 	@Column (name = "quantityInStock")
 	private Short quantityInStock;
-
+	
 	@NotNull(message = "El campo buyPrice no puede estar vacio")
 	@Column (name = "buyPrice", columnDefinition = "DECIMAL(10,2)")
 	private Double buyPrice;
 	
 	//	Manufacturer's Suggested Retail Price = Precio de venta sugerido por el fabricante 
-	@NotNull(message = "El campo MSRP no puede estar vacio")
-	@Column (name = "MSRP", columnDefinition = "DECIMAL(10,2)")
-	private Double MSRP;
+	@NotNull(message = "El campo msrp no puede estar vacio")
+	@Column (name = "MSRP")
+	private Double msrp;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
@@ -132,14 +127,14 @@ public class Product {
 
 	public void setBuyPrice(Double buyPrice) {
 		this.buyPrice = buyPrice;
+	}	
+
+	public Double getMsrp() {
+		return msrp;
 	}
 
-	public Double getMSRP() {
-		return MSRP;
-	}
-
-	public void setMSRP(Double mSRP) {
-		MSRP = mSRP;
+	public void setMsrp(Double msrp) {
+		this.msrp = msrp;
 	}
 
 	@Override
@@ -147,7 +142,9 @@ public class Product {
 		return "Product [productCode=" + productCode + ", productName=" + productName + ", productLine=" + productLine
 				+ ", productScale=" + productScale + ", productVendor=" + productVendor + ", productDescription="
 				+ productDescription + ", quantityInStock=" + quantityInStock + ", buyPrice=" + buyPrice + ", MSRP="
-				+ MSRP + "]";
+				+ msrp + "]";
 	}
+
+	
 
 }
