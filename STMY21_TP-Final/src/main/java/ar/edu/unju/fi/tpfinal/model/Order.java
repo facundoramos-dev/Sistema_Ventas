@@ -4,8 +4,10 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -50,22 +52,20 @@ public class Order {
 	@Column (name = "comments", columnDefinition = "TEXT")
 	private String comments;
 	
-	@Valid
 	@Autowired
-	@OneToOne
-	@JoinColumn(name="customerNumber", nullable = false)
-	private Customer customerNumber;
-
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "customerNumber")
+	private Customer customer;
 	
 	
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public Long getOrderNumber() {
 		return orderNumber;
 	}
-
 
 
 	public void setOrderNumber(Long orderNumber) {
@@ -73,11 +73,9 @@ public class Order {
 	}
 
 
-
 	public LocalDate getOrderDate() {
 		return orderDate;
 	}
-
 
 
 	public void setOrderDate(LocalDate orderDate) {
@@ -85,11 +83,9 @@ public class Order {
 	}
 
 
-
 	public LocalDate getRequiredDate() {
 		return requiredDate;
 	}
-
 
 
 	public void setRequiredDate(LocalDate requiredDate) {
@@ -97,11 +93,9 @@ public class Order {
 	}
 
 
-
 	public LocalDate getShippedDate() {
 		return shippedDate;
 	}
-
 
 
 	public void setShippedDate(LocalDate shippedDate) {
@@ -109,11 +103,9 @@ public class Order {
 	}
 
 
-
 	public String getStatus() {
 		return status;
 	}
-
 
 
 	public void setStatus(String status) {
@@ -121,11 +113,9 @@ public class Order {
 	}
 
 
-
 	public String getComments() {
 		return comments;
 	}
-
 
 
 	public void setComments(String comments) {
@@ -133,22 +123,21 @@ public class Order {
 	}
 
 
-
-	public Customer getCustomerNumber() {
-		return customerNumber;
+	public Customer getCustomer() {
+		return customer;
 	}
 
 
-
-	public void setCustomerNumber(Customer customerNumber) {
-		this.customerNumber = customerNumber;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
+
 
 	@Override
 	public String toString() {
 		return "Order [orderNumber=" + orderNumber + ", orderDate=" + orderDate + ", requiredDate=" + requiredDate
-				+ ", shippedDate=" + shippedDate + ", status=" + status + ", comments=" + comments + ", customerNumber="
-				+ customerNumber + "]";
+				+ ", shippedDate=" + shippedDate + ", status=" + status + ", comments=" + comments + ", customer="
+				+ customer + "]";
 	}
-	
+
 }

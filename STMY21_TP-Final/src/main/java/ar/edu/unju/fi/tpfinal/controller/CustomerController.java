@@ -36,8 +36,7 @@ public class CustomerController {
 	public String getCustomerPage(Model model) {
 		model.addAttribute("customer",customerService.getCustomer());
 		// lista de los empleados para clientes
-		List<Employee> employees = employeeService.getEmployees();
-		model.addAttribute("employees", employees);
+		model.addAttribute("employees", employeeService.getEmployees());
 		return ("nuevo-customer");
 	}	
 	
@@ -48,10 +47,12 @@ public class CustomerController {
 			System.out.println("CON Errores");
 			modelView = new ModelAndView("nuevo-customer");
 			modelView.addObject("customer",customer);
+			modelView.addObject("employees", employeeService.getEmployees());
 			return modelView;
 		}else {//no se encuentran errores
 			System.out.println("Sin Errores");
 			modelView = new ModelAndView("redirect:/customer/listado"); //lista de customer
+			customer.setEmployee(employeeService.getEmployeePorNumber(customer.getEmployee().getEmployeeNumber()));
 			customerService.agregarCustomer(customer);
 			return modelView;
 		}
@@ -69,6 +70,7 @@ public class CustomerController {
 		ModelAndView modelView = new ModelAndView("nuevo-customer");
 		Optional<Customer> customer =  customerService.getCustomerPorCustomerNum(customerNumber);
 		modelView.addObject("customer",customer);
+		modelView.addObject("employees", employeeService.getEmployees());
 		return modelView;
 	}
 	

@@ -14,7 +14,6 @@
 		<div class="container mb-3">
 			<h1>Registro De Un Nuevo Pedido</h1>
 			<form th:action="@{/order/guardar}" th:object="${order}" method="post" class="pt-4 pl-5 pr-5" >
-				<input type="hidden" th:field="*{orderNumber}" />
 				<input type="hidden" th:field="*{customer.customerNumber}" />
 				
 				<div class="form-group row">
@@ -22,7 +21,7 @@
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Numero del Pedido:</span>
-							<input type="date" id="orderNumber" th:field="*{orderNumber}" class="form-control"/>
+							<input type="number" id="orderNumber" th:field="*{orderNumber}" class="form-control"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('orderNumber')}" th:errors="*{orderNumber}"></div>
 					</div>
@@ -71,11 +70,17 @@
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">número de cliente representa:</span>
-							<input type="text" id="customerNumber" th:field="*{customer.customerNumber}" class="form-control" />
-						</div>
-						<div class="alert-danger" th:if="${#fields.hasErrors('customer.customerNumber')}" th:errors="*{employee.employeeNumber}"></div>
+							<select id="customer" th:field="*{customer.customerNumber}" class="custom-select">
+								<option value="" seleted>Seleccicione...</option>
+								<option th:each= "custo: ${customers}"
+								th:value= "${custo.customerNumber}" 
+								th:text="${custo.customerNumber}"
+								th:selected="false" />
+							</select>
+						</div> 
 					</div> 
-				</div> 
+					
+				</div> 	
 				
 				 <div class="text-center">
 					<button type="submit" class="btn btn-primary mr-3" >Guardar</button>

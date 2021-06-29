@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.tpfinal.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
@@ -75,17 +79,18 @@ public class Customer {
 	@Column(name = "country")
 	private	String country;
 	
-	@Min(value=1, message = "Este campo no debe ser vacío y el valor de la creditLimit debe ser decimal")
-	@Column(name = "creditLimit", columnDefinition = "DECIMAL(10,2)")
-	private double creditLimit;
-	
 	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "salesRepEmployeeNumber")
 	private Employee employee;
 	
-	@OneToOne(mappedBy = "customerNumber", cascade = CascadeType.ALL)
-    private Order order;
+	@Min(value=1, message = "Este campo no debe ser vacío y el valor de la creditLimit debe ser decimal")
+	@Column(name = "creditLimit", columnDefinition = "DECIMAL(10,2)")
+	private double creditLimit;
+	
+	@Autowired
+	@OneToMany( mappedBy = "customer" )
+	private List<Order> orders = new ArrayList<Order>();
 
 	// Constructores , Getters y Setters
 	
@@ -182,14 +187,6 @@ public class Customer {
 		this.country = country;
 	}
 
-	public double getCreditLimit() {
-		return creditLimit;
-	}
-
-	public void setCreditLimit(double creditLimit) {
-		this.creditLimit = creditLimit;
-	}
-
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -198,12 +195,20 @@ public class Customer {
 		this.employee = employee;
 	}
 
-	public Order getOrder() {
-		return order;
+	public double getCreditLimit() {
+		return creditLimit;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setCreditLimit(double creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	@Override
@@ -211,12 +216,8 @@ public class Customer {
 		return "Customer [customerNumber=" + customerNumber + ", customerName=" + customerName + ", contactLastName="
 				+ contactLastName + ", contactFirstName=" + contactFirstName + ", phone=" + phone + ", addressLine1="
 				+ addressLine1 + ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state
-				+ ", postalCode=" + postalCode + ", country=" + country + ", creditLimit=" + creditLimit + ", employee="
-				+ employee + ", order=" + order + "]";
+				+ ", postalCode=" + postalCode + ", country=" + country + ", employee=" + employee + ", creditLimit="
+				+ creditLimit + ", orders=" + orders + "]";
 	}
-	
-}
-	
-	
-	
-	
+
+}	
