@@ -19,10 +19,9 @@ public class CustomerServiceImp implements ICustomerService{
 	private static final Log LOGGER = LogFactory.getLog(CustomerServiceImp.class);
 	
 	List<Customer> customerEncontrado = new ArrayList<Customer>();
-	private List<Customer> customers;
+	
 	@Autowired
 	private ICustomerRepository customerRepository;
-	
 	@Autowired
 	private Customer customer;
 
@@ -34,10 +33,6 @@ public class CustomerServiceImp implements ICustomerService{
 
 	@Override
 	public void agregarCustomer(Customer customer) {
-		
-		customers.add(customer);
-		LOGGER.info("METHOD: agregarCliente - se agregó un objeto Cliente en la lista -> "+customers.get(customers.size()-1));
-	
 		customerRepository.save(customer);
 	}
 
@@ -67,6 +62,7 @@ public class CustomerServiceImp implements ICustomerService{
 
 	@Override
 	public void agregarCustomerEncontrado(Customer customer) {
+		List<Customer> customerEncontrado = new ArrayList<Customer>(); 
 		customerEncontrado.add(customer);
 	}
 
