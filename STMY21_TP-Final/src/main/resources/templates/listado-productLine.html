@@ -11,16 +11,16 @@
 	
 		<header th:replace="/layouts/nav :: nav"></header>
 		
-	<div class="container mb-3">
+		<div class="container text-center mb-3">
 			<h1>Listado De Lineas de Producto</h1>
-	
 				<table class="table table-info table-bordered table-hover">
-					  <thead class="text-center">
-					    <tr >
+					<thead class="text-center">
+						<tr >
 					      <th scope="col">Codigo</th>
 					      <th scope="col">Nombre</th>
 					      <th scope="col">Descripcion</th>
 					      <th scope="col">Html</th>
+					      <th scope="col">Imagen</th>
 					      <th scope="col">Acciones</th>
 					    </tr>
 					  </thead>
@@ -30,15 +30,16 @@
 					      <td th:text="${prod.productLineName}"></td>
 					      <td th:text="${prod.textDescription}"></td>
 					      <td th:text="${prod.htmlDescription}"></td>
+					      <td th:if="${prod.image == NULL}" th:text="'No'"></td>
+					      <td th:if="${prod.image != NULL}" th:text="'Si'"></td>
 					      <td>
-								<a th:href="@{/productLine/editar/}+${prod.id}" class="btn btn-warning">Editar</a>
-								<a th:href="@{/productLine/eliminar/}+${prod.id}" class="btn btn-danger">Eliminar</a>
+							<a th:href="@{/productLine/editar/}+${prod.id}" class="btn btn-warning">Editar</a>
+							<a th:href="@{/productLine/eliminar/}+${prod.id}" class="btn btn-danger">Eliminar</a>
 						  </td>
 					    </tr>
 					  </tbody>
 					</table>
-	
-	</div>
+		</div>
 		
 		<footer th:replace="/layouts/footer :: footer"></footer>
 		
