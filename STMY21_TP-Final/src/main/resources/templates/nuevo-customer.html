@@ -11,63 +11,63 @@
 	
 		<header th:replace="/layouts/nav :: nav"></header>
 		
-		<div class="container mb-3">
+		<div class="container-fluid mb-3">
 			<h1>Registro De Un Nuevo Cliente</h1>
 			<form th:action="@{/customer/guardar}" th:object="${customer}" method="post" class="pt-4" >
-				
+				<input type="hidden" th:field="*{customerNumber}" />
 				<div class="form-group row">
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Nombre del cliente:</span>
-							<input type="text" id="customerName" th:field="*{customerName}" placeholder="Ingrese Nombre..." class="form-control"/>
+							<span class="input-group-text col-auto" id="basic-addon1">Nombre:</span>
+							<input type="text" id="customerName" th:field="*{customerName}" placeholder="Ingrese Nombre..." class="form-control col-sm-11"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></div>
 					</div>
 					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Apellido de Contacto:</span>
-							<input type="text" id="contactLastName" th:field="*{contactLastName}" placeholder="Ingrese Contacto Apellido..." class="form-control"/>
+							<span class="input-group-text col-auto" id="basic-addon1">Apellido:</span>
+							<input type="text" id="contactLastName" th:field="*{contactLastName}" placeholder="Ingrese Contacto Apellido..." class="form-control col-sm-11"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('contactLastName')}" th:errors="*{contactLastName}"></div>
 					</div>
 					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Nombre de Contacto:</span>
-							<input type="text" id="contactFirstName" th:field="*{contactFirstName}" placeholder="Ingrese Contacto Nombre..." class="form-control"/>
+							<span class="input-group-text col-auto" id="basic-addon1">Contacto:</span>
+							<input type="text" id="contactFirstName" th:field="*{contactFirstName}" placeholder="Ingrese Contacto Nombre..." class="form-control col-sm-8"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('contactFirstName')}" th:errors="*{contactFirstName}"></div>
 					</div>
 					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Teléfono de cliente:</span>
-							<input type="number" id="phone" th:field="*{phone}" placeholder="Ingrese su teléfono" class="form-control"/>	
+							<span class="input-group-text col-auto" id="basic-addon1">Teléfono:</span>
+							<input type="number" id="phone" th:field="*{phone}" placeholder="Ingrese su teléfono" class="form-control col-sm-12"/>	
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
 					</div>
 				
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Dirección Línea 1:</span>
-							<input type="text" id="addressLine1" th:field="*{addressLine1}" placeholder="Ingrese su Dirección Línea 1..." class="form-control"/>
+							<span class="input-group-text col-auto" id="basic-addon1">Dirección 1:</span>
+							<input type="text" id="addressLine1" th:field="*{addressLine1}" placeholder="Ingrese su Dirección Línea 1..." class="form-control col-sm-11"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('addressLine1')}" th:errors="*{addressLine1}"></div>
 					</div>
 					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Dirección Línea 2:</span>
-							<input type="text" id="addressLine2" th:field="*{addressLine2}" placeholder="Ingrese su Dirección Línea 2..." class="form-control"/>
+							<span class="input-group-text col-auto" id="basic-addon1">Dirección 2:</span>
+							<input type="text" id="addressLine2" th:field="*{addressLine2}" placeholder="Ingrese su Dirección Línea 2..." class="form-control col-sm-7"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('addressLine2')}" th:errors="*{addressLine2}"></div>
 					</div>
 				
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Ciudad del Cliente:</span>
-							<input type="text" id="city" th:field="*{city}" placeholder="Ingrese su Ciudad..." class="form-control"/>
+							<span class="input-group-text col-auto" id="basic-addon1">Ciudad:</span>
+							<input type="text" id="city" th:field="*{city}" placeholder="Ingrese su Ciudad..." class="form-control col-sm-12"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
 					</div>
@@ -75,31 +75,31 @@
 					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Estado del Cliente:</span>
-							<input type="text" id="state" th:field="*{state}" placeholder="Ingrese su Estado..." class="form-control" />
+							<span class="input-group-text col-auto" id="basic-addon1">Estado:</span>
+							<input type="text" id="state" th:field="*{state}" placeholder="Ingrese su Estado..." class="form-control col-sm-11" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></div>
 					</div>
 					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Codigo Postal del Cliente:</span>
-							<input type="text" id="postalCode" th:field="*{postalCode}" placeholder="Ingrese su Codigo Postal... " class="form-control" />
+							<span class="input-group-text col-auto" id="basic-addon1">Cod.Postal:</span>
+							<input type="text" id="postalCode" th:field="*{postalCode}" placeholder="Ingrese su Codigo Postal... " class="form-control col-sm-7" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}"></div>
 					</div>
 					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Pais del Cliente:</span>
-							<input type="text" id="country" th:field="*{country}" placeholder="Ingrese su pais..." class="form-control" />
+							<span class="input-group-text col-auto" id="basic-addon1">Pais:</span>
+							<input type="text" id="country" th:field="*{country}" placeholder="Ingrese su pais..." class="form-control col-sm-12" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
 					</div>
 					
-					<div class="input-group col-md-4 mb-2">
+					<div class="input-group col-md-8 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Límite de Crédito del Cliente:</span>
+							<span class="input-group-text col-auto" id="basic-addon1">Límite de Crédito del Cliente:</span>
 							<input type="number" id="creditLimit" th:field="*{creditLimit}" placeholder="Ingrese su Límite de Crédito..." class="form-control" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('creditLimit')}" th:errors="*{creditLimit}"></div>
@@ -107,12 +107,12 @@
 					
 					<div class="input-group col-md-8 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Número de empleado del representante de ventas:</span>
-							<select id="employee" th:field="*{employee.employeeNumber}" class="custom-select">
+							<span class="input-group-text col-auto" id="basic-addon1">Representante de ventas:</span>
+							<select id="employee" th:field="*{employee.employeeNumber}" class="custom-select col-auto">
 								<option value="" seleted>Seleccicione...</option>
 								<option th:each= "emplo: ${employees}"
 								th:value= "${emplo.employeeNumber}" 
-								th:text="${emplo.employeeNumber}"
+								th:text="${emplo.lastName}+', '+${emplo.firstName}"
 								th:selected="false" />
 							</select>
 						

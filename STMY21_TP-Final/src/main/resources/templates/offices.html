@@ -20,16 +20,15 @@
 							<th rowspan="2">Acciones</th>
 						</tr>
 						<tr>
-							<th scope="col">Codigo de Oficina</th>
+							<th scope="col">Cod. Oficina</th>
 							<th scope="col">Ciudad</th>
 							<th scope="col">Telefono</th>
-							<th scope="col">Dirección Línea 1</th>
-							<th scope="col">Dirección Línea 2</th>
+							<th scope="col">Dirección 1</th>
+							<th scope="col">Dirección 2</th>
 							<th scope="col">Estado</th>
 							<th scope="col">Pais</th>
 							<th scope="col">Codigo Postal</th>
 							<th scope="col">Territorio</th>
-							
 						</tr>
 					</thead>
 					<tbody>
@@ -38,12 +37,13 @@
 							<td th:text="${offi.city}"></td>
 							<td th:text="${offi.phone}"></td>
 							<td th:text="${offi.addressLine1}"></td>
-							<td th:text="${offi.addressLine2}"></td>
-							<td th:text="${offi.state}"></td>
+							<td th:if="${offi.addressLine2 != ''}" th:text="${offi.addressLine2}"></td>
+							<td th:if="${offi.addressLine2 == ''}" th:text="'-'"></td>
+							<td th:if="${offi.state != ''}" th:text="${offi.state}"></td>
+							<td th:if="${offi.state == ''}" th:text="'-'"></td>
 							<td th:text="${offi.country}"></td>
-							<td th:text="${offi.postalCode}"></td>
+							<td th:text="'#'+${offi.postalCode}"></td>
 							<td th:text="${offi.territory}"></td>
-							
 							<td>
 								<a th:href="@{/office/editar/}+${offi.officeCode}" class="btn btn-warning">Editar</a>
 								<a th:href="@{/office/eliminar/}+${offi.officeCode}" class="btn btn-danger">Eliminar</a>
@@ -53,7 +53,6 @@
 				</table>
 			</div>
 		</div>
-		
 		
 		<footer th:replace="/layouts/footer :: footer"></footer>
 		

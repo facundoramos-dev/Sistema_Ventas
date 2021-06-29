@@ -3,7 +3,6 @@ package ar.edu.unju.fi.tpfinal.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,9 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -28,7 +25,6 @@ import org.springframework.stereotype.Component;
 public class Customer {
 	
 	@Id
-	//@NotNull(message="El campo customerNumber no debe estar vacio")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long customerNumber;
 
@@ -57,7 +53,7 @@ public class Customer {
 	@Column(name = "addressLine1")
 	private String addressLine1;
 	
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@Size(min = 0, max=50, message = "El maximo es de 50 caracteres")
 	@Column(name = "addressLine2")
 	private String addressLine2;
 	
@@ -66,11 +62,11 @@ public class Customer {
 	@Column(name = "city")
 	private String city;
 	
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@Size(min = 0, max=50, message = "El maximo es de 50 caracteres")
 	@Column(name = "state")
 	private	String state;
 	
-	@Size(min = 1, max=15, message = "Este campo no debe ser vacío y el maximo es de 15 caracteres")
+	@Size(min = 0, max=15, message = "El maximo es de 15 caracteres")
 	@Column(name = "postalCode")
 	private	String postalCode;
 	
@@ -84,17 +80,13 @@ public class Customer {
 	@JoinColumn(name = "salesRepEmployeeNumber")
 	private Employee employee;
 	
-	@Min(value=1, message = "Este campo no debe ser vacío y el valor de la creditLimit debe ser decimal")
 	@Column(name = "creditLimit", columnDefinition = "DECIMAL(10,2)")
 	private double creditLimit;
 	
 	@Autowired
-	@OneToMany( mappedBy = "customer" )
+	@OneToMany( mappedBy = "customer1" )
 	private List<Order> orders = new ArrayList<Order>();
 
-	// Constructores , Getters y Setters
-	
-	
 	public Customer() {
 		// TODO Auto-generated constructor stub
 	}

@@ -22,7 +22,6 @@ import org.springframework.stereotype.Component;
 public class Office{
 	
 	@Id
-	//@NotNull(message="El campo officeCode no debe estar vacio")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long officeCode;
 	
@@ -41,11 +40,11 @@ public class Office{
 	@Column (name = "addressLine1")
 	private String addressLine1;
 	
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@Size(min = 0, max=50, message = "El maximo es de 50 caracteres")
 	@Column (name = "addressLine2")
 	private String addressLine2;
 	
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@Size(min = 0, max=50, message = "El maximo es de 50 caracteres")
 	@Column (name = "state")
 	private	String state;
 	

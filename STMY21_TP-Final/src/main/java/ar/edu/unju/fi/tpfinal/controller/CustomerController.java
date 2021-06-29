@@ -1,6 +1,5 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.model.Customer;
-import ar.edu.unju.fi.tpfinal.model.Employee;
 import ar.edu.unju.fi.tpfinal.service.ICustomerService;
 import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 
@@ -35,7 +33,6 @@ public class CustomerController {
 	@GetMapping("/customer/nuevo")
 	public String getCustomerPage(Model model) {
 		model.addAttribute("customer",customerService.getCustomer());
-		// lista de los empleados para clientes
 		model.addAttribute("employees", employeeService.getEmployees());
 		return ("nuevo-customer");
 	}	
@@ -43,6 +40,7 @@ public class CustomerController {
 	@PostMapping("/customer/guardar")
 	public ModelAndView agregarCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult resulValidacion) {
 		ModelAndView modelView;
+		System.out.println("Customer_Number: "+customer.getCustomerNumber());
 		if (resulValidacion.hasErrors()) { //errores presentes
 			System.out.println("CON Errores");
 			modelView = new ModelAndView("nuevo-customer");
@@ -51,6 +49,7 @@ public class CustomerController {
 			return modelView;
 		}else {//no se encuentran errores
 			System.out.println("Sin Errores");
+			System.out.println("Customer_Number: "+customer.getCustomerNumber());
 			modelView = new ModelAndView("redirect:/customer/listado"); //lista de customer
 			customer.setEmployee(employeeService.getEmployeePorNumber(customer.getEmployee().getEmployeeNumber()));
 			customerService.agregarCustomer(customer);

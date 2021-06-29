@@ -16,7 +16,6 @@ import ar.edu.unju.fi.tpfinal.service.IOfficeService;
 @Service("officeService")
 public class OfficeServiceImp implements IOfficeService {
 
-	
 	private static final Log LOGGER = LogFactory.getLog(OfficeServiceImp.class);
 	
 	List<Office> officeEncontrado = new ArrayList<Office>(); 

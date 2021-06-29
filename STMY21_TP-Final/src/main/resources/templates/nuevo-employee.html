@@ -14,7 +14,7 @@
 		<div class="container-fluid mb-3">
 			<h1>Registro De Un Nuevo Empleado</h1>
 			<form th:action="@{/employee/guardar}" th:object="${employee}" method="post" class="pt-4" >
-				
+				<input type="hidden" th:field="*{employeeNumber}" />
 				<div class="form-group row">
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">

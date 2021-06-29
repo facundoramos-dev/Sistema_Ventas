@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,7 +28,6 @@ import ar.edu.unju.fi.tpfinal.validators.Dominio;
 public class Employee {
 
 	@Id
-	//@NotNull(message="El campo employeeNumber no debe estar vacio")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long employeeNumber;
 	
@@ -60,7 +58,6 @@ public class Employee {
 	@Column(name = "jobTitle")
 	private String jobTitle;
 	
-	//@Valid
 	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "officeCode")
@@ -78,115 +75,77 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
 	public Long getEmployeeNumber() {
 		return employeeNumber;
 	}
-
-
 
 	public void setEmployeeNumber(Long employeeNumber) {
 		this.employeeNumber = employeeNumber;
 	}
 
-
-
 	public String getLastName() {
 		return lastName;
 	}
-
-
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-
-
 	public String getFirstName() {
 		return firstName;
 	}
-
-
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-
-
 	public String getExtension() {
 		return extension;
 	}
-
-
 
 	public void setExtension(String extension) {
 		this.extension = extension;
 	}
 
-
-
 	public String getEmail() {
 		return email;
 	}
-
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
-
 	public String getJobTitle() {
 		return jobTitle;
 	}
-
-
 
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
 
-
-
 	public Office getOffice() {
 		return office;
 	}
-
-
 
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
-
-
 	public Employee getEmployee1() {
 		return employee1;
 	}
-
-
 
 	public void setEmployee1(Employee employee1) {
 		this.employee1 = employee1;
 	}
 
-
-
 	public List<Customer> getCustomers() {
 		return customers;
 	}
 
-
-
 	public void setCustomers(List<Customer> customers) {
 		this.customers = customers;
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -194,9 +153,5 @@ public class Employee {
 				+ ", extension=" + extension + ", email=" + email + ", jobTitle=" + jobTitle + ", office=" + office
 				+ ", employee1=" + employee1 + ", customers=" + customers + "]";
 	}
-
-	
-
-	
 
 }

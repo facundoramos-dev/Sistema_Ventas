@@ -16,7 +16,6 @@ import ar.edu.unju.fi.tpfinal.service.ICustomerService;
 @Service("customerService")
 public class CustomerServiceImp implements ICustomerService{
 
-	
 	private static final Log LOGGER = LogFactory.getLog(CustomerServiceImp.class);
 	
 	List<Customer> customerEncontrado = new ArrayList<Customer>();
