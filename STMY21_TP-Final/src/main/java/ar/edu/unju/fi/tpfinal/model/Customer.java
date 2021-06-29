@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -79,7 +78,6 @@ public class Customer {
 	@Min(value=1, message = "Este campo no debe ser vacío y el valor de la creditLimit debe ser decimal")
 	@Column(name = "creditLimit", columnDefinition = "DECIMAL(10,2)")
 	private double creditLimit;
-	
 	
 	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)

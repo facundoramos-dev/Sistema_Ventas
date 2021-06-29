@@ -71,11 +71,8 @@ public class Employee {
     @JoinColumn(name = "reportsTo")
     private Employee employee;
 		
-	@Autowired
 	@OneToMany( mappedBy = "employee" )
 	private List<Customer> customers = new ArrayList<Customer>();
-
-	
 	
 	public Employee() {
 		// TODO Auto-generated constructor stub

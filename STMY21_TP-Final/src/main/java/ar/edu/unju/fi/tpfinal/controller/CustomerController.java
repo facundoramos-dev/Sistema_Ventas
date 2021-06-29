@@ -35,7 +35,7 @@ public class CustomerController {
 	@GetMapping("/customer/nuevo")
 	public String getCustomerPage(Model model) {
 		model.addAttribute("customer",customerService.getCustomer());
-		//lista de los empleados para clientes
+		// lista de los empleados para clientes
 		List<Employee> employees = employeeService.getEmployees();
 		model.addAttribute("employees", employees);
 		return ("nuevo-customer");

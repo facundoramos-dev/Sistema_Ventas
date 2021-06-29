@@ -110,12 +110,14 @@
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Número de empleado del representante de ventas:</span>
+							
 							<select id="employee" th:field="*{employee.employeeNumber}">
 								<option th:each= "emplo: ${employees}"
 								th:value= "${emplo.employeeNumber}" 
 								th:text="${emplo.employeeNumber}"
 								th:selected="false" />
 							</select>
+						
 						</div>
 					</div>
 					
