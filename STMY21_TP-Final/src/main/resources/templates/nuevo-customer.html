@@ -14,14 +14,21 @@
 		<div class="container mb-3">
 			<h1>Registro De Un Nuevo Cliente</h1>
 			<form th:action="@{/customer/guardar}" th:object="${customer}" method="post" class="pt-4 pl-5 pr-5" >
-				<input type="hidden" th:field="*{customerNumber}" />
 				<input type="hidden" th:field="*{employee.employeeNumber}" />
 				
 				<div class="form-group row">
-					<div class="input-group col-sm-4 mb-2">
+					<!-- <div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Número de Cliente: </span>
 							<input type="number" id="customerNumber" th:field="*{customerNumber}" class="form-control"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('customerNumber')}" th:errors="*{customerNumber}"></div>
+					</div>-->
+					
+					<div class="form-group row">
+						<label for="customerNumber" class="col-auto col-form-label text-center">Numero del Cliente:</label>
+						<div class="col-auto">
+							<input type="number" id="customerNumber" th:field="*{customerNumber}" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('customerNumber')}" th:errors="*{customerNumber}"></div>
 					</div>
@@ -107,13 +114,13 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<!-- <div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Número de empleado del representante de ventas:</span>
 							<input type="text" id="employeeNumber" th:field="*{employee.employeeNumber}" class="form-control" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('employee.employeeNumber')}" th:errors="*{employee.employeeNumber}"></div>
-					</div>
+					</div> -->
 					
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">

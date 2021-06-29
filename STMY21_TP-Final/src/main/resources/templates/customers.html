@@ -31,7 +31,7 @@
 							<th scope="col">Estado</th>
 							<th scope="col">Codigo Postal</th>
 							<th scope="col">País</th>
-							<th scope="col">Número de empleado del representante de ventas</th>
+							<!-- <th scope="col">Número de empleado del representante de ventas</th>-->
 							<th scope="col">Límite de Crédito</th>
 							
 						</tr>
@@ -49,7 +49,7 @@
 							<td th:text="${cust.state}"></td>
 							<td th:text="${cust.postalCode}"></td>
 							<td th:text="${cust.country}"></td>
-							<td th:text="${cust.employee.employeeNumber}"></td>
+							<!-- <td th:text="${cust.employee.employeeNumber}"></td>-->
 							<td th:text="${cust.creditLimit}"></td>
 							<td>
 								<a th:href="@{/customer/editar/}+${cust.customerNumber}" class="btn btn-warning">Editar</a>

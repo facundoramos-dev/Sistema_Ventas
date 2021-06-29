@@ -28,7 +28,6 @@ public class CustomerController {
 	@GetMapping("/customer/nuevo")
 	public String getCustomerPage(Model model) {
 		model.addAttribute("customer",customerService.getCustomer());
-		System.out.print("ASDSE");
 		return ("nuevo-customer");
 	}	
 	
@@ -36,10 +35,12 @@ public class CustomerController {
 	public ModelAndView agregarCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult resulValidacion) {
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
+			System.out.println("CON Errores");
 			modelView = new ModelAndView("nuevo-customer");
 			modelView.addObject("customer",customer);
 			return modelView;
 		}else {//no se encuentran errores
+			System.out.println("Sin Errores");
 			modelView = new ModelAndView("redirect:/customer/listado"); //lista de customer
 			customerService.agregarCustomer(customer);
 			return modelView;

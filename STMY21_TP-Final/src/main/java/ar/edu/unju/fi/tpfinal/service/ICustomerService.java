@@ -10,19 +10,19 @@ public interface ICustomerService {
 	public Customer getCustomer();
 	
 	//Obtener todas las Clientes
-	public void agregarCustomer(Customer customer);
-	
-	public Optional<Customer> getCustomerPorCustomerNum(Long customerNumber);
-	
 	public List<Customer> getCustomers();
 	
+	public void agregarCustomer(Customer customer);
+	
 	public void eliminarCustomer(Long customerNumber);
+	
+	public Optional<Customer> getCustomerPorCustomerNum(Long customerNumber);
 	
 	public List<Customer> obtenerCustomerEncontrado();
 	
 	public void agregarCustomerEncontrado(Customer customer);
 	
-	public void quitarCustomerLista(Long id);
+	public void quitarCustomerLista(Long customerNumber);
 	
 	public Customer getCustomerPorNumber(Long customerNumber);
 
