@@ -1,11 +1,13 @@
 package ar.edu.unju.fi.tpfinal.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -80,12 +82,11 @@ public class Customer {
 	@JoinColumn(name = "salesRepEmployeeNumber")
 	private Employee employee;
 	
-	
-	
-	
-	
-	
+	@OneToOne(mappedBy = "customerNumber", cascade = CascadeType.ALL)
+    private Order order;
+
 	// Constructores , Getters y Setters
+	
 	
 	public Customer() {
 		// TODO Auto-generated constructor stub
@@ -179,14 +180,6 @@ public class Customer {
 		this.country = country;
 	}
 
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
 	public double getCreditLimit() {
 		return creditLimit;
 	}
@@ -195,13 +188,33 @@ public class Customer {
 		this.creditLimit = creditLimit;
 	}
 
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [customerNumber=" + customerNumber + ", customerName=" + customerName + ", contactLastName="
 				+ contactLastName + ", contactFirstName=" + contactFirstName + ", phone=" + phone + ", addressLine1="
 				+ addressLine1 + ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state
-				+ ", postalCode=" + postalCode + ", country=" + country + ", employee=" + employee + ", creditLimit="
-				+ creditLimit + "]";
+				+ ", postalCode=" + postalCode + ", country=" + country + ", creditLimit=" + creditLimit + ", employee="
+				+ employee + ", order=" + order + "]";
 	}
-
+	
 }
+	
+	
+	
+	

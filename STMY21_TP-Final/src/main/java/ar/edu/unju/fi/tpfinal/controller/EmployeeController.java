@@ -48,7 +48,7 @@ public class EmployeeController {
 	@GetMapping("/employee/listado")
 	public ModelAndView getEmployeePage() {
 		ModelAndView modelView = new ModelAndView("employees");
-		modelView.addObject("employees", employeeService.getEmployee());
+		modelView.addObject("employees", employeeService.getEmployees());
 		return modelView;
 	}
 	

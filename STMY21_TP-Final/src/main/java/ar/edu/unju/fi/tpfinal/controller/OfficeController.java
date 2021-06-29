@@ -50,7 +50,7 @@ public class OfficeController {
 	@GetMapping("/office/listado")
 	public ModelAndView getOfficePage() {
 		ModelAndView modelView = new ModelAndView("offices");
-		modelView.addObject("offices", officeService.getOffice());
+		modelView.addObject("offices", officeService.getOffices());
 		return modelView;
 	}
 	
