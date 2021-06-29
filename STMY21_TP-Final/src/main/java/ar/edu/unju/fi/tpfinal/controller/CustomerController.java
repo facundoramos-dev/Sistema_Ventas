@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.model.Customer;
+import ar.edu.unju.fi.tpfinal.model.Employee;
 import ar.edu.unju.fi.tpfinal.service.ICustomerService;
+import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
 
 @Controller
 public class CustomerController {
@@ -25,10 +28,16 @@ public class CustomerController {
 	@Qualifier("customerService")
 	private ICustomerService customerService;
 	
+	@Autowired
+	@Qualifier("employeeService")
+	private IEmployeeService employeeService;
+	
 	@GetMapping("/customer/nuevo")
 	public String getCustomerPage(Model model) {
 		model.addAttribute("customer",customerService.getCustomer());
-		System.out.print("ASDSE");
+		// lista de los empleados para clientes
+		List<Employee> employees = employeeService.getEmployees();
+		model.addAttribute("employees", employees);
 		return ("nuevo-customer");
 	}	
 	
@@ -36,15 +45,17 @@ public class CustomerController {
 	public ModelAndView agregarCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult resulValidacion) {
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
+			System.out.println("CON Errores");
 			modelView = new ModelAndView("nuevo-customer");
 			modelView.addObject("customer",customer);
 			return modelView;
 		}else {//no se encuentran errores
+			System.out.println("Sin Errores");
 			modelView = new ModelAndView("redirect:/customer/listado"); //lista de customer
 			customerService.agregarCustomer(customer);
 			return modelView;
 		}
-	}
+	}	
 	
 	@GetMapping("/customer/listado")
 	public ModelAndView getCustomerPage() {
