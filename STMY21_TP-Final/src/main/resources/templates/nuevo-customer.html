@@ -53,7 +53,7 @@
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Teléfono de cliente:</span>
-							<input type="text" id="phone" th:field="*{phone}" placeholder="Ingrese su teléfono" class="form-control"/>	
+							<input type="number" id="phone" th:field="*{phone}" placeholder="Ingrese su teléfono" class="form-control"/>	
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
 					</div>
@@ -110,9 +110,15 @@
 					<div class="input-group col-sm-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Número de empleado del representante de ventas:</span>
-							<input type="text" id="employeeNumber" th:field="*{employee.employeeNumber}" class="form-control" />
+							
+							<select id="employee" th:field="*{employee.employeeNumber}">
+								<option th:each= "emplo: ${employees}"
+								th:value= "${emplo.employeeNumber}" 
+								th:text="${emplo.employeeNumber}"
+								th:selected="false" />
+							</select>
+						
 						</div>
-						<div class="alert-danger" th:if="${#fields.hasErrors('employee.employeeNumber')}" th:errors="*{employee.employeeNumber}"></div>
 					</div>
 					
 					<div class="input-group col-sm-4 mb-2">

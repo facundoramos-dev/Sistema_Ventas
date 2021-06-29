@@ -4,6 +4,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,8 +24,8 @@ import org.springframework.stereotype.Component;
 public class Customer {
 	
 	@Id
-	@NotNull(message="El campo customerNumber no debe estar vacio")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@NotNull(message="El campo customerNumber no debe estar vacio")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long customerNumber;
 
 	@NotNull(message = "Este campo customerName no puede estar vacio")

@@ -78,4 +78,10 @@ public class EmployeeServiceImp implements IEmployeeService {
 		return employee;
 	}
 
+	@Override
+	public void eliminarRelaciones(Long employee) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
