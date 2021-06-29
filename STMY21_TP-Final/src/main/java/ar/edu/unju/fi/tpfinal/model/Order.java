@@ -5,12 +5,15 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,8 +27,8 @@ import org.springframework.stereotype.Component;
 public class Order {
 
 	@Id
-	@NotNull(message="El campo orderNumber no debe estar vacio")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@NotNull(message="El campo orderNumber no debe estar vacio")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long orderNumber;
 	
 	@NotNull(message = "El campo ordenDate no puede estar vacio")
@@ -48,10 +51,12 @@ public class Order {
 	@Column (name = "status")
 	private String status;
 	
-	@NotNull(message = "El campo comments no puede estar vacio")
+	@NotBlank(message = "El campo comments no puede estar vacio")
+	@Size(min = 1, max = 15, message = "Este campo no debe ser vacío y el maximo es de 15 caracteres")
 	@Column (name = "comments", columnDefinition = "TEXT")
 	private String comments;
 	
+	//@Valid
 	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "customerNumber")
@@ -139,5 +144,4 @@ public class Order {
 				+ ", shippedDate=" + shippedDate + ", status=" + status + ", comments=" + comments + ", customer="
 				+ customer + "]";
 	}
-
 }

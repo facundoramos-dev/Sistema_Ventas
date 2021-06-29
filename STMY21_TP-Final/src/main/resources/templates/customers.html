@@ -51,7 +51,7 @@
 							<td th:text="${cust.country}"></td>
 							<td th:if="${cust.employee != NULL}" th:text="${cust.employee.employeeNumber}"></td>
 							<td th:if="${cust.employee == NULL}" th:text="'Esta vacio no hay empleados ingresados'"></td>
-							<td th:text="${cust.creditLimit}"></td>
+							<td th:text="${'$'+cust.creditLimit}"></td>
 							<td>
 								<a th:href="@{/customer/editar/}+${cust.customerNumber}" class="btn btn-warning">Editar</a>
 								<a th:href="@{/customer/eliminar/}+${cust.customerNumber}" class="btn btn-danger">Eliminar</a>

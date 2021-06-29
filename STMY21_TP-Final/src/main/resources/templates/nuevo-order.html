@@ -13,20 +13,9 @@
 		
 		<div class="container mb-3">
 			<h1>Registro De Un Nuevo Pedido</h1>
-			<form th:action="@{/order/guardar}" th:object="${order}" method="post" class="pt-4 pl-5 pr-5" >
-				<input type="hidden" th:field="*{customer.customerNumber}" />
-				
+			<form th:action="@{/order/guardar}" th:object="${order}" method="post" class="pt-4" >
 				<div class="form-group row">
-					
-					<div class="input-group col-sm-4 mb-2">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Numero del Pedido:</span>
-							<input type="number" id="orderNumber" th:field="*{orderNumber}" class="form-control"/>
-						</div>
-						<div class="alert-danger" th:if="${#fields.hasErrors('orderNumber')}" th:errors="*{orderNumber}"></div>
-					</div>
-					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Fecha del Pedido:</span>
 							<input type="date" id="orderDate" th:field="*{orderDate}" class="form-control"/>
@@ -34,7 +23,7 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('orderDate')}" th:errors="*{orderDate}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Fecha Requerida del Pedido:</span>
 							<input type="date" id="requiredDate" th:field="*{requiredDate}" class="form-control"/>
@@ -42,7 +31,7 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('requiredDate')}" th:errors="*{requiredDate}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-5 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Fecha de Envío del Pedido:</span>
 							<input type="date" id="shippedDate" th:field="*{shippedDate}" class="form-control"/>
@@ -50,7 +39,7 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('shippedDate')}" th:errors="*{shippedDate}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Estado del Pedido:</span>
 							<input type="text" id="status" th:field="*{status}" placeholder="Ingrese su estado..." class="form-control"/>	
@@ -58,27 +47,27 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
 					</div>
 				
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-8 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Comentarios del Pedido:</span>
-							<input type="text" id="comments" th:field="*{comments}" class="form-control"/>
+							<input type="text" id="comments" th:field="*{comments}" placeholder="Ingrese su Comentarios...." class="form-control col-sm-8" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}"></div>
 					</div>
 					
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-8 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">número de cliente representa:</span>
 							<select id="customer" th:field="*{customer.customerNumber}" class="custom-select">
 								<option value="" seleted>Seleccicione...</option>
-								<option th:each= "custo: ${customers}"
-								th:value= "${custo.customerNumber}" 
-								th:text="${custo.customerNumber}"
+								<option th:each= "cust: ${customers}"
+								th:value= "${cust.customerNumber}" 
+								th:text="${cust.customerNumber}"
 								th:selected="false" />
 							</select>
 						</div> 
-					</div> 
+					</div>
 					
 				</div> 	
 				

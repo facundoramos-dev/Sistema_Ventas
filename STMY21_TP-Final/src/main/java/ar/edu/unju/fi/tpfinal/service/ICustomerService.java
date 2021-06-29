@@ -9,7 +9,6 @@ public interface ICustomerService {
 
 	public Customer getCustomer();
 	
-	
 	//Obtener todas las Clientes
 	public List<Customer> getCustomers();
 

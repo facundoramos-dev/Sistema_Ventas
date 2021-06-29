@@ -14,7 +14,7 @@
 		<div class="container-fluid mb-3">
 			<h1>Registro De Un Nuevo Empleado</h1>
 			<form th:action="@{/employee/guardar}" th:object="${employee}" method="post" class="pt-4" >
-				<input type="hidden" th:field="*{employeeNumber}" />
+				
 				<div class="form-group row">
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
@@ -23,6 +23,7 @@
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
 					</div>						
+					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text col-auto" id="basic-addon1">Nombre:</span>
@@ -30,6 +31,7 @@
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
 					</div>					
+					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text col-auto" id="basic-addon1">Extension:</span>
@@ -37,6 +39,7 @@
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('extension')}" th:errors="*{extension}"></div>
 					</div>					
+					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text col-auto" id="basic-addon1">Email:</span>
@@ -44,6 +47,7 @@
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 					</div>
+					
 					<div class="input-group col-md-8 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Título Profesional del Empleado:</span>
@@ -51,6 +55,7 @@
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}"></div>
 					</div>
+					
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text col-auto" id="basic-addon1">Codigo de Oficina:</span>
@@ -63,6 +68,7 @@
 							</select>
 						</div>
 					</div>
+					
 					<div class="input-group col-md-8 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text col-auto" id="basic-addon1">Responde a:</span>
@@ -80,10 +86,12 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary mr-3" >Guardar</button>
 					<button type="reset" class="btn btn-primary">Borrar</button>
 				</div>
+			
 			</form>
 		</div>
 		

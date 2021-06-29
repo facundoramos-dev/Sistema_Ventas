@@ -32,6 +32,7 @@ public class OrderController {
 	
 	@GetMapping("/order/nuevo")
 	public String getOrderPage(Model model) {
+		System.out.println("VA QUERIENDO");
 		model.addAttribute("order",orderService.getOrder());
 		model.addAttribute("customers",customerService.getCustomers());
 		return ("nuevo-order");
@@ -41,11 +42,13 @@ public class OrderController {
 	public ModelAndView agregarOrder(@Valid @ModelAttribute("order") Order order, BindingResult resulValidacion) {
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
+			System.out.println("CON Errores");
 			modelView = new ModelAndView("nuevo-order");
-			modelView.addObject("order",order);
+			modelView.addObject("order",orderService.getOrder());
 			modelView.addObject("customers",customerService.getCustomers());
 			return modelView;
 		}else {//no se encuentran errores
+			System.out.println("SIN Errores");
 			modelView = new ModelAndView("redirect:/order/listado"); //lista de order
 			order.setCustomer(customerService.getCustomerPorNumber(order.getCustomer().getCustomerNumber()));
 			orderService.agregarOrder(order);

@@ -13,83 +13,69 @@
 		
 		<div class="container mb-3">
 			<h1>Registro De Un Nueva Oficina</h1>
-			<form th:action="@{/office/guardar}" th:object="${office}" method="post" class="pt-4 pl-5 pr-5" >
+			<form th:action="@{/office/guardar}" th:object="${office}" method="post" class="pt-4" >
+				
 				<div class="form-group row">
-					<!--  <div class="input-group col-sm-4 mb-2">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Código de Oficina:</span>
-							<input type="number" id="officeCode" th:field="*{officeCode}" />
-						</div>
-						<div class="alert-danger" th:if="${#fields.hasErrors('officeCode')}" th:errors="*{officeCode}"></div>
-					</div> -->
-					<div class="form-group row">
-						<label for="officeCode" class="col-auto col-form-label text-center">Codigo de Oficina:</label>
-						<div class="col-auto">
-							<input type="number" id="officeCode" th:field="*{officeCode}" />
-						</div>
-						<div class="alert-danger" th:if="${#fields.hasErrors('officeCode')}" th:errors="*{officeCode}"></div>
-					</div>
-					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Ciudad:</span>
-							<input type="text" id="city" th:field="*{city}"/>
+							<input type="text" id="city" th:field="*{city}" placeholder="Ingrese su Ciudad..." class="form-control"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Telefono:</span>
-							<input type="text" id="phone" th:field="*{phone}"/>
+							<input type="text" id="phone" th:field="*{phone}" placeholder="Ingrese su teléfono" class="form-control"/>	
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Direccion 1:</span>
-							<input type="text" id="addressLine1" th:field="*{addressLine1}"/>
+							<input type="text" id="addressLine1" th:field="*{addressLine1}" placeholder="Ingrese su Direccion 1" class="form-control"/>	
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('addressLine1')}" th:errors="*{addressLine1}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Direccion 2:</span>
-							<input type="text" id="addressLine2" th:field="*{addressLine2}"/>
+							<input type="text" id="addressLine2" th:field="*{addressLine2}" placeholder="Ingrese su Direccion 2" class="form-control"/>	
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('addressLine2')}" th:errors="*{addressLine2}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Estado:</span>
-							<input type="text" id="state" th:field="*{state}"/>
+							<input type="text" id="state" th:field="*{state}" placeholder="Ingrese su Estado" class="form-control"/>	
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></div>
 					</div>
 	
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Pais:</span>
-							<input type="text" id="country" th:field="*{country}"/>
+							<input type="text" id="country" th:field="*{country}" placeholder="Ingrese su pais..." class="form-control" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Codigo Postal:</span>
-							<input type="text" id="postalCode" th:field="*{postalCode}"/>
+							<input type="text" id="postalCode" th:field="*{postalCode}" placeholder="Ingrese su Codigo Postal... " class="form-control" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}"></div>
 					</div>
 					
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Territorio:</span>
-							<input type="text" id="territory" th:field="*{territory}"/>
+							<input type="text" id="territory" th:field="*{territory}" placeholder="Ingrese su Territorio... " class="form-control" />
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('territory')}" th:errors="*{territory}"></div>
 					</div>
