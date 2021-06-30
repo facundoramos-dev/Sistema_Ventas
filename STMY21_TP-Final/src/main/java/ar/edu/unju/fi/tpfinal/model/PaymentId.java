@@ -9,6 +9,12 @@ import javax.persistence.OneToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * 
+ * Clase PaymentID contiene las ID de Payment
+ * Se implemento para permitir tener una clave primaria compuesta
+ *
+ */
 @Embeddable
 public class PaymentId implements Serializable  {
 	
@@ -23,6 +29,10 @@ public class PaymentId implements Serializable  {
 	//@GeneratedValue(strategy = GenerationType.IDENTITY) //solo sirve con entidaddes simples no incrustadas
 	private Long checkNumber;
 
+	
+	/**
+	 * Constructores
+	 */
 	public PaymentId() {
 		// TODO Auto-generated constructor stub
 	}
@@ -32,6 +42,9 @@ public class PaymentId implements Serializable  {
 		this.customerNumber = customerNumber;
 	}
 
+	/**
+	 * Getters y Setters
+	 */
 	public Customer getCustomerNumber() {
 		return customerNumber;
 	}

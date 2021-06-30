@@ -16,6 +16,12 @@ import javax.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
+/**
+ * 
+ * Clase Office representa una oficina
+ *
+ */
 @Entity
 @Table (name = "OFFICES")
 @Component("officeObj")
@@ -67,11 +73,19 @@ public class Office{
 	@OneToMany( mappedBy = "office" )
 	private List<Employee> employees = new ArrayList<Employee>();
 	
+	/**
+	 *  Constructor sin parametros
+	 */
 	
 	public Office() {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	/**
+	 * 
+	 * Getters and setters
+	 */
 	public Long getOfficeCode() {
 		return officeCode;
 	}

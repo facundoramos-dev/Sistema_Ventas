@@ -16,6 +16,9 @@ import ar.edu.unju.fi.tpfinal.service.ICustomerService;
 @Service("customerService")
 public class CustomerServiceImp implements ICustomerService{
 
+	/**
+	 * Constante LOGGER que permite ver lo que ocurre en el sistema , al implementarlo dentro de los distintos metodos
+	 */
 	private static final Log LOGGER = LogFactory.getLog(CustomerServiceImp.class);
 	
 	List<Customer> customerEncontrado = new ArrayList<Customer>();
@@ -27,24 +30,26 @@ public class CustomerServiceImp implements ICustomerService{
 
 	@Override
 	public Customer getCustomer() {
-		LOGGER.info("METHOD: getCustomer - devuelve un objeto Customer Autoinyectado");
+		LOGGER.info("METHOD: getCustomer -  objeto Customer obtenido ");
 		return this.customer;
 	}
 
 	@Override
 	public void agregarCustomer(Customer customer) {
+		LOGGER.info("METHOD: agregarCustomer -  objeto Customer guardado en base de datos ");
 		customerRepository.save(customer);
 	}
 
 	@Override
 	public List<Customer> getCustomers() {
-		LOGGER.info("METHOD: getCustomers - devuelve la lista de clientes");
+		LOGGER.info("METHOD: getCustomers -  objetos Customers obtenidos ");
 		List<Customer> customers =(List<Customer>) customerRepository.findAll();
 		return customers;
 	}
 
 	@Override
 	public void eliminarCustomer(Long customerNumber) {
+		LOGGER.info("METHOD: eliminarCustomer -  objeto Customer eliminado ");
 		customerRepository.deleteById(customerNumber);
 	}
 
@@ -55,6 +60,12 @@ public class CustomerServiceImp implements ICustomerService{
 		return customer;
 	}
 
+	
+	/**
+	 * Auxiliares
+	 * 
+	 */
+	
 	@Override
 	public List<Customer> obtenerCustomerEncontrado() {
 		return customerEncontrado;

@@ -16,6 +16,11 @@ import javax.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * Clase Product representa un Producto
+ * 
+ */
 @Entity
 @Table (name = "PRODUCTS")
 @Component("productObj")
@@ -62,10 +67,17 @@ public class Product {
 	@Column (name = "MSRP")
 	private Double msrp;
 	
+	
+	/**
+	 * Constructor 
+	 */
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Getters y Setters
+	 */
 	public Long getProductCode() {
 		return productCode;
 	}

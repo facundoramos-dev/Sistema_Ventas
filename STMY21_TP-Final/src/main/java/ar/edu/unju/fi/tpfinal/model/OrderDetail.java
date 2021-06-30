@@ -10,14 +10,19 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * Clase OrderDetail representa detalle de orden
+ *
+ */
 @Entity
 @Table (name = "ORDERDETAILS")
 @Component("orderDetailObj")
 public class OrderDetail implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; /* creado al implementar Serializable */
 	
-	@EmbeddedId
+	@EmbeddedId										/* Denota una clave primaria compuesta es incrustable */
 	private OrderDetailId id;
 	
 	@NotNull(message = "El campo quantityOrdered no puede estar vacio")
@@ -32,10 +37,14 @@ public class OrderDetail implements Serializable{
 	@Column (name = "orderLineNumber")
 	private short orderLineNumber;
 	
+	
+	/* Constructor */
 	public OrderDetail() {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	/* Getters y Setters */
 	public OrderDetailId getId() {
 		return id;
 	}

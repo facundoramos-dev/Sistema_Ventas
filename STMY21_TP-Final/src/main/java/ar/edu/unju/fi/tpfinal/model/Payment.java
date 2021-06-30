@@ -13,6 +13,11 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * Clase Payment representa Pago
+ *
+ */
 @Entity
 @Table (name = "PAYMENTS")
 @Component("paymentObj")
@@ -33,10 +38,18 @@ public class Payment implements Serializable{
 	@Column(name = "amount", columnDefinition = "DECIMAL(10,2)")
 	private double amount;
 	
+	
+	/**
+	 * Constructor
+	 */
 	public Payment() {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * 
+	 * Getters y setters
+	 */
 	public PaymentId getId() {
 		return id;
 	}

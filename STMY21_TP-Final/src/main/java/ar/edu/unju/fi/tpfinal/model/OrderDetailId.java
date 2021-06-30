@@ -5,8 +5,15 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
  
-@Embeddable
-public class OrderDetailId implements Serializable {
+
+/**
+ * 
+ * Clase que contiene las claves primarias de OrderDetail/ Detalle de orden
+ *
+ */
+
+@Embeddable												/* Especifica una clase cuyas instancias se almacenan como */
+public class OrderDetailId implements Serializable {	/* parte instrinseca de una entidad propietaria */
 
 	private static final long serialVersionUID = 1L;
 	
@@ -18,8 +25,11 @@ public class OrderDetailId implements Serializable {
 	@JoinColumn(name = "orderNumber")
 	private Order orderNumber;
 	
+	
+/**
+ * Constructores
+ */
 	public OrderDetailId() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public OrderDetailId(Product productCode, Order orderNumber) {
@@ -28,6 +38,10 @@ public class OrderDetailId implements Serializable {
 		this.orderNumber = orderNumber;
 	}
 
+/**
+ * Getters y Setters
+ * 
+ */
 	public Product getProductCode() {
 		return productCode;
 	}
