@@ -44,12 +44,12 @@ public class Order {
 	private LocalDate shippedDate;
 	
 	@NotEmpty(message = "El campo status no puede estar vacio")
-	@Size(min = 1, max = 15, message = "Este campo no debe ser vacío y el maximo es de 15 caracteres")
+	@Size(min = 1, max = 15, message = "El maximo es de 15 caracteres")
 	@Column (name = "status")
 	private String status;
 	
 	@NotEmpty(message = "El campo comments no puede estar vacio")
-	@Size(min = 1, max = 15, message = "Este campo no debe ser vacío y el maximo es de 15 caracteres")
+	@Size(min = 1, max = 15, message = "El maximo es de 15 caracteres")
 	@Column (name = "comments", columnDefinition = "TEXT")
 	private String comments;
 	

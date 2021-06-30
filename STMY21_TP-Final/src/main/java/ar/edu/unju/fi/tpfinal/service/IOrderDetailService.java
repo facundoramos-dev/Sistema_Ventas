@@ -21,5 +21,8 @@ public interface IOrderDetailService {
 	
 	public Optional<OrderDetail> getOrderDetailPorId(OrderDetailId id);
 	
+	public OrderDetail getOrdeDetailPorOrderNumber(Long orderNumber);
+	
+	public void eliminarOrderDetailPorOrderNumber(Long orderNumber);
 	
 }

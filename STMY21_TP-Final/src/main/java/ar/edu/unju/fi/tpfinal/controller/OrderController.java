@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.model.Order;
+import ar.edu.unju.fi.tpfinal.model.OrderDetail;
 import ar.edu.unju.fi.tpfinal.service.ICustomerService;
+import ar.edu.unju.fi.tpfinal.service.IOrderDetailService;
 import ar.edu.unju.fi.tpfinal.service.IOrderService;
+import ar.edu.unju.fi.tpfinal.service.IProductService;
 
 @Controller
 public class OrderController {
@@ -30,28 +33,52 @@ public class OrderController {
 	@Qualifier("customerService")
 	private ICustomerService customerService;
 	
+	@Autowired
+	@Qualifier("orderDetailService")
+	private IOrderDetailService detailService;
+	
+	@Autowired
+	@Qualifier("productService")
+	private IProductService productService;
+	
 	@GetMapping("/order/nuevo")
 	public String getOrderPage(Model model) {
-		System.out.println("VA QUERIENDO");
-		model.addAttribute("order",orderService.getOrder());
-		//model.addAttribute("customers",customerService.getCustomers());
-		return ("nuevo-order");
-	}	
+		if((customerService.getCustomers().size()!=0)&&(productService.getProducts().size()!=0)) {
+			model.addAttribute("order",orderService.getOrder());
+			model.addAttribute("detail",detailService.getOrderDetail());
+			model.addAttribute("customers",customerService.getCustomers());
+			model.addAttribute("products", productService.getProducts());
+			return ("nuevo-order");
+		}else {
+			return("redirect:/order/error");
+		}
+	}
+	
+	@GetMapping("/order/error")
+	public String getOrderPageError1() {
+		if(customerService.getCustomers().size()==0) {
+			return("error-order");
+		}
+		return("error-order2");
+	}
 	
 	@PostMapping("/order/guardar")
-	public ModelAndView agregarOrder(@Valid @ModelAttribute("order") Order order, BindingResult resulValidacion) {
+	public ModelAndView agregarOrder(@Valid @ModelAttribute("order") Order order, BindingResult resulValidacion,@Valid @ModelAttribute("detail") OrderDetail detail){
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
-			System.out.println("CON Errores");
 			modelView = new ModelAndView("nuevo-order");
-			modelView.addObject("order",orderService.getOrder());
+			modelView.addObject("order",order);
+			modelView.addObject("detail",detail);
 			modelView.addObject("customers",customerService.getCustomers());
+			modelView.addObject("products", productService.getProducts());
 			return modelView;
 		}else {//no se encuentran errores
-			System.out.println("SIN Errores");
 			modelView = new ModelAndView("redirect:/order/listado"); //lista de order
-			//order.setCustomer1(customerService.getCustomerPorNumber(order.getCustomer1().getCustomerNumber()));
+			order.setCustomer1(customerService.getCustomerPorNumber(order.getCustomer1().getCustomerNumber()));
 			orderService.agregarOrder(order);
+			detail.getId().setOrderNumber(order);
+			detail.getId().setProductCode(productService.getProductPorCodigo(detail.getId().getProductCode().getProductCode()));
+			detailService.agregarOrderDetail(detail);
 			return modelView;
 		}
 	}
@@ -68,13 +95,18 @@ public class OrderController {
 		ModelAndView modelView = new ModelAndView("nuevo-order");
 		Optional<Order> order =  orderService.getOrderPorOrderNumber(orderNumber);
 		modelView.addObject("order",order);
+		modelView.addObject("detail", detailService.getOrdeDetailPorOrderNumber(orderNumber));
 		modelView.addObject("customers",customerService.getCustomers());
+		modelView.addObject("products", productService.getProducts());
 		return modelView;
 	}
 	
 	@GetMapping("/order/eliminar/{id}")
 	public ModelAndView getOrderDeletePage(@PathVariable(value="id")Long orderNumber) {
 		ModelAndView modelView = new ModelAndView("redirect:/order/listado");
+		if(detailService.getOrdeDetailPorOrderNumber(orderNumber)!=null) {
+			detailService.eliminarOrderDetailPorOrderNumber(orderNumber);
+		}
 		orderService.eliminarOrder(orderNumber);
 		return modelView;
 	}
