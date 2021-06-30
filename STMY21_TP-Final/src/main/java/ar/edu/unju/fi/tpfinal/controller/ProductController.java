@@ -1,6 +1,6 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
-import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.model.Product;
-import ar.edu.unju.fi.tpfinal.model.ProductLine;
 import ar.edu.unju.fi.tpfinal.service.IProductLineService;
 import ar.edu.unju.fi.tpfinal.service.IProductService;
 
@@ -28,18 +27,24 @@ public class ProductController {
 	private IProductService productService;
 	
 	@Autowired
+	@Qualifier("productLineService")
 	private IProductLineService productLineService;
 	
-	
 	@GetMapping("/product/nuevo")
-	public String getProductPage(Model model) {		
-		model.addAttribute("product",productService.getProduct());
-		
-		List<ProductLine> productLines = productLineService.getProductLines();
-		model.addAttribute("productLines", productLines);
-		
-		return ("nuevo-product");
-	}	
+	public String getProductPage(Model model) {
+		if(productLineService.getProductLines().size()!=0) {
+			model.addAttribute("product", productService.getProduct());
+			model.addAttribute("productLines", productLineService.getProductLines());
+			return ("nuevo-product");
+		}else {
+			return("redirect:/product/error");
+		}
+	}
+	
+	@GetMapping("/product/error")
+	public String getProductErrorPage(Model model) {
+		return("error-producto");
+	}
 	
 	@PostMapping("/product/guardar")
 	public ModelAndView agregarProduct(@Valid @ModelAttribute("product") Product product, BindingResult resulValidacion) {
@@ -47,14 +52,14 @@ public class ProductController {
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-product");
 			modelView.addObject("product",product);
-			//productService.agregarProduct(producto);
+			modelView.addObject("productLines", productLineService.getProductLines());
 			System.out.println("ERROR");
 			return modelView;
 		}else {//no se encuentran errores
-			modelView = new ModelAndView("redirect:/product/listado"); //lista de employee
-			productService.agregarProduct(product);
-			modelView.addObject("products", productService.getProducts());
 			System.out.println("SIRVE");
+			modelView = new ModelAndView("redirect:/product/listado");
+			product.setProductLine(productLineService.getProductLinePorCodigo(product.getProductLine().getId()));
+			productService.agregarProduct(product);
 			return modelView;
 		}
 	}
@@ -63,18 +68,14 @@ public class ProductController {
 	public ModelAndView getProductPage() {
 		ModelAndView modelView = new ModelAndView("listado-product");
 		modelView.addObject("products", productService.getProducts());
-		
 		return modelView;
 	}
 	
 	@GetMapping("/product/editar/{id}")
 	public ModelAndView getProductEditPage(@PathVariable(value="id")Long productCode ) {
 		ModelAndView modelView = new ModelAndView("nuevo-product");
-		Product product =  productService.getProductPorCodigo(productCode);
-		
-		List<ProductLine> productLines = productLineService.getProductLines();
-		modelView.addObject("productLines", productLines);
-		
+		Optional<Product> product = productService.getProductPorCodigoId(productCode);
+		modelView.addObject("productLines", productLineService.getProductLines());
 		modelView.addObject("product",product);
 		return modelView;
 	}

@@ -11,93 +11,80 @@
 	
 		<header th:replace="/layouts/nav :: nav"></header>
 		
-	<div class="container mb-3">
+		<div class="container mb-3">
 			<h1>Registro De Un Nuevo Producto</h1>
-				<form th:action="@{/product/guardar}" th:object="${product}" method="post" class="pt-4 pl-5 pr-5" >
+			<form th:action="@{/product/guardar}" th:object="${product}" method="post" class="pt-4 pl-5 pr-5" >
 				
 				<input type="hidden" th:field="*{productCode}" /> 
 				
-				<div class="form-group row">
-					<div class="input-group col-sm-4 mb-2">
+				<div class="form-group row">	
+					<div class="input-group col-md-6 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" for="productName">Nombre del producto:</span>
-							<input type="text" id="productName" th:field="*{productName}"/>
+							<span class="input-group-text col-auto" id="basic-addon1">Nombre:</span> 
+							<input type="text" id="productName" th:field="*{productName}" placeholder="Ingrese Nombre..." class="form-control col-sm-11"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></div>
 					</div>
-				</div>
-							
 					
-				<div class="form-group row">
-					<label for="productLine" class="col-auto col-form-label">Linea del producto:</label>
-					<select th:field="*{productLine.id}" id="productLine">
-						<option 
-						th:each= "produc: ${productLines}"
-						th:value= "${produc.id}" 
-						th:text="${produc.productLineName}"
-						th:selecter="false" /> 
-					</select>
-				</div>
-				
-		
-				<div class="form-group row">
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-6 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" for="productScale">Escala del producto:</span>
-							<input type="text" id="productScale" th:field="*{productScale}"/>
+							<span class="input-group-text col-auto" id="basic-addon1">Linea de Producto:</span>
+							<select id="productLines" th:field="*{productLine.id}" class="custom-select col-auto">
+								<option th:each= "pl: ${productLines}"
+								th:value= "${pl.id}" 
+								th:text="${pl.productLineName}"
+								th:selected="false" />
+							</select>
 						</div>
-							<div class="alert-danger" th:if="${#fields.hasErrors('productScale')}" th:errors="*{productScale}"></div>
 					</div>
-				</div>
-				
-				<div class="form-group row">
-					<div class="input-group col-sm-4 mb-2">
+					
+					<div class="input-group col-md-6 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" for="productVendor">Vendedor del producto:</span>
-							<input type="text" id="productVendor" th:field="*{productVendor}"/>
+							<span class="input-group-text col-auto" id="basic-addon1">Escala:</span> 
+							<input type="text" id="productScale" th:field="*{productScale}" placeholder="Ingrese Escala..." class="form-control col-auto"/>
 						</div>
-							<div class="alert-danger" th:if="${#fields.hasErrors('productVendor')}" th:errors="*{productVendor}"></div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('productScale')}" th:errors="*{productScale}"></div>
 					</div>
-				</div>
-				
-				<div class="form-group row">
-					<div class="input-group col-sm-4 mb-2">
+					
+					<div class="input-group col-md-6 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text col-auto" id="basic-addon1">Vendedor:</span> 
+							<input type="text" id="productVendor" th:field="*{productVendor}" placeholder="Ingrese Vendedor..." class="form-control col-auto"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('productVendor')}" th:errors="*{productVendor}"></div>
+					</div>
+					
+					<div class="input-group col-sm-12 mb-2">
 						<div class="input-group">
 						  <span for="productDescription" class="input-group-text">Descripcion</span>
-						  <textarea id="productDescription" class="form-control" aria-label="Descripcion" th:field="*{productDescription}" ></textarea>
+						  <textarea id="productDescription" class="form-control" aria-label="Descripcion" th:field="*{productDescription}" placeholder="Descripcion del Producto..."></textarea>
 						</div>
 					</div>
-				</div>
-				
-				<div class="form-group row">
-					<div class="input-group col-sm-4 mb-2">
-						<div class="input-group-prepend">
-							<span class="input-group-text" for="quantityInStock">Stock disponible:</span>
-							<input type="number" id="quantityInStock" th:field="*{quantityInStock}"/>
-						</div>
-							<div class="alert-danger" th:if="${#fields.hasErrors('quantityInStock')}" th:errors="*{quantityInStock}"></div>
-					</div>
-				</div>
 					
-				<div class="form-group row">
-					<div class="input-group col-sm-4 mb-2">
+					<div class="input-group col-md-6 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" for="buyPrice" step="any">Precio: $</span>
-							<input type="number" id="buyPrice" step="any" th:field="*{buyPrice}"/>
+							<span class="input-group-text col-auto" id="basic-addon1">Stock:</span> 
+							<input type="number" id="quantityInStock" th:field="*{quantityInStock}" placeholder="Ingrese Stock..." class="form-control col-auto"/>
 						</div>
-							<div class="alert-danger" th:if="${#fields.hasErrors('buyPrice')}" th:errors="*{buyPrice}"></div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('quantityInStock')}" th:errors="*{quantityInStock}"></div>
 					</div>
-				</div>
 					
-				<div class="form-group row">	
-					<div class="input-group mb-3">
-					  <span class="input-group-text" for="msrp">Precio de venta sugerido por el fabricante </span>
-					  <input type="number" id="msrp" step="any" th:field="*{msrp}"/>
+					<div class="input-group col-md-6 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text col-auto" id="basic-addon1">Precio: $</span> 
+							<input type="number" id="buyPrice" th:field="*{buyPrice}" placeholder="Ingrese Precio..." class="form-control col-auto"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('buyPrice')}" th:errors="*{buyPrice}"></div>
 					</div>
-					<div class="alert-danger" th:if="${#fields.hasErrors('msrp')}" th:errors="*{msrp}"></div>
+					
+					<div class="input-group col-sm-12 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text col-auto" id="basic-addon1">Precio S/Fabricante: $</span> 
+							<input type="number" id="msrp" th:field="*{msrp}" placeholder="Sugerido para el Fabricante..." class="form-control col-sm-11"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('msrp')}" th:errors="*{msrp}"></div>
+					</div>
 				</div>
-				 
-				
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary mr-3" >Guardar</button>
 					<button type="reset" class="btn btn-primary">Borrar</button>

@@ -64,7 +64,7 @@ public class ProductLineController {
 	@GetMapping("/productLine/editar/{id}")
 	public ModelAndView getProductLineEditPage(@PathVariable(value="id")Long id ) {
 		ModelAndView modelView = new ModelAndView("nuevo-productLine");
-		Optional<ProductLine> productLineE =  productLineService.getProductLinePorCodigo(id);
+		Optional<ProductLine> productLineE =  productLineService.getProductLinePorCodigoId(id);
 		modelView.addObject("productLine",productLineE);
 		return modelView;
 	}

@@ -12,7 +12,7 @@ import ar.edu.unju.fi.tpfinal.repository.IProductLineRepository;
 import ar.edu.unju.fi.tpfinal.service.IProductLineService;
 
 @Service("productLineService")
-public class ProductLineService implements IProductLineService {
+public class ProductLineServiceImp implements IProductLineService {
 
 	@Autowired
 	private IProductLineRepository productLineRepository;
@@ -45,15 +45,17 @@ public class ProductLineService implements IProductLineService {
 	@Override
 	public void eliminarProductLine(Long id) {
 		productLineRepository.deleteById(id);
-		
 	}
 
 	@Override
-	public Optional<ProductLine> getProductLinePorCodigo(Long id) {
+	public Optional<ProductLine> getProductLinePorCodigoId(Long id) {
 		Optional<ProductLine>productLineEncontrado = productLineRepository.findById(id);
 		return productLineEncontrado;
 	}
 
+	@Override
+	public ProductLine getProductLinePorCodigo(Long id) {
+		return productLineRepository.findByid(id);
+	}
 	
-
 }

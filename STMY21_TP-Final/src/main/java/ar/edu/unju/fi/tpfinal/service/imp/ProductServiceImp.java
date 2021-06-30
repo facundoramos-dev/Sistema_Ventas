@@ -2,6 +2,7 @@ package ar.edu.unju.fi.tpfinal.service.imp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,13 +47,17 @@ public class ProductServiceImp implements IProductService {
 	@Override
 	public void eliminarProduct(Long productCode) {
 		productRepository.deleteById(productCode);
-		
 	}
 
 	@Override
 	public Product getProductPorCodigo(Long productCode) {
-		
-		product = productRepository.findByProductCode(productCode);
+		Product product = productRepository.findByProductCode(productCode);
+		return product;
+	}
+
+	@Override
+	public Optional<Product> getProductPorCodigoId(Long productCode) {
+		Optional<Product> product = productRepository.findById(productCode);
 		return product;
 	}
 	

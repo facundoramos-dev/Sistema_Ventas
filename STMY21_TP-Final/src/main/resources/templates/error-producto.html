@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Sin Resultados</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+	<body style="background-color: #EEEEEE">
+		<nav th:replace="/layouts/nav :: nav"></nav>
+		
+		<h1 class="text-center pt-5">No hay Lineas de Productos guardados!!! Imposible Continuar</h1>
+		<h2 class="text-center text-muted">Porfavor vuelva al <a href="/home">Inicio</a></h2>
+		<h2 class="text-center text-muted">O agrege una <a href="/productLine/nuevo">Linea de Producto</a></h2>
+		
+		<footer th:replace="/layouts/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.1-lts/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}"></script>
+	</body>
+</html>

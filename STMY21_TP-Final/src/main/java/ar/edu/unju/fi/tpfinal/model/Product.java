@@ -30,16 +30,17 @@ public class Product {
 	@Column (name = "productName")
 	private String productName;
 	
-	//@Valid
 	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn (name = "productLine_id")
 	private ProductLine productLine ;
 	
+	@NotEmpty(message = "El campo productScale no puede estar vacio")
 	@Size(max = 10, message = "El maximo es de 10 caracteres")
 	@Column (name = "productScale")
 	private String productScale;
 
+	@NotEmpty(message = "El campo productVendor no puede estar vacio")
 	@Size(max = 50, message = "El maximo es de 50 caracteres")
 	@Column (name = "productVendor")
 	private String productVendor;
@@ -48,16 +49,16 @@ public class Product {
 	@Column (name = "productDescription", columnDefinition = "TEXT")
 	private String productDescription;
 	
-	@NotNull(message = "El campo quantityInStock no puede estar vacio")
+	@NotNull(message="El campo quantityInStock no puede estar vacio")
 	@Column (name = "quantityInStock")
 	private Short quantityInStock;
 	
-	@NotNull(message = "El campo buyPrice no puede estar vacio")
+	@NotNull(message="El campo buyPrice no puede estar vacio")
 	@Column (name = "buyPrice", columnDefinition = "DECIMAL(10,2)")
 	private Double buyPrice;
 	
 	//	Manufacturer's Suggested Retail Price = Precio de venta sugerido por el fabricante 
-	@NotNull(message = "El campo msrp no puede estar vacio")
+	@NotNull(message="El campo MSRP no puede estar vacio")
 	@Column (name = "MSRP")
 	private Double msrp;
 	
@@ -144,7 +145,5 @@ public class Product {
 				+ productDescription + ", quantityInStock=" + quantityInStock + ", buyPrice=" + buyPrice + ", MSRP="
 				+ msrp + "]";
 	}
-
-	
 
 }
