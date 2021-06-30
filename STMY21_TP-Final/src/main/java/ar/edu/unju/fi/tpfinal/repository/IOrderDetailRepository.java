@@ -9,5 +9,9 @@ import ar.edu.unju.fi.tpfinal.model.OrderDetailId;
 
 public interface IOrderDetailRepository extends JpaRepository<OrderDetail, OrderDetailId>{
 
+	/**
+	 * Busca un objeto Detalle de Orden por medio de su id
+	 */
 	public Optional<OrderDetail> findById (OrderDetailId id);
+	
 }

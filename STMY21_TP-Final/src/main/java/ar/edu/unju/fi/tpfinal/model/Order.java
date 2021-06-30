@@ -19,6 +19,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * Clase Order representa una orden
+ *
+ */
 @Entity
 @Table (name = "ORDERS")
 @Component("orderObj")
@@ -40,7 +45,7 @@ public class Order {
 	
 	@NotNull(message = "El campo shippedDate no puede estar vacio")
 	@Column (name = "shippedDate")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")			/* Le da formato a la fecha*/
 	private LocalDate shippedDate;
 	
 	@NotEmpty(message = "El campo status no puede estar vacio")
@@ -54,14 +59,18 @@ public class Order {
 	private String comments;
 	
 	@Autowired
-	@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "customerNumber")
+	@ManyToOne(fetch=FetchType.LAZY)			/* Relacion Muchos a uno entre Orden y cliente*/
+    @JoinColumn(name = "customerNumber")		/* Muchas ordenes pueden ser creadas por un cliente */
 	private Customer customer1;
 
+	
+	/* Constructor */
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 
+	/* Getters y Setters */
+	
 	public Long getOrderNumber() {
 		return orderNumber;
 	}

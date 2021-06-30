@@ -22,6 +22,12 @@ import org.springframework.stereotype.Component;
 
 import ar.edu.unju.fi.tpfinal.validators.Dominio;
 
+
+/**
+ * 
+ * Clase Employee representa un Empleado
+ *
+ */
 @Entity
 @Table (name = "EMPLOYEES")
 @Component("employeeObj")
@@ -46,7 +52,7 @@ public class Employee {
 	@Column(name = "extension")
 	private String extension;
 	
-	@Email(message = "El email no se corresponde con un formato correcto")
+	@Email(message = "El email no se corresponde con un formato correcto")	/* Validacion de dato */
 	@Dominio
 	@NotEmpty(message = "El campo email no puede estar vacio")
 	@Size(min = 1,max = 100, message = "El maximo es de 100 caracteres")
@@ -58,7 +64,7 @@ public class Employee {
 	@Column(name = "jobTitle")
 	private String jobTitle;
 	
-	@Autowired
+	@Autowired															/* Inyeccion de dependencia*/
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "officeCode")
     private Office office;
@@ -68,13 +74,25 @@ public class Employee {
     @JoinColumn(name = "reportsTo")
     private Employee employee1;
 		
-	@OneToMany( mappedBy = "employee" )
-	private List<Customer> customers = new ArrayList<Customer>();
+	@OneToMany( mappedBy = "employee" )								/* Relacion uno a muchos entre  Empleado y Cliente*/
+	private List<Customer> customers = new ArrayList<Customer>();	/* Esta clase es mapeada por Empleado */
+																	/* Un empleado puede atender a mas de un cliente*/
+																	/* Pero un cliente puede ser solo atendido por un empleado*/
 	
+	
+	/*
+	 * Constructor sin parametros
+	 */
 	public Employee() {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	/**
+	 * Getters y Setters
+	 * 
+	 */
+	
 	public Long getEmployeeNumber() {
 		return employeeNumber;
 	}

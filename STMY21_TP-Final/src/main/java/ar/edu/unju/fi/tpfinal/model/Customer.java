@@ -19,23 +19,28 @@ import javax.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Entity
-@Table (name = "CUSTOMERS")
-@Component("customerObj")
+
+/**
+ * Clase Customer representa a un Cliente
+ *
+ */
+@Entity /* Especifica que la clase es una entidad */
+@Table (name = "CUSTOMERS") /* Especifica la tabla principal, llamada CUSTOMERS */
+@Component("customerObj") /* Indica que la clase anotada es un componente*/
 public class Customer {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long customerNumber;
+	@Id  /* Expecifica al atributo CustomerNumber como clave primaria*/
+	@GeneratedValue(strategy = GenerationType.IDENTITY) /* GeneratedValue Provee la estrategia de valores de las claves primaria */
+	private Long customerNumber;						
 
-	@NotEmpty(message = "Este campo customerName no puede estar vacio")
+	@NotEmpty(message = "Este campo customerName no puede estar vacio") /*Etiquetas de validacion de datos */
 	@Size(min = 1, max = 50, message = "El maximo es de 50 caracteres")
-	@Column(name = "customerName")
+	@Column(name = "customerName")										/* Nombre de la columna para este atributo */
 	private String customerName;
 	
 	@NotEmpty(message = "Este campo contactLastName no puede estar vacio")
 	@Size(min = 1, max = 50, message = "El maximo es de 50 caracteres")
-	@Column(name = "contactLastName")
+	@Column(name = "contactLastName")									
 	private String contactLastName;
 	
 	@NotEmpty(message = "Este campo contactFirstName no puede estar vacio")
@@ -75,22 +80,31 @@ public class Customer {
 	@Column(name = "country")
 	private	String country;
 	
-	@Autowired
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "salesRepEmployeeNumber")
+	@Autowired															/* Inyeccion de dependencia */
+	@ManyToOne(fetch=FetchType.LAZY)									/* Estrategia que define que los datos pueden*/
+	@JoinColumn(name = "salesRepEmployeeNumber")						/* recuperarse de forma perezosa		*/
 	private Employee employee;
 	
-	@Column(name = "creditLimit", columnDefinition = "DECIMAL(10,2)")
+	@Column(name = "creditLimit", columnDefinition = "DECIMAL(10,2)")	/* Permite definir el valor por defecto  */
 	private double creditLimit;
 	
 	@Autowired
-	@OneToMany( mappedBy = "customer1" )
-	private List<Order> orders = new ArrayList<Order>();
-
+	@OneToMany( mappedBy = "customer1" )								/* Relacion de uno a muchos  Entre Customer y Order*/
+	private List<Order> orders = new ArrayList<Order>();				/* Customer puede tener mas de una order */
+																		/* Por ello se creo una lista con ordenes*/
+	
+	/**
+	 * Constructor sin parametros
+	 */
 	public Customer() {
-		// TODO Auto-generated constructor stub
 	}
 
+	
+	/**
+	 * Getters y Setters
+	 * 
+	 */
+	
 	public Long getCustomerNumber() {
 		return customerNumber;
 	}
@@ -202,6 +216,12 @@ public class Customer {
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
+	
+	
+	/**
+	 * Metodo toString , nos permite recuperar por consola un objeto tipo Customer
+	 * 
+	 */
 
 	@Override
 	public String toString() {

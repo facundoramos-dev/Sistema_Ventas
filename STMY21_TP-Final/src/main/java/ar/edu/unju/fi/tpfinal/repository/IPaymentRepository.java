@@ -8,6 +8,10 @@ import ar.edu.unju.fi.tpfinal.model.PaymentId;
 
 public interface IPaymentRepository extends JpaRepository<Payment , PaymentId>{
 	
+	
+	/**
+	 * Encuentra un objeto PAgo por su id
+	 */
 	public Optional<Payment> findById(PaymentId Id);
 	
 	public Payment findByIdCustomerNumberCustomerNumber(Long customerNumber);

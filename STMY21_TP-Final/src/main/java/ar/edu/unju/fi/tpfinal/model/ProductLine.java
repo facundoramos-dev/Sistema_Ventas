@@ -19,6 +19,11 @@ import javax.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * Clase ProductLine representa una linea de productos
+ *
+ */
 @Entity
 @Table (name = "PRODUCTLINES")
 @Component("productLineObj")
@@ -46,10 +51,19 @@ public class ProductLine {
 	@OneToMany(mappedBy = "productLine" ,fetch=FetchType.LAZY , cascade = CascadeType.ALL)
 	private List<Product> products = new ArrayList<Product>();
 	
+	
+	/**
+	 * Constructor
+	 */
 	public ProductLine() {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	/**
+	 * Getters y Setters
+	 * 
+	 */
 	public Long getId() {
 		return id;
 	}

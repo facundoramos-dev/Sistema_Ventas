@@ -9,7 +9,7 @@ public interface IEmployeeService {
 
 	public Employee getEmployee();
 	
-	//Obtener todos las Empleados 
+
 	public void agregarEmployee(Employee employee);
 	
 	public Optional<Employee> getEmployeePorEmployeeNumber(Long employeeNumber);
