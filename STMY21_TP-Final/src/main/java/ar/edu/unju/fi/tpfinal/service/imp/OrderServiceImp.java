@@ -28,7 +28,7 @@ public class OrderServiceImp implements IOrderService {
 	@Override
 	public Order getOrder() {
 		LOGGER.info("METHOD: getOffice - devuelve un objeto Office Autoinyectado");
-		return this.order;
+		return order;
 	}
 
 	@Override

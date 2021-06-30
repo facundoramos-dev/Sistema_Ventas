@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<title>Listado de Oficinas</title>
+		<title>Listado Detalle de Pedidos</title>
 		<link rel="stylesheet" th:href="@{/css/style.css}">
 		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
 	</head>
@@ -10,13 +10,13 @@
 		<nav th:replace="/layouts/nav :: nav"></nav>
 		<div align="center">
 			<br/>
-			<h1><u>Lista de Oficinas</u></h1>
+			<h1><u>Lista Detalle de Pedidos</u></h1>
 			<br/>
 			<div class="table-responsive p-1">
 				<table id="tblOffices" class="table-info table-bordered table-hover">
 					<thead class="text-center">
 						<tr>
-							<th colspan="7">Datos</th>
+							<th colspan="9">Datos</th>
 							<th rowspan="2">Acciones</th>
 						</tr>
 						<tr>
@@ -33,13 +33,13 @@
 					<tbody>
 						<tr th:each="ord : ${orders}"  class="text-center">
 							<td th:text="${ord.orderNumber}"></td>
-							<td th:text="${#temporals.format(ord.orderDate,'dd/MM/yyyy')}"></td>
-							<td th:text="${#temporals.format(ord.requiredDate,'dd/MM/yyyy')}"></td>
-							<td th:text="${#temporals.format(ord.shippedDate,'dd/MM/yyyy')}"></td>
+							<td th:text="${ord.orderDate}"></td>
+							<td th:text="${ord.requiredDate}"></td>
+							<td th:text="${ord.shippedDate}"></td>
 							<td th:text="${ord.status}"></td>
 							<td th:text="${ord.comments}"></td>
-							<td th:if="${ord.customer1 != NULL}" th:text="${ord.customer1.customerNumber}"></td>
-							<td th:if="${ord.customer1 == NULL}" th:text="'Esta vacio no hay empleados ingresados'"></td>
+							<td th:if="${ord.customer != NULL}" th:text="${ord.customer.customerNumber}"></td>
+							<td th:if="${ord.customer == NULL}" th:text="'Esta vacio no hay empleados ingresados'"></td>
 							<td>
 								<a th:href="@{/order/editar/}+${ord.orderNumber}" class="btn btn-warning">Editar</a>
 								<a th:href="@{/order/eliminar/}+${ord.orderNumber}" class="btn btn-danger">Eliminar</a>

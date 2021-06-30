@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<title>Nueva Detalle de Orden</title>
+		<title>Nueva Detalle de Pedidos</title>
 		<link rel="stylesheet" th:href="@{/css/style.css}">
 		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
 		<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}">
@@ -12,7 +13,7 @@
 
 		<div class="container mb-3">
 
-			<h1>Nuevo Detalle de orden</h1>
+			<h1>Nueva Detalle de Pedidos</h1>
 				<form th:action="@{/orderDetail/guardar}" th:object="${orderDetail}" method="post" class="pt-4 pl-5 pr-5" >
 
 					<input type="hidden" th:field="*{id}" />
@@ -22,7 +23,7 @@
 					<div class="form-group row">
 						<div class="input-group col-sm-4 mb-2">
 							<div class="input-group-prepend">
-								<span class="input-group-text" for="quantityOrdered">Cantidad Pedida:</span>
+								<span class="input-group-text" id="basic-addon1">Cantidad Pedida:</span>
 								<input type="number" id="quantityOrdered" th:field="*{quantityOrdered}"/>
 							</div>
 							<div class="alert-danger" th:if="${#fields.hasErrors('quantityOrdered')}" th:errors="*{quantityOrdered}"></div>
@@ -32,7 +33,7 @@
 					<div class="form-group row">
 						<div class="input-group col-sm-4 mb-2">
 							<div class="input-group-prepend">
-								<span class="input-group-text" for="priceEach">Precio Individual:</span>
+								<span class="input-group-text" id="basic-addon1">Precio Individual:</span>
 								<input type="number" id="priceEach" th:field="*{priceEach}"/>
 							</div>
 							<div class="alert-danger" th:if="${#fields.hasErrors('priceEach')}" th:errors="*{priceEach}"></div>
@@ -42,10 +43,30 @@
 					<div class="form-group row">
 						<div class="input-group col-sm-4 mb-2">
 							<div class="input-group-prepend">
-								<span class="input-group-text" for="orderLineNumber">Número de Pedido:</span>
-								<input type="number" id="orderLineNumber" th:field="*{orderLineNumber}"/>
-							</div>
-							<div class="alert-danger" th:if="${#fields.hasErrors('orderLineNumber')}" th:errors="*{orderLineNumber}"></div>
+								<span class="input-group-text" id="basic-addon1">Codigo de Producto:</span>
+								<select id="id" th:field="*{id.productCode}" class="custom-select">
+									<option value="" seleted>Seleccicione...</option>
+									<option th:each= "i: ${ids}"
+									th:value= "${i.productCode}" 
+									th:text="${i.productCode}"
+									th:selected="false" />
+								</select>
+							</div>	
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="input-group col-sm-4 mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">Codigo de Orden:</span>
+								<select id="id" th:field="*{id.orderNumber}" class="custom-select">
+									<option value="" seleted>Seleccicione...</option>
+									<option th:each= "i: ${ids}"
+									th:value= "${i.orderNumber}" 
+									th:text="${i.orderNumber}"
+									th:selected="false" />
+								</select>
+							</div>	
 						</div>
 					</div>					
 
