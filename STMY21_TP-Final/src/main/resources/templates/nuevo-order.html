@@ -48,26 +48,60 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
 					</div>
 				
-					<div class="input-group col-md-8 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Comentarios del Pedido:</span>
-							<input type="text" id="comments" th:field="*{comments}" placeholder="Ingrese su Comentarios...." class="form-control col-sm-8" />
+							<input type="text" id="comments" th:field="*{comments}" placeholder="Comentario..." class="form-control"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}"></div>
 					</div>
-					
-					
-					<div class="input-group col-md-8 mb-2">
+					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">número de cliente representa:</span>
+							<span class="input-group-text" id="basic-addon1">Cliente:</span>
 							<select id="customer1" th:field="*{customer1.customerNumber}" class="custom-select">
-								<option value="" seleted>Seleccicione...</option>
 								<option th:each= "cust: ${customers}"
 								th:value= "${cust.customerNumber}" 
-								th:text="${cust.customerNumber}"
+								th:text="${cust.contactLastName}+', '+${cust.customerName}"
 								th:selected="false" />
 							</select>
 						</div> 
+					</div>
+					<!-- Aqui Ordder -->
+					
+					<div th:object="${detail}" th:remove="tag">
+						<div class="input-group col-md-4 mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">Cantidad:</span>
+								<input type="number" id="quantityOrdered" th:field="*{quantityOrdered}" placeholder="Cantidad..." class="form-control"/>
+							</div>
+							<div class="alert-danger" th:if="${#fields.hasErrors('quantityOrdered')}" th:errors="*{quantityOrdered}"></div>
+						</div>
+						<div class="input-group col-md-4 mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">P/U $:</span>
+								<input type="number" id="quantityOrdered" th:field="*{priceEach}" placeholder="Precio Unitario..." class="form-control"/>
+							</div>
+							<div class="alert-danger" th:if="${#fields.hasErrors('priceEach')}" th:errors="*{priceEach}"></div>
+						</div>
+						<div class="input-group col-md-4 mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">Linea de Orden #</span>
+								<input type="number" id="orderLineNumber" th:field="*{orderLineNumber}" placeholder="Cantidad..." class="form-control"/>
+							</div>
+							<div class="alert-danger" th:if="${#fields.hasErrors('orderLineNumber')}" th:errors="*{orderLineNumber}"></div>
+						</div>
+						
+						<div class="input-group col-md-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">Cliente:</span>
+							<select id="customer1" th:field="*{id.productCode.productCode}" class="custom-select">
+								<option th:each= "pr: ${products}"
+								th:value= "${pr.productCode}" 
+								th:text="${pr.productName}"
+								th:selected="false" />
+							</select>
+						</div> 
+					</div>
 					</div>
 					
 				</div> 	

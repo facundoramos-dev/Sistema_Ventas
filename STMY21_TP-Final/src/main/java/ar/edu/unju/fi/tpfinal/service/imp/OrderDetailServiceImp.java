@@ -10,7 +10,6 @@ import ar.edu.unju.fi.tpfinal.model.OrderDetail;
 import ar.edu.unju.fi.tpfinal.model.OrderDetailId;
 import ar.edu.unju.fi.tpfinal.repository.IOrderDetailRepository;
 import ar.edu.unju.fi.tpfinal.service.IOrderDetailService;
-import java.util.Optional;
 
 @Service("orderDetailService")
 public class OrderDetailServiceImp implements IOrderDetailService {
@@ -24,6 +23,8 @@ public class OrderDetailServiceImp implements IOrderDetailService {
 	@Override
 	public OrderDetail getOrderDetail() {
 		// TODO Auto-generated method stub
+		OrderDetailId detailId=new OrderDetailId();
+		orderDetail.setId(detailId);
 		return orderDetail;
 	}
 
@@ -59,6 +60,16 @@ public class OrderDetailServiceImp implements IOrderDetailService {
 		return order;
 	}
 
+	@Override
+	public OrderDetail getOrdeDetailPorOrderNumber(Long orderNumber) {
+		// TODO Auto-generated method stub
+		OrderDetail orderDetail = orderDetailRepository.findByIdOrderNumberOrderNumber(orderNumber);
+		return orderDetail;
+	}
 
-	
+	@Override
+	public void eliminarOrderDetailPorOrderNumber(Long orderNumber) {
+		orderDetailRepository.delete(getOrdeDetailPorOrderNumber(orderNumber));
+	}
+
 }

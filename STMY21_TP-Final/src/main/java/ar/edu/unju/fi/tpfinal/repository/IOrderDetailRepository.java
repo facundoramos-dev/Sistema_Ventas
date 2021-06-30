@@ -10,4 +10,9 @@ import ar.edu.unju.fi.tpfinal.model.OrderDetailId;
 public interface IOrderDetailRepository extends JpaRepository<OrderDetail, OrderDetailId>{
 
 	public Optional<OrderDetail> findById (OrderDetailId id);
+
+	public OrderDetail findByIdOrderNumberOrderNumber(Long orderNumber);
+
+	public void deleteByIdOrderNumberOrderNumber(Long orderNumber);
+	
 }
