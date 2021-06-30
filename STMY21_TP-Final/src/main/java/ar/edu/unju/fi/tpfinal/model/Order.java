@@ -10,10 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -28,11 +25,10 @@ import org.springframework.stereotype.Component;
 public class Order {
 
 	@Id
-	//@NotNull(message="El campo orderNumber no debe estar vacio")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long orderNumber;
 	
-	@NotNull(message = "El campo ordenDate no puede estar vacio")
+	@NotEmpty(message = "El campo ordenDate no puede estar vacio")
 	@Column (name = "ordenDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate orderDate;
@@ -57,7 +53,6 @@ public class Order {
 	@Column (name = "comments", columnDefinition = "TEXT")
 	private String comments;
 	
-	//@Valid
 	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "customerNumber")

@@ -46,14 +46,13 @@ public class EmployeeController {
 			modelView.addObject("employee",employee);
 			modelView.addObject("offices", officeService.getOffices());
 			modelView.addObject("employees",employeeService.getEmployees());
-			return modelView;
 		}else {//no se encuentran errores
 			modelView = new ModelAndView("redirect:/employee/listado"); //lista de employee
 			employee.setOffice(officeService.getOfficeCodigo(employee.getOffice().getOfficeCode()));
 			employee.setEmployee1(employeeService.getEmployeePorNumber(employee.getEmployee1().getEmployeeNumber()));
 			employeeService.agregarEmployee(employee);
-			return modelView;
 		}
+		return modelView;
 	}
 	
 	@GetMapping("/employee/listado")
@@ -80,4 +79,5 @@ public class EmployeeController {
 		employeeService.eliminarEmployee(employeeNumber);
 		return modelView;
 	}
+	
 }

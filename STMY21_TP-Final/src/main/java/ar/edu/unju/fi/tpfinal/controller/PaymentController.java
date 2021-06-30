@@ -1,14 +1,10 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
-import java.util.List;
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.tpfinal.model.Customer;
 import ar.edu.unju.fi.tpfinal.model.Payment;
+import ar.edu.unju.fi.tpfinal.model.PaymentId;
 import ar.edu.unju.fi.tpfinal.service.ICustomerService;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
@@ -29,64 +25,54 @@ public class PaymentController {
 	private IPaymentService paymentService;
 	
 	@Autowired
+	@Qualifier("customerService")
 	private ICustomerService customerService;
 	
-	@GetMapping("/payment/nuevo")
-	public String getPaymentPage(Model model) {
-		model.addAttribute("payment",paymentService.getPayment());
-		
-		List<Customer> customers = customerService.getCustomers();
-		model.addAttribute("customers", customers);
-		
-		return ("nuevo-payment");
+	@GetMapping("/payment/nuevo/{id}")
+	public ModelAndView getPaymentPage(@PathVariable(value="id")Long customerNumber) {
+		ModelAndView modelView = new ModelAndView("nuevo-payment");
+		Payment pago = paymentService.getPayment();
+		PaymentId pid=new PaymentId(customerService.getCustomerPorNumber(customerNumber));
+		pago.setId(pid);
+		modelView.addObject("payment",paymentService.getPayment());
+		return modelView;
 	}	
 	
 	@PostMapping("/payment/guardar")
 	public ModelAndView agregarPayment(@Valid @ModelAttribute("payment") Payment payment, BindingResult resulValidacion) {
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
+			System.out.println("ERROR");
 			modelView = new ModelAndView("nuevo-payment");
 			modelView.addObject("payment",payment);
-			
-			paymentService.agregarPayment(payment);
-			
-			
-			System.out.println("ERROR");
-			return modelView;
-			
 		}else {//no se encuentran errores
-			modelView = new ModelAndView("redirect:/payment/listado"); //lista de employee
+			System.out.println("SIN ERROR");
+			modelView = new ModelAndView("redirect:/payment/listado");
+			payment.getId().setCheckNumber(payment.getId().getCustomerNumber().getCustomerNumber());
 			paymentService.agregarPayment(payment);
-			modelView.addObject("payments", paymentService.getPayments());
-			System.out.println("Funciona");
-			return modelView;
 		}
+		return modelView;
 	}
 	
 	@GetMapping("/payment/listado")
 	public ModelAndView getPaymentPage() {
 		ModelAndView modelView = new ModelAndView("listado-payment");
 		modelView.addObject("payments", paymentService.getPayments());
-		
 		return modelView;
 	}
 	
 	@GetMapping("/payment/editar/{id}")
-	public ModelAndView getPaymentEditPage(@PathVariable(value="id")Long checkNumber) {
+	public ModelAndView getPaymentEditPage(@PathVariable(value="id")Long id) {
 		ModelAndView modelView = new ModelAndView("nuevo-payment");
-
-		Payment payment =  paymentService.encontrarPaymentPorNumero(checkNumber);
+		Payment payment = paymentService.getPaymentPorCustomerNumber(id);
 		modelView.addObject("payment",payment);
 		return modelView;
 	}
 	
 	@GetMapping("/payment/eliminar/{id}")
-	public ModelAndView getPaymentDeletePage(@PathVariable(value="id")Long checkNumber) {
+	public ModelAndView getPaymentDeletePage(@PathVariable(value="id")Long id) {
 		ModelAndView modelView = new ModelAndView("redirect:/payment/listado");
-		
-		paymentService.eliminarPayment(checkNumber) ;
-		/// Esto lo modifique, hay que revisar
-		
+		paymentService.eliminarPaymentPorCstomerNumber(id);
 		return modelView;
 	}
 }

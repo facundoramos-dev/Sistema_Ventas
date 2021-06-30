@@ -49,7 +49,7 @@ public class ProductLine {
 	public ProductLine() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -104,5 +104,5 @@ public class ProductLine {
 				+ ", htmlDescription=" + htmlDescription + ", image=" + Arrays.toString(image) + ", products="
 				+ products + "]";
 	}
-
+	
 }

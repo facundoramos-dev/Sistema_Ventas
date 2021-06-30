@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,18 +25,18 @@ public class Office{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long officeCode;
 	
-	@NotNull(message = "El campo city no puede estar vacio")
-	@Size(min = 1, max= 50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@NotEmpty(message = "El campo city no puede estar vacio")
+	@Size(min = 0, max= 50, message = "El maximo es de 50 caracteres")
 	@Column (name = "city")
 	private String city;
 	
-	@NotNull(message = "El campo phone no puede estar vacio")
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@NotEmpty(message = "El campo phone no puede estar vacio")
+	@Size(min = 0, max=50, message = "El maximo es de 50 caracteres")
 	@Column (name = "phone")
 	private	String phone; 
 	
-	@NotNull(message = "El campo addressLine1 no puede estar vacio")
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@NotEmpty(message = "El campo addressLine1 no puede estar vacio")
+	@Size(min = 0, max=50, message = "El maximo es de 50 caracteres")
 	@Column (name = "addressLine1")
 	private String addressLine1;
 	
@@ -48,18 +48,18 @@ public class Office{
 	@Column (name = "state")
 	private	String state;
 	
-	@NotNull(message = "El campo country no puede estar vacio")
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@NotEmpty(message = "El campo country no puede estar vacio")
+	@Size(min = 0, max=50, message = "El maximo es de 50 caracteres")
 	@Column (name = "country")
 	private	String country; 
 	
-	@NotNull(message = "El campo postalCode no puede estar vacio")
-	@Size(min = 1, max=15, message = "Este campo no debe ser vacío y el maximo es de 15 caracteres")
+	@NotEmpty(message = "El campo postalCode no puede estar vacio")
+	@Size(min = 0, max=15, message = "El maximo es de 15 caracteres")
 	@Column (name = "postalCode")
 	private	String postalCode; 
 	
-	@NotNull(message = "El campo territory no puede estar vacio")
-	@Size(min = 1, max=10, message = "Este campo no debe ser vacío y el maximo es de 10 caracteres")
+	@NotEmpty(message = "El campo territory no puede estar vacio")
+	@Size(min = 0, max=10, message = "El maximo es de 10 caracteres")
 	@Column (name = "territory")
 	private String territory;
 

@@ -4,58 +4,46 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Entity
 @Table (name = "PAYMENTS")
 @Component("paymentObj")
-public class Payment {
+public class Payment implements Serializable{
 
-	//private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
-	//@EmbeddedId
-	//private PaymentId id;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "checkNumber")
-	private Long checkNumber;
+	@EmbeddedId
+	private PaymentId id;
 	
-	@NotNull
+	@NotNull(message = "El campo paymentDate no puede estar vacio")
 	@Column(name = "paymentDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate paymentDate;
 	
-	@Min( value = 1 )
+	@NotNull(message = "El campo amount no puede estar vacio")
+	@Min(value=0,message = "No puede ingresar valores negativos")
 	@Column(name = "amount", columnDefinition = "DECIMAL(10,2)")
 	private double amount;
-	
-	@Valid
-	@Autowired
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn (name = "cust_id")
-	private Customer customer;
 	
 	public Payment() {
 		// TODO Auto-generated constructor stub
 	}
 
+	public PaymentId getId() {
+		return id;
+	}
+
+	public void setId(PaymentId id) {
+		this.id = id;
+	}
 
 	public LocalDate getPaymentDate() {
 		return paymentDate;
@@ -73,34 +61,13 @@ public class Payment {
 		this.amount = amount;
 	}
 
-
-	public Customer getCustomer() {
-		return customer;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-
-	public Long getCheckNumber() {
-		return checkNumber;
-	}
-
-
-	public void setCheckNumber(Long checkNumber) {
-		this.checkNumber = checkNumber;
-	}
-
 
 	@Override
 	public String toString() {
-		return "Payment [checkNumber=" + checkNumber + ", paymentDate=" + paymentDate + ", amount=" + amount
-				+ ", customer=" + customer + "]";
+		return "Payment [id=" + id + ", paymentDate=" + paymentDate + ", amount=" + amount + "]";
 	}
-
-	
-	
-	
 	
 }

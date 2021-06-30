@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.model.Payment;
+import ar.edu.unju.fi.tpfinal.model.PaymentId;
 import ar.edu.unju.fi.tpfinal.repository.IPaymentRepository;
+import ar.edu.unju.fi.tpfinal.service.ICustomerService;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
 @Service("paymentService")
@@ -18,6 +20,9 @@ public class PaymentServiceImp implements IPaymentService {
 	
 	@Autowired
 	private IPaymentRepository paymentRepository;
+	
+	@Autowired
+	private ICustomerService customerService;
 
 	@Autowired
 	Payment payment;
@@ -45,9 +50,8 @@ public class PaymentServiceImp implements IPaymentService {
 	}
 
 	@Override
-	public void eliminarPayment(Long checkNumber) {
-		
-		paymentRepository.deleteById(payment.getCheckNumber() );
+	public void eliminarPayment(PaymentId id) {
+		//paymentRepository.deleteById(payment.getId());
 	}
 
 	
@@ -60,15 +64,31 @@ public class PaymentServiceImp implements IPaymentService {
 	@Override
 	public void quitarPaymentLista(Long checkNumber) {
 		for (int i=0; i < paymentEncontrado.size(); i++) {
-			if( paymentEncontrado.get(i).getCheckNumber() == checkNumber) {
+			if( paymentEncontrado.get(i).getId().getCheckNumber() == checkNumber) {
 				paymentEncontrado.remove(i);
 			}
 		}
 	}
 
 	@Override
-	public Payment encontrarPaymentPorNumero(Long checkNumber) {
-		Payment pago = paymentRepository.findByCheckNumber(checkNumber);
-		return pago;
+	public Optional<Payment> encontrarPaymentPorNumero(PaymentId id) {
+		//Optional<Payment> pago = paymentRepository.findById(id);
+		return null;
 	}
+
+	@Override
+	public Payment getPaymentPorCustomerNumber(Long customerNumber) {
+		// TODO Auto-generated method stub
+		Payment payment = paymentRepository.findByIdCustomerNumberCustomerNumber(customerNumber);
+		return payment;
+	}
+
+	@Override
+	public void eliminarPaymentPorCstomerNumber(Long customerNumber) {
+		// TODO Auto-generated method stub
+		PaymentId id = new PaymentId(customerService.getCustomerPorNumber(customerNumber));
+		id.setCheckNumber(customerNumber);
+		paymentRepository.deleteById(id);
+	}
+
 }

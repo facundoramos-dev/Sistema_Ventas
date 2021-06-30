@@ -50,18 +50,17 @@ public class ProductController {
 	public ModelAndView agregarProduct(@Valid @ModelAttribute("product") Product product, BindingResult resulValidacion) {
 		ModelAndView modelView;
 		if (resulValidacion.hasErrors()) { //errores presentes
+			System.out.println("ERROR");
 			modelView = new ModelAndView("nuevo-product");
 			modelView.addObject("product",product);
 			modelView.addObject("productLines", productLineService.getProductLines());
-			System.out.println("ERROR");
-			return modelView;
 		}else {//no se encuentran errores
 			System.out.println("SIRVE");
 			modelView = new ModelAndView("redirect:/product/listado");
 			product.setProductLine(productLineService.getProductLinePorCodigo(product.getProductLine().getId()));
 			productService.agregarProduct(product);
-			return modelView;
 		}
+		return modelView;
 	}
 	
 	@GetMapping("/product/listado")
@@ -86,4 +85,5 @@ public class ProductController {
 		productService.eliminarProduct(productCode);
 		return modelView;
 	}
+	
 }

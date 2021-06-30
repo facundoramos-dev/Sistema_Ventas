@@ -12,61 +12,49 @@
 		<header th:replace="/layouts/nav :: nav"></header>
 		
 		<div class="container mb-3">
-		
 			<h1>Registro De Nueva Linea de Productos</h1>
-				<form th:action="@{/productLine/guardar}" th:object="${productLine}" method="post" enctype="multipart/form-data" class="pt-4 pl-5 pr-5" >
-					
-					<input type="hidden" th:field="*{id}" />
-					
-					<div class="form-group row">
-						<div class="input-group col-sm-4 mb-2">
-							<div class="input-group-prepend">
-								<span class="input-group-text" for="productLineName">Nombre de Linea de productos:</span>
-								<input type="text" id="productLineName" th:field="*{productLineName}"/>
-							</div>
-							<div class="alert-danger" th:if="${#fields.hasErrors('productLineName')}" th:errors="*{productLineName}"></div>
+			<form th:action="@{/productLine/guardar}" th:object="${productLine}" method="post" enctype="multipart/form-data" class="pt-4 pl-5 pr-5" >
+				<input type="hidden" th:field="*{id}" />
+				<div class="form-group row">
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" for="productLineName">Nombre de Linea de productos:</span>
+							<input type="text" id="productLineName" th:field="*{productLineName}"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('productLineName')}" th:errors="*{productLineName}"></div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group">
+						  <span for="textDescription" class="input-group-text">Descripcion</span>
+							<textarea id="textDescription" class="form-control" aria-label="Descripcion" th:field="*{textDescription}" ></textarea>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('textDescription')}" th:errors="*{textDescription}"></div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text" for="htmlDescription">Descripcion del HTML:</span>
+							<input type="text" id="htmlDescription" th:field="*{htmlDescription}"/>
+						</div>
+						<div class="alert-danger" th:if="${#fields.hasErrors('htmlDescription')}" th:errors="*{htmlDescription}"></div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="input-group col-sm-4 mb-2">
+						<div class="input-group-prepend">							
+							  <label class="input-group-text" for="inputGroupFile01">Imagen</label>
+							  <input type="file" name="file" class="form-control-file" id="inputGroupFile01">
 						</div>
 					</div>
-					
-					
-					<div class="form-group row">
-						<div class="input-group col-sm-4 mb-2">
-							<div class="input-group">
-							  <span for="textDescription" class="input-group-text">Descripcion</span>
-							  <textarea id="textDescription" class="form-control" aria-label="Descripcion" th:field="*{textDescription}" ></textarea>
-							</div>
-							<div class="alert-danger" th:if="${#fields.hasErrors('textDescription')}" th:errors="*{textDescription}"></div>
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<div class="input-group col-sm-4 mb-2">
-							<div class="input-group-prepend">
-								<span class="input-group-text" for="htmlDescription">Descripcion del HTML:</span>
-								<input type="text" id="htmlDescription" th:field="*{htmlDescription}"/>
-							</div>
-							<div class="alert-danger" th:if="${#fields.hasErrors('htmlDescription')}" th:errors="*{htmlDescription}"></div>
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<div class="input-group col-sm-4 mb-2">
-							<div class="input-group-prepend">							
-								  <label class="input-group-text" for="inputGroupFile01">Imagen</label>
-								  <input type="file" name="file" class="form-control-file" id="inputGroupFile01">
-							</div>
-							
-						</div>
-					</div>
-					
-					
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary mr-3" >Guardar</button>
-						<button type="reset" class="btn btn-primary">Borrar</button>
-					</div>
-					
-				</form>
-		
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary mr-3" >Guardar</button>
+					<button type="reset" class="btn btn-primary">Borrar</button>
+				</div>
+			</form>
 		</div>
 		
 		<footer th:replace="/layouts/footer :: footer"></footer>

@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,30 +31,30 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long employeeNumber;
 	
-	@NotNull(message = "El campo lastName no puede estar vacio")
-	@Size(min = 1,max = 50, message = "Este campo no debe estar vacío y el maximo es de 50 caracteres")
+	@NotEmpty(message = "El campo lastName no puede estar vacio")
+	@Size(min = 1,max = 50, message = "El maximo es de 50 caracteres")
 	@Column(name = "lastName")
 	private String lastName;
 	
-	@NotNull(message = "El campo firstName no puede estar vacio")
-	@Size(min = 1,max = 50, message = "Este campo no debe estar vacío y el maximo es de 50 caracteres")
+	@NotEmpty(message = "El campo firstName no puede estar vacio")
+	@Size(min = 1,max = 50, message = "El maximo es de 50 caracteres")
 	@Column(name = "firstName")
 	private String firstName;
 	
-	@NotNull(message = "El campo extension no puede estar vacio")
-	@Size(min = 1,max = 10, message = "Este campo no debe estar vacío y el maximo es de 10 caracteres")
+	@NotEmpty(message = "El campo extension no puede estar vacio")
+	@Size(min = 1,max = 10, message = "El maximo es de 10 caracteres")
 	@Column(name = "extension")
 	private String extension;
 	
 	@Email(message = "El email no se corresponde con un formato correcto")
 	@Dominio
-	@NotNull(message = "El campo email no puede estar vacio")
-	@Size(min = 1,max = 100, message = "Este campo no debe estar vacío y el maximo es de 100 caracteres")
+	@NotEmpty(message = "El campo email no puede estar vacio")
+	@Size(min = 1,max = 100, message = "El maximo es de 100 caracteres")
 	@Column(name = "email")
 	private String email;
 	
-	@NotNull(message = "El campo jobTitle no puede estar vacio")
-	@Size(min = 1,max = 50, message = "Este campo no debe estar vacío y el maximo es de 50 caracteres")
+	@NotEmpty(message = "El campo jobTitle no puede estar vacio")
+	@Size(min = 1,max = 50, message = "El maximo es de 50 caracteres")
 	@Column(name = "jobTitle")
 	private String jobTitle;
 	

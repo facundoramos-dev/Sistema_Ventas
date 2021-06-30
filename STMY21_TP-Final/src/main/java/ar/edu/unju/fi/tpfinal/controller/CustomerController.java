@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.tpfinal.model.Customer;
 import ar.edu.unju.fi.tpfinal.service.ICustomerService;
 import ar.edu.unju.fi.tpfinal.service.IEmployeeService;
+import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
 @Controller
 public class CustomerController {
@@ -29,6 +30,10 @@ public class CustomerController {
 	@Autowired
 	@Qualifier("employeeService")
 	private IEmployeeService employeeService;
+	
+	@Autowired
+	@Qualifier("paymentService")
+	private IPaymentService paymentService;
 	
 	@GetMapping("/customer/nuevo")
 	public String getCustomerPage(Model model) {
@@ -42,19 +47,15 @@ public class CustomerController {
 		ModelAndView modelView;
 		System.out.println("Customer_Number: "+customer.getCustomerNumber());
 		if (resulValidacion.hasErrors()) { //errores presentes
-			System.out.println("CON Errores");
 			modelView = new ModelAndView("nuevo-customer");
 			modelView.addObject("customer",customer);
 			modelView.addObject("employees", employeeService.getEmployees());
-			return modelView;
 		}else {//no se encuentran errores
-			System.out.println("Sin Errores");
-			System.out.println("Customer_Number: "+customer.getCustomerNumber());
 			modelView = new ModelAndView("redirect:/customer/listado"); //lista de customer
 			customer.setEmployee(employeeService.getEmployeePorNumber(customer.getEmployee().getEmployeeNumber()));
 			customerService.agregarCustomer(customer);
-			return modelView;
 		}
+		return modelView;
 	}	
 	
 	@GetMapping("/customer/listado")
@@ -76,6 +77,9 @@ public class CustomerController {
 	@GetMapping("/customer/eliminar/{id}")
 	public ModelAndView getCustomerDeletePage(@PathVariable(value="id")Long customerNumber) {
 		ModelAndView modelView = new ModelAndView("redirect:/customer/listado");
+		if(paymentService.getPaymentPorCustomerNumber(customerNumber)!=null) {
+			paymentService.eliminarPaymentPorCstomerNumber(customerNumber);
+		}
 		customerService.eliminarCustomer(customerNumber);
 		return modelView;
 	}

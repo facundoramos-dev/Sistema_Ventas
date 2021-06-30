@@ -22,7 +22,7 @@
 						<tr>
 							<th scope="col" style="width: 30px;">#</th>
 							<th scope="col">Nombre</th>
-							<th scope="col">Apellid</th>
+							<th scope="col">Apellido</th>
 							<th scope="col">Nombre de Contacto</th>
 							<th scope="col">Telefono</th>
 							<th scope="col">Dirección 1</th>
@@ -56,8 +56,9 @@
 							<td th:if="${cust.employee == NULL}" th:text="'Sin Atender'"></td>
 							<td th:text="${'$'+cust.creditLimit}"></td>
 							<td>
-								<a th:href="@{/customer/editar/}+${cust.customerNumber}" class="btn btn-warning">Editar</a>
-								<a th:href="@{/customer/eliminar/}+${cust.customerNumber}" class="btn btn-danger">Eliminar</a>
+								<a th:href="@{/customer/editar/}+${cust.customerNumber}" class="btn btn-warning" style="width: 80px;">Editar</a><br/>
+								<a th:href="@{/customer/eliminar/}+${cust.customerNumber}" class="btn btn-danger" style="width: 80px;">Eliminar</a><br/>
+								<a th:href="@{/payment/nuevo/}+${cust.customerNumber}" class="btn btn-secondary" style="width: 80px;">Pago</a>
 							</td>
 						</tr>
 					</tbody>

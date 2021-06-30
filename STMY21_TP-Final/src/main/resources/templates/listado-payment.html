@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Listado de Pagos</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}">
+	</head>
+	<body style="background-color: #EEEEEE">
+		<nav th:replace="/layouts/nav :: nav"></nav>
+		<div align="center">
+			<br/>
+			<h1><u>Lista de Pagos</u></h1>
+			<br/>
+			<div class="table-responsive p-1">
+				<table id="tblEmployees" class="table-info table-bordered table-hover">
+					<thead class="text-center">
+						<tr>
+							<th colspan="4">Datos</th>
+							<th rowspan="2">Acciones</th>
+						</tr>
+						<tr>
+							<th scope="col" style="width: 30px;">#</th>
+							<th scope="col">Cliente</th>
+							<th scope="col">Monto</th>
+							<th scope="col">Fecha de Pago</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="pay : ${payments}"  class="text-center">
+							<td th:text="${pay.id.checkNumber}"></td>
+							<td th:text="${pay.id.customerNumber.contactLastName}+', '+${pay.id.customerNumber.contactFirstName}"></td>
+							<td th:text="${pay.amount}"></td>
+							<td th:text="${#temporals.format(pay.paymentDate,'dd/MM/yyyy')}"></td>
+							<td>
+								<a th:href="@{/payment/editar/}+${pay.id.customerNumber.customerNumber}" class="btn btn-warning">Editar</a>
+								<a th:href="@{/payment/eliminar/}+${pay.id.customerNumber.customerNumber}" class="btn btn-danger">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		<footer th:replace="/layouts/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.1-lts/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}"></script>
+	</body>
+</html>

@@ -3,7 +3,6 @@ package ar.edu.unju.fi.tpfinal.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,27 +29,27 @@ public class Customer {
 	private Long customerNumber;
 
 	@NotEmpty(message = "Este campo customerName no puede estar vacio")
-	@Size(min = 1, max = 50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@Size(min = 1, max = 50, message = "El maximo es de 50 caracteres")
 	@Column(name = "customerName")
 	private String customerName;
 	
 	@NotEmpty(message = "Este campo contactLastName no puede estar vacio")
-	@Size(min = 1, max = 50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@Size(min = 1, max = 50, message = "El maximo es de 50 caracteres")
 	@Column(name = "contactLastName")
 	private String contactLastName;
 	
 	@NotEmpty(message = "Este campo contactFirstName no puede estar vacio")
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "El maximo es de 50 caracteres")
 	@Column(name = "contactFirstName")
 	private String contactFirstName;
 	
 	@NotEmpty(message = "El campo phone no puede estar vacio")
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "El maximo es de 50 caracteres")
 	@Column(name = "phone")
 	private	String phone; 
 	
 	@NotEmpty(message = "El campo addressLine1 no puede estar vacio")
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "El maximo es de 50 caracteres")
 	@Column(name = "addressLine1")
 	private String addressLine1;
 	
@@ -59,7 +58,7 @@ public class Customer {
 	private String addressLine2;
 	
 	@NotEmpty(message = "El campo city no puede estar vacio")
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")
+	@Size(min = 1, max=50, message = "El maximo es de 50 caracteres")
 	@Column(name = "city")
 	private String city;
 	
@@ -72,7 +71,7 @@ public class Customer {
 	private	String postalCode;
 	
 	@NotEmpty(message = "El campo state no puede estar vacio")
-	@Size(min = 1, max=50, message = "Este campo no debe ser vacío y el maximo es de 50 caracteres")	
+	@Size(min = 1, max=50, message = "El maximo es de 50 caracteres")	
 	@Column(name = "country")
 	private	String country;
 	
@@ -87,10 +86,6 @@ public class Customer {
 	@Autowired
 	@OneToMany( mappedBy = "customer1" )
 	private List<Order> orders = new ArrayList<Order>();
-	
-	@Autowired
-	@OneToMany(mappedBy = "customer" ,fetch=FetchType.LAZY , cascade = CascadeType.ALL)
-	private List<Payment> payments = new ArrayList<Payment>();
 
 	public Customer() {
 		// TODO Auto-generated constructor stub
@@ -208,15 +203,13 @@ public class Customer {
 		this.orders = orders;
 	}
 
-	public List<Payment> getPayments() {
-		return payments;
+	@Override
+	public String toString() {
+		return "Customer [customerNumber=" + customerNumber + ", customerName=" + customerName + ", contactLastName="
+				+ contactLastName + ", contactFirstName=" + contactFirstName + ", phone=" + phone + ", addressLine1="
+				+ addressLine1 + ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state
+				+ ", postalCode=" + postalCode + ", country=" + country + ", employee=" + employee + ", creditLimit="
+				+ creditLimit + ", orders=" + orders + "]";
 	}
 
-	public void setPayments(List<Payment> payments) {
-		this.payments = payments;
-	}
-
-	
-
-	
 }	

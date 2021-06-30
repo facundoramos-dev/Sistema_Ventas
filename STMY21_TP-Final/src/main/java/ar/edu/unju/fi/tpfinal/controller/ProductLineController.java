@@ -41,7 +41,6 @@ public class ProductLineController {
 		if (resulValidacion.hasErrors()) { //errores presentes
 			modelView = new ModelAndView("nuevo-productLine");
 			modelView.addObject("productLine",productLine);
-			return modelView;
 		}else {//no se encuentran errores
 			modelView = new ModelAndView("redirect:/productLine/listado"); //lista de ProductLines
 			byte[] content = file.getBytes();
@@ -50,8 +49,8 @@ public class ProductLineController {
 				productLine.setImage(content);
 			}
 			productLineService.agregarProductLine(productLine);
-			return modelView;
 		}
+		return modelView;
 	}
 	
 	@GetMapping("/productLine/listado")
@@ -75,4 +74,5 @@ public class ProductLineController {
 		productLineService.eliminarProductLine(id);
 		return modelView;
 	}
+	
 }
