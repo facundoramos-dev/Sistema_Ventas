@@ -16,34 +16,31 @@
 				<table id="tblOffices" class="table-info table-bordered table-hover">
 					<thead class="text-center">
 						<tr>
-							<th colspan="9">Datos</th>
+							<th colspan="5">Datos</th>
+							<!-- 
 							<th rowspan="2">Acciones</th>
+							 -->
 						</tr>
 						<tr>
-							<th scope="col">Numero de Orden</th>
-							<th scope="col">Fecha de Orden</th>
-							<th scope="col">Fecha Requerida</th>
-							<th scope="col">Fecha de Envio</th>
-							<th scope="col">Estado</th>
-							<th scope="col">Comentarios</th>
-							<th scope="col">Numero de Cliente</th>
-							
+							<th scope="col"># Orden</th>
+							<th scope="col">Precio Unitario</th>
+							<th scope="col">Cantidad Ordenada</th>
+							<th scope="col">Cod. Producto</th>
+							<th scope="col"># Pedido</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="ord : ${orders}"  class="text-center">
-							<td th:text="${ord.orderNumber}"></td>
-							<td th:text="${ord.orderDate}"></td>
-							<td th:text="${ord.requiredDate}"></td>
-							<td th:text="${ord.shippedDate}"></td>
-							<td th:text="${ord.status}"></td>
-							<td th:text="${ord.comments}"></td>
-							<td th:if="${ord.customer != NULL}" th:text="${ord.customer.customerNumber}"></td>
-							<td th:if="${ord.customer == NULL}" th:text="'Esta vacio no hay empleados ingresados'"></td>
+						<tr th:each="ord : ${orderDetails}"  class="text-center">
+							<td th:text="${ord.id.orderNumber.orderNumber.}"></td>
+							<td th:text="${ord.priceEach}"></td>
+							<td th:text="${ord.quantityOrdered}"></td>
+							<td th:text="${ord.id.productCode.productCode}"></td>
+							<!-- 
 							<td>
-								<a th:href="@{/order/editar/}+${ord.orderNumber}" class="btn btn-warning">Editar</a>
-								<a th:href="@{/order/eliminar/}+${ord.orderNumber}" class="btn btn-danger">Eliminar</a>
+								<a th:href="@{/order/editar/}+${}" class="btn btn-warning">Editar</a>
+								<a th:href="@{/order/eliminar/}+${}" class="btn btn-danger">Eliminar</a>
 							</td>
+							 -->
 						</tr>
 					</tbody>
 				</table>

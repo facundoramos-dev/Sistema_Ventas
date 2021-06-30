@@ -42,10 +42,10 @@ public class OrderDetailController {
 		}
 	}
 	
-	@GetMapping("/ororderDetailder/listado")
+	@GetMapping("/orderDetail/listado")
 	public ModelAndView getOrderDetailPage() {
 		ModelAndView modelView = new ModelAndView("orderDetails");
-		modelView.addObject("orderDetails", orderDetailService.getOrderDetail());
+		modelView.addObject("orderDetails", orderDetailService.getOrderDetails());
 		return modelView;
 	}
 	
