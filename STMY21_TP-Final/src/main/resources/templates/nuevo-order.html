@@ -14,6 +14,7 @@
 		<div class="container mb-3">
 			<h1>Registro De Un Nuevo Pedido</h1>
 			<form th:action="@{/order/guardar}" th:object="${order}" method="post" class="pt-4" >
+				<input type="hidden" th:field="*{orderNumber}" />
 				<div class="form-group row">
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
@@ -59,7 +60,7 @@
 					<div class="input-group col-md-8 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">número de cliente representa:</span>
-							<select id="customer" th:field="*{customer.customerNumber}" class="custom-select">
+							<select id="customer1" th:field="*{customer1.customerNumber}" class="custom-select">
 								<option value="" seleted>Seleccicione...</option>
 								<option th:each= "cust: ${customers}"
 								th:value= "${cust.customerNumber}" 

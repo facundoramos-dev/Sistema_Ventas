@@ -50,7 +50,7 @@ public class OrderController {
 		}else {//no se encuentran errores
 			System.out.println("SIN Errores");
 			modelView = new ModelAndView("redirect:/order/listado"); //lista de order
-			order.setCustomer(customerService.getCustomerPorNumber(order.getCustomer().getCustomerNumber()));
+			//order.setCustomer1(customerService.getCustomerPorNumber(order.getCustomer1().getCustomerNumber()));
 			orderService.agregarOrder(order);
 			return modelView;
 		}
@@ -59,7 +59,7 @@ public class OrderController {
 	@GetMapping("/order/listado")
 	public ModelAndView getOrderPage() {
 		ModelAndView modelView = new ModelAndView("orders");
-		modelView.addObject("orders", orderService.getOrder());
+		modelView.addObject("orders", orderService.getOrders());
 		return modelView;
 	}
 	
@@ -79,4 +79,3 @@ public class OrderController {
 		return modelView;
 	}
 }
-
