@@ -34,7 +34,7 @@ public class OrderController {
 	public String getOrderPage(Model model) {
 		System.out.println("VA QUERIENDO");
 		model.addAttribute("order",orderService.getOrder());
-		model.addAttribute("customers",customerService.getCustomers());
+		//model.addAttribute("customers",customerService.getCustomers());
 		return ("nuevo-order");
 	}	
 	

@@ -28,7 +28,7 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long orderNumber;
 	
-	@NotEmpty(message = "El campo ordenDate no puede estar vacio")
+	@NotNull(message = "El campo ordenDate no puede estar vacio")
 	@Column (name = "ordenDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate orderDate;
@@ -118,12 +118,8 @@ public class Order {
 		this.customer1 = customer1;
 	}
 
-	@Override
-	public String toString() {
-		return "Order [orderNumber=" + orderNumber + ", orderDate=" + orderDate + ", requiredDate=" + requiredDate
-				+ ", shippedDate=" + shippedDate + ", status=" + status + ", comments=" + comments + ", customer1="
-				+ customer1 + "]";
-	}
+	
+	
 	
 }
 	

@@ -16,7 +16,7 @@
 			<form th:action="@{/order/guardar}" th:object="${order}" method="post" class="pt-4" >
 				<input type="hidden" th:field="*{orderNumber}" />
 				<div class="form-group row">
-					<div class="input-group col-md-4 mb-2">
+					<div class="input-group col-md-6 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">Fecha del Pedido:</span>
 							<input type="date" id="orderDate" th:field="*{orderDate}" class="form-control"/>
@@ -24,17 +24,17 @@
 						<div class="alert-danger" th:if="${#fields.hasErrors('orderDate')}" th:errors="*{orderDate}"></div>
 					</div>
 					
-					<div class="input-group col-md-4 mb-2">
+					<div class="input-group col-md-6 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Fecha Requerida del Pedido:</span>
+							<span class="input-group-text" id="basic-addon1">Fecha Requerida:</span>
 							<input type="date" id="requiredDate" th:field="*{requiredDate}" class="form-control"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('requiredDate')}" th:errors="*{requiredDate}"></div>
 					</div>
-					
-					<div class="input-group col-md-5 mb-2">
+					<!-- Aqui me quede -->
+					<div class="input-group col-md-6 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">Fecha de Envío del Pedido:</span>
+							<span class="input-group-text" id="basic-addon1">Fecha de Envío:</span>
 							<input type="date" id="shippedDate" th:field="*{shippedDate}" class="form-control"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('shippedDate')}" th:errors="*{shippedDate}"></div>
