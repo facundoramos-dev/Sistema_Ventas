@@ -15,36 +15,20 @@
 
 			<h1>Registro De Pago</h1>
 				<form th:action="@{/payment/guardar}" th:object="${payment}" method="post" class="pt-4 pl-5 pr-5" >
-
-					<input type="hidden" th:field="*{id}" />
-					<input type="hidden" th:field="*{id.customerNumber}" />
-
-									
-			<!--		<div class="form-group row">
-						<label for="customerNumber" class="col-auto col-form-label">Id de Cliente:</label>
-						<select id="customerNumber" th:field="*{payment.id}">
-							<option value=""> -- </option>
+					<input type="hidden" th:field="*{checkNumber}" /> 
+																							
+					<div class="form-group row">
+						<label for="customer" class="col-auto col-form-label">Id de Cliente:</label>
+						<select id="customer" th:field="*{customer.customerNumber}">
 							<option 
-							th:each= "payment: ${payment.customerNumber}"
-							th:value= "${payment.customerNumber}" 
-							th:text="${payment.customerNumber}"
+							th:each= "cust: ${customers}"
+							th:value= "${cust.customerNumber}" 
+							th:text="${cust.customerNumber}"
 							th:selected="false" /> 
 						</select>
-					</div>-->
-					
-					
-					
-					<div class="form-group row">
-						<div class="input-group col-sm-4 mb-2">
-							<div class="input-group-prepend">
-								<span class="input-group-text" for="checkNumber">Numero de cheque :</span>
-								<input type="number" id="checkNumber" th:field="*{id.checkNumber}"/>
-							</div>
-						 	<div class="alert-danger" th:if="${#fields.hasErrors('id.checkNumber')}" th:errors="*{id.checkNumber}"></div> 
-						</div>
 					</div>
-					
-					<div class="form-group row">
+			
+				<div class="form-group row">
 						<div class="input-group col-sm-4 mb-2">
 							<div class="input-group-prepend">
 								<span class="input-group-text" for="amount">Monto:</span>
@@ -63,11 +47,6 @@
 						</div>
 					</div>
 					
-					
-
-
-
-
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary mr-3" >Guardar</button>
 						<button type="reset" class="btn btn-primary">Borrar</button>
