@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.model.Payment;
-import ar.edu.unju.fi.tpfinal.model.PaymentId;
 import ar.edu.unju.fi.tpfinal.repository.IPaymentRepository;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
@@ -46,9 +45,9 @@ public class PaymentServiceImp implements IPaymentService {
 	}
 
 	@Override
-	public void eliminarPayment(PaymentId id) {
+	public void eliminarPayment(Long checkNumber) {
 		
-		paymentRepository.deleteById(payment.getId());
+		paymentRepository.deleteById(payment.getCheckNumber() );
 	}
 
 	
@@ -61,15 +60,15 @@ public class PaymentServiceImp implements IPaymentService {
 	@Override
 	public void quitarPaymentLista(Long checkNumber) {
 		for (int i=0; i < paymentEncontrado.size(); i++) {
-			if( paymentEncontrado.get(i).getId().getCheckNumber() == checkNumber) {
+			if( paymentEncontrado.get(i).getCheckNumber() == checkNumber) {
 				paymentEncontrado.remove(i);
 			}
 		}
 	}
 
 	@Override
-	public Optional<Payment> encontrarPaymentPorNumero(PaymentId id) {
-		Optional<Payment> pago = paymentRepository.findById(id);
+	public Payment encontrarPaymentPorNumero(Long checkNumber) {
+		Payment pago = paymentRepository.findByCheckNumber(checkNumber);
 		return pago;
 	}
 }

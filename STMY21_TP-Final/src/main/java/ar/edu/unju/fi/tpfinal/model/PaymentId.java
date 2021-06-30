@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
+/*
 @Embeddable
 public class PaymentId implements Serializable  {
 	
@@ -49,4 +49,4 @@ public class PaymentId implements Serializable  {
 		return serialVersionUID;
 	}	
 	
-}
+}*/
