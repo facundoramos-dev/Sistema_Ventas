@@ -25,10 +25,9 @@
 							<th scope="col">Nombre</th>
 							<th scope="col">Extension</th>
 							<th scope="col">Email</th>
-							<th scope="col">Cod. Oficina</th>
-							<th scope="col">Responde A</th>
-							<th scope="col">Título Profesional del Empleado</th>
-							
+							<th scope="col">Oficina</th>
+							<th scope="col">Responsable</th>
+							<th scope="col">Título Profesional</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -38,8 +37,7 @@
 							<td th:text="${emplo.firstName}"></td>
 							<td th:text="${emplo.extension}"></td>
 							<td th:text="${emplo.email}"></td>
-							<td th:if="${emplo.office != NULL}" th:text="${emplo.office.officeCode}"></td>
-							<td th:if="${emplo.office == NULL}" th:text="'-'"></td>
+							<td th:text="'#'+${emplo.office.officeCode}+' '+${emplo.office.city}+', '+${emplo.office.territory}"></td>
 							<td th:if="${emplo.employee1 != NULL}" th:text="${emplo.employee1.lastName}"></td>
 							<td th:if="${emplo.employee1 == NULL}" th:text="'-'"></td>
 							<td th:text="${emplo.jobTitle}"></td>

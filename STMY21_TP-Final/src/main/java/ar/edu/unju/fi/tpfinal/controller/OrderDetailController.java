@@ -63,6 +63,13 @@ public class OrderDetailController {
 		orderDetailService;
 		return modelView;
 	}*/
+	
+	@GetMapping("/detail/nuevo")
+	public String getOrderDetailsPage(Model model) {
+		model.addAttribute("orderDetail",orderDetailService.getOrderDetail());
+		return ("nuevo-detail");
+	}
+	
 }
 
 

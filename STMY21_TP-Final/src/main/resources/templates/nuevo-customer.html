@@ -25,14 +25,14 @@
 					</div>
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text col-auto" id="basic-addon1">Apellido:</span>
+							<span class="input-group-text col-auto" id="basic-addon1">Cont.Apellido: </span>
 							<input type="text" id="contactLastName" th:field="*{contactLastName}" placeholder="Ingrese Contacto Apellido..." class="form-control col-sm-11"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('contactLastName')}" th:errors="*{contactLastName}"></div>
 					</div>
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text col-auto" id="basic-addon1">Contacto:</span>
+							<span class="input-group-text col-auto" id="basic-addon1">Cont.Nombre:</span>
 							<input type="text" id="contactFirstName" th:field="*{contactFirstName}" placeholder="Ingrese Contacto Nombre..." class="form-control col-sm-8"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('contactFirstName')}" th:errors="*{contactFirstName}"></div>
@@ -40,7 +40,7 @@
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text col-auto" id="basic-addon1">Teléfono:</span>
-							<input type="number" id="phone" th:field="*{phone}" placeholder="Ingrese su teléfono" class="form-control col-sm-12"/>	
+							<input type="text" id="phone" th:field="*{phone}" placeholder="Ingrese su teléfono" class="form-control col-sm-12"/>	
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
 					</div>
@@ -89,7 +89,7 @@
 					<div class="input-group col-md-8 mb-2">
 						<div class="input-group-prepend">
 							<span class="input-group-text col-auto" id="basic-addon1">Límite de Crédito del Cliente:</span>
-							<input type="number" id="creditLimit" th:field="*{creditLimit}" placeholder="Ingrese su Límite de Crédito..." class="form-control" />
+							<input type="number" id="creditLimit" th:field="*{creditLimit}" placeholder="Ingrese su Límite de Crédito..." class="form-control" step="any"/>
 						</div>
 						<div class="alert-danger" th:if="${#fields.hasErrors('creditLimit')}" th:errors="*{creditLimit}"></div>
 					</div>

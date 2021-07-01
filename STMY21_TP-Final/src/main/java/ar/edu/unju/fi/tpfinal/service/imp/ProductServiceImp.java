@@ -20,6 +20,9 @@ public class ProductServiceImp implements IProductService {
 	@Autowired
 	Product product;
 	
+	@Autowired
+	List<Product> productosCache;
+	
 	@Override
 	public Product getProduct() {
 		// TODO Auto-generated method stub
@@ -59,6 +62,39 @@ public class ProductServiceImp implements IProductService {
 	public Optional<Product> getProductPorCodigoId(Long productCode) {
 		Optional<Product> product = productRepository.findById(productCode);
 		return product;
+	}
+
+	@Override
+	public void cacheProducto(List<Product> productos) {
+		vaciarCacheProducto();
+		if(productos.size()!=0) {
+			for(int i=0;i<productos.size();i++) {
+				productosCache.add(productos.get(i));
+			}
+		}
+	}
+
+	@Override
+	public List<Product> obtenerCache() {
+		return productosCache;
+	}
+
+	@Override
+	public void vaciarCacheProducto() {
+		int i=0;
+		while(productosCache.size()!=0) {
+			productosCache.remove(i);
+			i++;
+		}
+	}
+	
+	@Override
+	public List<Product> selecionarProductos(List<String> valores) {
+		List<Product> productos = new ArrayList<Product>();
+		for(int i=0;i<valores.size();i++) {
+			productos.add(productRepository.findByProductCode(Long.parseLong(valores.get(i))));
+		}
+		return productos;
 	}
 	
 }

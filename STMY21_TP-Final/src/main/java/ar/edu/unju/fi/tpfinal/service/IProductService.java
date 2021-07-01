@@ -22,4 +22,12 @@ public interface IProductService {
 	
 	public Optional<Product> getProductPorCodigoId(Long productCode);
 	
+	public void cacheProducto(List<Product> productos);
+	
+	public List<Product> obtenerCache();
+	
+	public void vaciarCacheProducto();
+
+	public List<Product> selecionarProductos(List<String> valores);
+	
 }

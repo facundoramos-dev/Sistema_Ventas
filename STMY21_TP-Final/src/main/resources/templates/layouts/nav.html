@@ -15,29 +15,6 @@
 			      <li class="nav-item active">
 			        <a class="nav-link" href="/home">Inicio<span class="sr-only">(current)</span></a>
 			      </li>
-			      
-			      <li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          Clientes
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			          <a id="menu" class="dropdown-item" href="/customer/nuevo">Agregar</a>
-			          <a id="menu" class="dropdown-item disabled" href="#">Ver Ultimo</a>
-			          <a id="menu" class="dropdown-item" href="/customer/listado">Listar</a>
-			        </div>
-			      </li>
-			      
-			      <li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          Empleados
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			          	<a id="menu" class="dropdown-item" href="/employee/nuevo">Agregar</a>
-			        	<a id="menu" class="dropdown-item disabled" href="#">Ver Ultimo</a>
-			          	<a id="menu" class="dropdown-item" href="/employee/listado">Listar</a>
-			        </div>
-			      </li>
-			      
 			      <li class="nav-item dropdown">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			          Oficinas
@@ -48,41 +25,16 @@
 			          	<a id="menu" class="dropdown-item" href="/office/listado">Listar</a>
 			        </div>
 			      </li>
-			      
 			      <li class="nav-item dropdown">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          Pedidos
+			          Empleados
 			        </a>
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			          	<a id="menu" class="dropdown-item" href="/order/nuevo">Agregar</a>
+			          	<a id="menu" class="dropdown-item" href="/employee/nuevo">Agregar</a>
 			        	<a id="menu" class="dropdown-item disabled" href="#">Ver Ultimo</a>
-			          	<a id="menu" class="dropdown-item" href="/order/listado">Listar</a>
-			          	<div class="dropdown-divider"></div>
-			          	<a id="menu" class="dropdown-item" href="/orderDetail/listado">Listar Detalles</a>
+			          	<a id="menu" class="dropdown-item" href="/employee/listado">Listar</a>
 			        </div>
 			      </li>
-			      
-			      <li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          Pagos
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			        	<a id="menu" class="dropdown-item disabled" href="#">Ver Ultimo</a>
-			          	<a id="menu" class="dropdown-item" href="/payment/listado">Listar</a>
-			        </div>
-			      </li>
-			      
-			      <li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          Productos
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			        	<a id="menu" class="dropdown-item" href="/product/nuevo">Agregar</a>
-			        	<a id="menu" class="dropdown-item disabled" href="#">Ver Ultimo</a>
-			          	<a id="menu" class="dropdown-item" href="/product/listado">Listar</a>
-			        </div>
-			      </li>
-
 			      <li class="nav-item dropdown">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			          Línea de productos
@@ -93,7 +45,52 @@
 			          	<a id="menu" class="dropdown-item" href="/productLine/listado">Listar</a>
 			        </div>
 			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Productos
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			        	<a id="menu" class="dropdown-item" href="/product/nuevo">Agregar</a>
+			        	<a id="menu" class="dropdown-item disabled" href="#">Ver Ultimo</a>
+			          	<a id="menu" class="dropdown-item" href="/product/listado">Listar</a>
+			        </div>
+			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Clientes
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a id="menu" class="dropdown-item" href="/customer/nuevo">Agregar</a>
+			          <a id="menu" class="dropdown-item disabled" href="#">Ver Ultimo</a>
+			          <a id="menu" class="dropdown-item" href="/customer/listado">Listar</a>
+			        </div>
+			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Pedidos
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          	<a id="menu" class="dropdown-item" href="/pedido/nuevo">Agregar</a>
+			        	<a id="menu" class="dropdown-item disabled" href="#">Ver Ultimo</a>
+			          	<a id="menu" class="dropdown-item" href="/order/listado">Listar</a>
+			          	<div class="dropdown-divider"></div>
+			          	<a id="menu" class="dropdown-item" href="/orderDetail/listado">Listar Detalles</a>
+			        </div>
+			      </li>
 			      
+			      
+			      
+			      
+			      
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Pagos
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			        	<a id="menu" class="dropdown-item disabled" href="#">Ver Ultimo</a>
+			          	<a id="menu" class="dropdown-item" href="/payment/listado">Listar</a>
+			        </div>
+			      </li>
 			    </ul>
 			    <form class="form-inline my-2 my-lg-0">
 			      <input class="form-control bor-ng col-sm-8" type="search" placeholder="Buscar" aria-label="Search">

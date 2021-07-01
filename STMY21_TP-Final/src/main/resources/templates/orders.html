@@ -35,10 +35,12 @@
 							<td th:text="${ord.orderNumber}"></td>
 							<td th:text="${#temporals.format(ord.orderDate,'dd/MM/yyyy')}"></td>
 							<td th:text="${#temporals.format(ord.requiredDate,'dd/MM/yyyy')}"></td>
-							<td th:text="${#temporals.format(ord.shippedDate,'dd/MM/yyyy')}"></td>
+							<td th:if="${ord.shippedDate!=null}" th:text="${#temporals.format(ord.shippedDate,'dd/MM/yyyy')}"></td>
+							<td th:if="${ord.shippedDate==null}" th:text="'Sin Enviar'"></td>
 							<td th:text="${ord.status}"></td>
-							<td th:text="${ord.comments}"></td>
-							<td th:if="${ord.customer1 != NULL}" th:text="${ord.customer1.contactLastName}+', '+${ord.customer1.customerName}"></td>
+							<td th:if="${ord.comments!=''}" th:text="${ord.comments}"></td>
+							<td th:if="${ord.comments==''}" th:text="'Sin Comentarios'"></td>
+							<td th:if="${ord.customer1 != NULL}" th:text="${ord.customer1.customerName}"></td>
 							<td th:if="${ord.customer1 == NULL}" th:text="'Cliente no encontrado'"></td>
 							<td>
 								<a th:href="@{/order/editar/}+${ord.orderNumber}" class="btn btn-warning">Editar</a>

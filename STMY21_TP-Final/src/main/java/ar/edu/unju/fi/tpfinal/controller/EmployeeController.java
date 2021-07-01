@@ -32,11 +32,19 @@ public class EmployeeController {
 	
 	@GetMapping("/employee/nuevo")
 	public String getEmployeePage(Model model) {
-		model.addAttribute("employee",employeeService.getEmployee());
-		model.addAttribute("offices", officeService.getOffices());
-		model.addAttribute("employees",employeeService.getEmployees());
-		return ("nuevo-employee");
+		if(officeService.getOffices()!=null) {
+			model.addAttribute("employee",employeeService.getEmployee());
+			model.addAttribute("offices", officeService.getOffices());
+			model.addAttribute("employees",employeeService.getEmployees());
+			return ("nuevo-employee");
+		}
+		return("redirect:/employee/error");
 	}	
+	
+	@GetMapping("/employee/error")
+	public String getEmployeeErrorPage() {
+		return("error-employee");
+	}
 	
 	@PostMapping("/employee/guardar")
 	public ModelAndView agregarEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult resulValidacion) {

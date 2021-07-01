@@ -53,12 +53,11 @@
 					</div>
 					<div class="input-group col-md-4 mb-2">
 						<div class="input-group-prepend">
-							<span class="input-group-text col-auto" id="basic-addon1">Codigo de Oficina:</span>
+							<span class="input-group-text col-auto" id="basic-addon1">Oficina:</span>
 							<select id="office" th:field="*{office.officeCode}" class="custom-select">
-								<option value="" seleted>Seleccicione...</option>
 								<option th:each= "of: ${offices}"
 								th:value= "${of.officeCode}" 
-								th:text="${of.officeCode}"
+								th:text="'#'+${of.officeCode}+' '+${of.city}+', '+${of.territory}"
 								th:selected="false" />
 							</select>
 						</div>
@@ -68,10 +67,6 @@
 							<span class="input-group-text col-auto" id="basic-addon1">Responde a:</span>
 							<select id="employee1" th:field="*{employee1.employeeNumber}" class="custom-select">
 								<option value="" seleted>Seleccicione...</option>
-								<option th:if="${employee1 != NULL}"
-									th:value="${employee1.employeeNumber}"
-									th:text="${employee1.lastName}+', '+${employee1.firstName}"
-									th:selected="true" hiden/>
 								<option th:each= "em: ${employees}"
 									th:value= "${em.employeeNumber}" 
 									th:text="${em.lastName}+', '+${em.firstName}"

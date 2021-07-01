@@ -38,7 +38,6 @@ public class Order {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate requiredDate;
 	
-	@NotNull(message = "El campo shippedDate no puede estar vacio")
 	@Column (name = "shippedDate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate shippedDate;
@@ -48,8 +47,6 @@ public class Order {
 	@Column (name = "status")
 	private String status;
 	
-	@NotEmpty(message = "El campo comments no puede estar vacio")
-	@Size(min = 1, max = 15, message = "El maximo es de 15 caracteres")
 	@Column (name = "comments", columnDefinition = "TEXT")
 	private String comments;
 	
