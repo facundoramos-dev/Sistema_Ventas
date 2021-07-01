@@ -3,6 +3,7 @@ package ar.edu.unju.fi.tpfinal.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -70,6 +73,13 @@ public class Employee {
 		
 	@OneToMany( mappedBy = "employee" )
 	private List<Customer> customers = new ArrayList<Customer>();
+	
+	//USUARIO para login
+		@Autowired
+		@OneToOne(cascade = CascadeType.ALL)
+		@JoinColumn(name="user_Id")
+		@Valid
+		private User user;
 	
 	public Employee() {
 		// TODO Auto-generated constructor stub
