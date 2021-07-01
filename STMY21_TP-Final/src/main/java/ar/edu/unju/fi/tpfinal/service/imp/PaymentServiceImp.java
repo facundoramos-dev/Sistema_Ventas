@@ -8,21 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tpfinal.model.Payment;
-import ar.edu.unju.fi.tpfinal.model.PaymentId;
 import ar.edu.unju.fi.tpfinal.repository.IPaymentRepository;
-import ar.edu.unju.fi.tpfinal.service.ICustomerService;
 import ar.edu.unju.fi.tpfinal.service.IPaymentService;
 
 @Service("paymentService")
 public class PaymentServiceImp implements IPaymentService {
 
-	List<Payment> paymentEncontrado = new ArrayList<Payment>(); 
+	private List<Payment> paymentEncontrado = new ArrayList<Payment>(); 
 	
 	@Autowired
 	private IPaymentRepository paymentRepository;
-	
-	@Autowired
-	private ICustomerService customerService;
 
 	@Autowired
 	Payment payment;
@@ -34,7 +29,7 @@ public class PaymentServiceImp implements IPaymentService {
 
 	@Override
 	public List<Payment> getPayments() {
-		List<Payment>payments = (List<Payment>) paymentRepository.findAll();
+		List<Payment> payments = (List<Payment>) paymentRepository.findAll();
 		return payments;
 	}
 
@@ -50,8 +45,8 @@ public class PaymentServiceImp implements IPaymentService {
 	}
 
 	@Override
-	public void eliminarPayment(PaymentId id) {
-		//paymentRepository.deleteById(payment.getId());
+	public void eliminarPayment(String id) {
+		paymentRepository.deleteById(id);
 	}
 
 	
@@ -62,33 +57,19 @@ public class PaymentServiceImp implements IPaymentService {
 	}
 
 	@Override
-	public void quitarPaymentLista(Long checkNumber) {
+	public void quitarPaymentLista(String id) {
 		for (int i=0; i < paymentEncontrado.size(); i++) {
-			if( paymentEncontrado.get(i).getId().getCheckNumber() == checkNumber) {
+			if( paymentEncontrado.get(i).getCheckNumber() == id) {
 				paymentEncontrado.remove(i);
 			}
 		}
 	}
 
 	@Override
-	public Optional<Payment> encontrarPaymentPorNumero(PaymentId id) {
-		//Optional<Payment> pago = paymentRepository.findById(id);
-		return null;
+	public Optional<Payment> getPaymentPorcheckNum(String id) {
+		Optional<Payment> pago = paymentRepository.findById(id);
+		return pago;
 	}
-
-	@Override
-	public Payment getPaymentPorCustomerNumber(Long customerNumber) {
-		// TODO Auto-generated method stub
-		Payment payment = paymentRepository.findByIdCustomerNumberCustomerNumber(customerNumber);
-		return payment;
-	}
-
-	@Override
-	public void eliminarPaymentPorCstomerNumber(Long customerNumber) {
-		// TODO Auto-generated method stub
-		PaymentId id = new PaymentId(customerService.getCustomerPorNumber(customerNumber));
-		id.setCheckNumber(customerNumber);
-		paymentRepository.deleteById(id);
-	}
+	
 
 }
