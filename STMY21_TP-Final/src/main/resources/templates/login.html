@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	    <link rel="stylesheet" th:href="@{/css/main.css}" />
+	    <link
+	      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	      rel="stylesheet"
+	      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	      crossorigin="anonymous"/>
+		<title>Login</title>
+		
+	</head>
+	<body class="body" style="background-color: #FFFFFF">
+		<main class="w-75 m-auto mt-3 mb-3 main text-center">
+		<h2 class="text-white text-decoration-underline">Login</h2> <hr>
+      	<br>
+		<section class="col-md-8">
+	
+			<div class="cont-form">
+				<form th:action="@{/login}"	method="POST" class="signin-form">
+					<div class="form-group mb-4 col-md-6 offset-md-3">
+						<label class="label" for="name">Username</label>
+						<input type="text" name="usuario" class="form-control" placeholder="Username" required>
+					</div>
+					<div class="form-group mb-4 col-md-6 offset-md-3">
+						<label class="label" for="password">Password</label>
+						<input name="password" type="password" class="form-control" placeholder="Password" required>
+					</div>
+					<div class="form-group col-md-4 offset-md-4">
+						<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+					</div>
+				
+				</form>
+				
+			</div>
+			
+		</section>
+		</main>
+		
+		
+	<script
+      	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+     	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      	crossorigin="anonymous"
+    	></script>
+	</body>
+</html>
