@@ -53,6 +53,9 @@ public class CustomerController {
 		}else {//no se encuentran errores
 			modelView = new ModelAndView("redirect:/customer/listado"); //lista de customer
 			customer.setEmployee(employeeService.getEmployeePorNumber(customer.getEmployee().getEmployeeNumber()));
+			if(customer.getEmployee()==null) {
+				customer.setCreditLimit(0);
+			}
 			customerService.agregarCustomer(customer);
 		}
 		return modelView;

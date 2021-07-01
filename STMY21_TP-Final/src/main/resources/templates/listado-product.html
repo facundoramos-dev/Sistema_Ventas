@@ -24,14 +24,14 @@
 					      <th scope="col">Vendedor</th>
 					      <th scope="col">Descripcion</th>
 					      <th scope="col">Stock</th>
-					      <th scope="col">Precio</th>
+					      <th scope="col">Precio Compra</th>
 					      <th scope="col">Precio Sugerido</th> 
 					      <th scope="col">Acciones</th>
 					    </tr>
 					  </thead>
 					  <tbody>
 					    <tr th:each="prod : ${products}" >	
-				 	     <td th:text="${prod.productCode}"></td>
+				 	     <td th:text="'#'+${prod.productCode}"></td>
 					     <td th:text="${prod.productName}"></td>
 					     <td th:if="${prod.productLine != NULL}" th:text="${prod.productLine.productLineName}"></td> 
 					     <td th:text="${prod.productScale}"></td>

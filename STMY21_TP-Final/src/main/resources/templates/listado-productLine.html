@@ -28,10 +28,12 @@
 					    <tr th:each="prod : ${productLine}" >	
 					      <td th:text="${prod.id}"></td>
 					      <td th:text="${prod.productLineName}"></td>
-					      <td th:text="${prod.textDescription}"></td>
-					      <td th:text="${prod.htmlDescription}"></td>
-					      <td th:if="${prod.image == NULL}" th:text="'No'"></td>
-					      <td th:if="${prod.image != NULL}" th:text="'Si'"></td>
+					      <td th:if="${prod.textDescription!=''}" th:text="${prod.textDescription}"></td>
+					      <td th:if="${prod.textDescription==''}" th:text="'Sin Descripcion'"></td>
+					      <td th:if="${prod.htmlDescription!=''}" th:text="${prod.htmlDescription}"></td>
+					      <td th:if="${prod.htmlDescription==''}" th:text="'Sin Descripcion'"></td>
+					      <td th:if="${prod.image == NULL}" th:text="'No Cargada'"></td>
+					      <td th:if="${prod.image != NULL}" th:text="'Cargada'"></td>
 					      <td>
 							<a th:href="@{/productLine/editar/}+${prod.id}" class="btn btn-warning">Editar</a>
 							<a th:href="@{/productLine/eliminar/}+${prod.id}" class="btn btn-danger">Eliminar</a>

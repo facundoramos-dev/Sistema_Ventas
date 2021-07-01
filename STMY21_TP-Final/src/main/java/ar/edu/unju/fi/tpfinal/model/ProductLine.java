@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class ProductLine {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty(message="El campo no puede estar vacio")
 	@Column (name = "productLine")
 	private	String productLineName;
 	

@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.tpfinal.model.Order;
 import ar.edu.unju.fi.tpfinal.model.OrderDetail;
 import ar.edu.unju.fi.tpfinal.model.OrderDetailId;
+import ar.edu.unju.fi.tpfinal.model.Product;
 import ar.edu.unju.fi.tpfinal.repository.IOrderDetailRepository;
 import ar.edu.unju.fi.tpfinal.service.IOrderDetailService;
 
@@ -70,6 +72,21 @@ public class OrderDetailServiceImp implements IOrderDetailService {
 	@Override
 	public void eliminarOrderDetailPorOrderNumber(Long orderNumber) {
 		orderDetailRepository.delete(getOrdeDetailPorOrderNumber(orderNumber));
+	}
+
+	@Override
+	public List<OrderDetail> obtenerCompras(List<Product> productos,Order order) {
+		List<OrderDetail> orderDetail = new ArrayList<OrderDetail>();
+		OrderDetail orderDe = getOrderDetail();
+		short orderLineNumber=0;
+		for(int i=0;i<productos.size();i++) {
+			orderLineNumber++;
+			orderDe.setOrderLineNumber(orderLineNumber);
+			orderDe.getId().setOrderNumber(order);
+			orderDe.getId().setProductCode(productos.get(i));
+			orderDetail.add(orderDe);
+		}
+		return orderDetail;
 	}
 
 }

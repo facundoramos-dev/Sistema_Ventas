@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.tpfinal.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpfinal.model.Order;
@@ -87,15 +91,16 @@ public class OrderController {
 	public ModelAndView getOrderPage() {
 		ModelAndView modelView = new ModelAndView("orders");
 		modelView.addObject("orders", orderService.getOrders());
+		System.out.println("Productos: "+productService.obtenerCache().size());
 		return modelView;
 	}
 	
 	@GetMapping("/order/editar/{id}")
 	public ModelAndView getOrderEditPage(@PathVariable(value="id")Long orderNumber) {
-		ModelAndView modelView = new ModelAndView("nuevo-order");
+		ModelAndView modelView = new ModelAndView("nueva-compra");
 		Optional<Order> order =  orderService.getOrderPorOrderNumber(orderNumber);
 		modelView.addObject("order",order);
-		modelView.addObject("detail", detailService.getOrdeDetailPorOrderNumber(orderNumber));
+		//modelView.addObject("detail", detailService.getOrdeDetailPorOrderNumber(orderNumber));
 		modelView.addObject("customers",customerService.getCustomers());
 		modelView.addObject("products", productService.getProducts());
 		return modelView;
@@ -108,6 +113,38 @@ public class OrderController {
 			detailService.eliminarOrderDetailPorOrderNumber(orderNumber);
 		}
 		orderService.eliminarOrder(orderNumber);
+		return modelView;
+	}
+	
+	@GetMapping("/pedido/nuevo")
+	public String getCompraPage(Model model) {
+		if((customerService.getCustomers().size()!=0)&&(productService.getProducts().size()!=0)) {
+			model.addAttribute("order",orderService.getOrder());
+			model.addAttribute("customers",customerService.getCustomers());
+			model.addAttribute("products",productService.getProducts());
+			return("nueva-compra");
+		}
+		return("redirect:/order/error");
+	}
+	
+	@PostMapping("/pedido/guardar")
+	public ModelAndView agregarPedido(@Valid @ModelAttribute("order") Order order, BindingResult resulValidacion,@RequestParam List<String> valores) throws IOException{
+		ModelAndView modelView;
+		if (!resulValidacion.hasErrors()) {//sinErrores
+			System.out.println("Cantidad de valores: "+valores.size());
+			if(valores.size()!=1) {
+				modelView=new ModelAndView("nuevo-detail");
+				order.setCustomer1(customerService.getCustomerPorNumber(order.getCustomer1().getCustomerNumber()));
+				orderService.agregarOrder(order);
+				productService.cacheProducto(productService.selecionarProductos(valores));
+				modelView.addObject("orderDetails",detailService.obtenerCompras(productService.selecionarProductos(valores), order));
+				return modelView;
+			}
+		}
+		modelView=new ModelAndView("nueva-compra");
+		modelView.addObject("order",order);
+		modelView.addObject("customers",customerService.getCustomers());
+		modelView.addObject("products",productService.getProducts());
 		return modelView;
 	}
 }
