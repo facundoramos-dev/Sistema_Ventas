@@ -77,9 +77,6 @@ public class CustomerController {
 	@GetMapping("/customer/eliminar/{id}")
 	public ModelAndView getCustomerDeletePage(@PathVariable(value="id")Long customerNumber) {
 		ModelAndView modelView = new ModelAndView("redirect:/customer/listado");
-		if(paymentService.getPaymentPorCustomerNumber(customerNumber)!=null) {
-			paymentService.eliminarPaymentPorCstomerNumber(customerNumber);
-		}
 		customerService.eliminarCustomer(customerNumber);
 		return modelView;
 	}

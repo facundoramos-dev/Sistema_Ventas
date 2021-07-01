@@ -20,21 +20,22 @@
 							<th rowspan="2">Acciones</th>
 						</tr>
 						<tr>
-							<th scope="col" style="width: 30px;">#</th>
-							<th scope="col">Cliente</th>
-							<th scope="col">Monto</th>
-							<th scope="col">Fecha de Pago</th>
+							  <th scope="col">N° de Cliente</th>
+							  <th scope="col">Número de Cheque</th>
+							  <th scope="col">Monto</th>
+							  <th scope="col">Fecha de Pago</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="pay : ${payments}"  class="text-center">
-							<td th:text="${pay.id.checkNumber}"></td>
-							<td th:text="${pay.id.customerNumber.contactLastName}+', '+${pay.id.customerNumber.customerName}"></td>
+							<td th:if="${pay.customer != NULL}" th:text="${pay.customer.customerNumber}"></td>
+							<td th:if="${pay.customer == NULL}" th:text="'Sin Atender'"></td>
+							<td th:text="${pay.checkNumber}"></td>
 							<td th:text="${pay.amount}"></td>
 							<td th:text="${#temporals.format(pay.paymentDate,'dd/MM/yyyy')}"></td>
 							<td>
-								<a th:href="@{/payment/editar/}+${pay.id.customerNumber.customerNumber}" class="btn btn-warning">Editar</a>
-								<a th:href="@{/payment/eliminar/}+${pay.id.customerNumber.customerNumber}" class="btn btn-danger">Eliminar</a>
+								<a th:href="@{/payment/editar/}+${pay.checkNumber}" class="btn btn-warning">Editar</a>
+								<a th:href="@{/payment/eliminar/}+${pay.checkNumber}" class="btn btn-danger">Eliminar</a>
 							</td>
 						</tr>
 					</tbody>
